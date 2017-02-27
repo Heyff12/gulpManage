@@ -1,0 +1,109 @@
+# coding: utf-8 
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>会员储值</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <script type="text/javascript" src="/qudao/v1/static/new/js/plug/flexible.debug.js"></script>
+    <link rel="stylesheet" href="/qudao/v1/static/new/css/home_test.css?v=bf05f829bd">
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?f3bc3b4024a2a3be3c630ee7af344007";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</head>
+
+<body>
+    <div id="wap" class="js_activity_index">
+        <section class="section_index">
+            <ul class="ul_top">
+                <li class="js_goto_member">
+                    会员累计
+                    <br/>
+                    <span class="span_num"><i class="js_all_person">35</i>人</span>
+                </li>
+                <li class="js_goto_allhistory">
+                    储值金额累计
+                    <br/>
+                    <span class="span_num"><i class="js_all_money">7000</i>元</span>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </section>
+        <section class="section_mid">
+            <p class="title_mid js_date_activity"><span class="js_start_time">2016.9.18</span>-<span class="js_end_time">10.1</span> 会员储值活动</p>
+            <p class="title_bg js_ac_date js_ac_dateing title_none">活动进行中,<span class="orange"><i class="i_normal js_countdown_end">10</i>天</span>后结束</p>
+            <p class="title_bg js_ac_date js_ac_dateno">活动<span class="orange"><i class="i_normal js_countdown"></i>天</span>后开始,建议提前<a href="javascript:void(0)" class="orange js_loadpic_sub">下载宣传物料</a></p>
+            <p class="title_bg disa_bg js_ac_date js_ac_dateend title_none">本次活动已结束</p>
+            <p class="title_bg js_ac_date js_ac_noac disa_bg title_none">您还没有创建任何活动</p>
+            <ul class="ul_activity js_goto_nowhistory" data-id="">
+                <li>
+                    <span class="grey">会员数</span>
+                    <br/>
+                    <span class="span_num"><i class="js_now_person">20</i>人</span>
+                </li>
+                <li>
+                    <span class="grey">储值金额</span>
+                    <br/>
+                    <span class="span_num"><i class="js_now_money">3000</i>元</span>
+                </li>
+                <div class="clearfix"></div>
+            </ul>
+        </section>
+        <section class="section_detail js_activity_detail">
+            <p class="title_togle js_toogle" data-toogle='1'>查看活动详情<i class="arrow_b"></i></p>
+            <div class="bg_normal js_toogle_detail">
+                <ul class="ul_detail js_ul_detail">
+                    <li><span class="fr"><i class="i_normal">5人</i>已购买</span>储值50送5元</li>
+                    <li><span class="fr"><i class="i_normal">12人</i>已购买</span>储值100送10元</li>
+                    <!-- <li><span class="fr"><i class="i_normal">3人</i>已购买</span>储值300送50元</li>
+                        <li><span class="fr"><i class="i_normal">5人</i>已购买</span>储值50送5元</li>
+                        <li><span class="fr"><i class="i_normal">12人</i>已购买</span>储值100送10元</li>
+                        <li><span class="fr"><i class="i_normal">3人</i>已购买</span>储值300送50元</li> -->
+                </ul>
+                <p class="title_normal js_title_normal">备注：储值后不得兑换现金，不能与店内其他优惠同享；无特殊情况，不退不换，不更名。</p>
+                <ul class="ul_button js_ul_button">
+                    <li class="js_content_mend">修改活动</li>
+                    <li class="js_stop_activity">停止活动</li>
+                    <div class="clearfix"></div>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </section>
+        <section class="section_footer">
+            <span class="content_sub js_content_sub" style="display: block;"><i class="i_normal ifooter">+</i>创建会员储值</span>
+            <span class="content_sub disa js_content_sub_disa" style="display: none;"><i class="i_normal ifooter">+</i>创建会员储值</span>
+            <span class="content_sub js_loadpic_sub" style="display: none;">下载宣传物料</span>
+        </section>
+    </div>
+    <input id="hidden" type="hidden" value="1"></input>    
+    <div id="load_small_bg">
+        <div id="load_small"><i></i><br/><span>数据加载中</span></div>
+    </div>
+    <div id="loading"></div>
+    <!-- </*弹框*/>  -->
+    <div class="alert_con" id="alert_alert">
+        <div class="alert_con_t orange">提示<span class="pass_close js_alert_con_close">×</span></div>
+        <div class="alert_con_b">
+            <div class="alert_con_br"></div>
+            <div class="clearfix"></div>
+            <span class="alert_con_close js_alert_con_close">确定</span>
+        </div>
+    </div>
+    <div class="zheceng"></div>
+    <div class="zheceng1"></div>
+    <div class="zheceng2"></div>
+    <script src="/qudao/v1/static/new/js/require.2.1.11.min.js" type="text/javascript" data-main="/qudao/v1/static/new/js/b/home_test.js?v=f070b64e24" defer async="true"></script>
+</body>
+
+</html>

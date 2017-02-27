@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>储值会员信息</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <script type="text/javascript" src="../../../static_dest/static/new/js/plug/flexible.debug.js"></script>
+    <link rel="stylesheet" href="../../../static_dest/static/new/css/member_list.css">
+</head>
+
+<body class="bg_white">
+    <div id="wap" class="js_member_list">
+        <div class="li_none js_li_none">
+            <img class="history_img" src="../../../static_dest/static/new/img/wu@3x.png" />
+            <p class="title_no grey">亲，还没有会员储值~</p>
+        </div>
+        <div class="js_member_detail">
+            <section class="section_search">
+                <div class="search_out">
+                    <i class="icon_search"></i>
+                    <input class="text" type="text" v-model="searchkey" placeholder="请输入姓名或手机号查询"></input>
+                </div>
+            </section>
+            <input id="js_pos" type="hidden" value="0" />
+            <section class="section_history">
+                <ul class="ul_history">
+                    <li v-cloak v-for="(member,index) in member_ser(members)" :data-c="member.c" onclick="memberto(this)">
+                        <!-- <router-link :to="{ name: 'member_d', params: { id: member.id } }"> -->
+                        <dl>
+                            <dt><img :src="member.img"></dt>
+                            <dd>{{member.name}}</dd>
+                            <dd class="grey"><i class="icon_tel"></i>{{member.tel}}</dd>
+                            <dd class="grey">储值<span class="orange">{{member.tiems}}次</span></dd>
+                            <div class="clearfix"></div>
+                        </dl>
+                        <p>
+                            <span class="grey">余额</span>
+                            <br/>
+                            <span class="orange">￥<i class="i_normal">{{member.prize}}</i></span>
+                        </p>
+                        <!-- </router-link> -->
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+    <script src="../../../static_dest/static/new/js/plug/vue.js" type="text/javascript"></script>
+    <script src="../../../static_dest/static/new/js/plug/vue-resource.js" type="text/javascript"></script>
+    <script src="../../../static_dest/static/new/js/require.2.1.11.min.js" type="text/javascript" data-main="../../../static_dest/static/new/js/b/member_list_local.js" defer async="true"></script>
+    <script type="text/javascript">
+    </script>
+</body>
+
+</html>

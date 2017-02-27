@@ -1,0 +1,108 @@
+# coding: utf-8 
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>会员储值</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <script type="text/javascript" src="/qudao/v1/static/new/js/plug/flexible.debug.js"></script>
+    <link rel="stylesheet" href="/qudao/v1/static/new/css/home.css?v=8c4aeea14e">
+    <style type="text/css">
+    [v-cloak] {
+        display: none;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="wap" v-cloak>
+        <section class="section_index">
+            <ul class="ul_top">
+                <li>
+                    累计储值
+                    <br/>
+                    <span class="span_num"><i>{{(stored.total_pay_amt/100).toFixed(0)}}</i>元</span>
+                </li>
+                <li>
+                    未消费余额
+                    <br/>
+                    <span class="span_num"><i>{{stored.left_store==0?0:(stored.total_balances/100).toFixed(2)}}</i>元</span>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </section>
+        <section class="top_margin"></section>
+        <dl class="headpic" v-bind:class="[membershome.length>0?'':'hide']">
+            <dt v-on:click="goto_members">全部储值会员<i class="icon_r"></i></dt>
+            <dd v-for="(member,index) in membershome">
+                <img :src="member.avatar">
+            </dd>
+            <template v-if="membershome.length<5">
+                <dd v-for="n in (5-membershome.length)">
+                    <img src="/qudao/v1/static/new/img/Oval.png">
+                </dd>
+            </template>
+        </dl>
+        <div class="clearfix"></div>
+        <section class="section_action">
+            <div v-cloak class="action" v-for="(action,index) in activities" v-bind:class="[action.status==2?'action_over':'',action.status==3?'action_over':'']">
+                <dl class="action_top">
+                    <dt class="orange"><i class="icon_calendar"></i>{{datechange(action.start_time)}}-{{datechange2(action.start_time,action.end_time)}}</dt>
+                    <dd>
+                        <template v-if="action.status==0">
+                            {{action.countdown_day}}天后开始
+                        </template>
+                        <template v-if="action.status==1">
+                            进行中
+                        </template>
+                        <template v-if="action.status==2">
+                            已结束
+                        </template>
+                        <template v-if="action.status==3">
+                            已终止
+                        </template>
+                    </dd>
+                </dl>
+                <div class="clearfix"></div>
+                <ul class="action_body">
+                    <li v-on:click="goto_now_members(action.activity_id)">
+                        <span class="fr"><i class="orange">{{action.user_num}}人</i><i class="icon_r"></i></span>储值会员
+                    </li>
+                    <li v-on:click="goto_now_money(action.activity_id)">
+                        <span class="fr"><i class="orange">{{(action.total_pay_amt/100).toFixed(0)}}元</i><i class="icon_r"></i></span>储值金额
+                    </li>
+                    <li v-for="(adetail,index) in action.detail">
+                        <span class="fr"><i class="black">{{adetail.prepaid_times}}次</i></span>{{adetail.title}}
+                    </li>
+                </ul>
+                <ul class="action_foot">
+                    <template v-if="action.status==0 || action.status==1">
+                        <li class="orange" v-on:click="goto_downpic">下载宣传物料</li>
+                        <li v-on:click="goto_scandetail(action.activity_id)">查看活动详情</li>
+                    </template>
+                    <template v-else>
+                        <li v-on:click="goto_scandetail(action.activity_id)">查看活动详情</li>
+                    </template>
+                </ul>
+            </div>
+        </section>
+        <section class="section_footer ">
+            <template v-if="due_fee==1 ">
+                <span class="content_sub" v-on:click="goto_renew">立即续费</span>
+            </template>
+            <template v-else>
+                <span v-if="action_ing==2 || action_ing==3" class="content_sub" v-on:click="goto_create_ac"><i class="i_normal ifooter ">+</i>创建会员储值</span>
+                <span v-else class="content_sub disa" style="display: block;"><i class="i_normal ifooter ">+</i>创建会员储值</span>
+            </template>
+        </section>
+    </div>
+    <script src="/qudao/v1/static/new/js/plug/vue.js " type="text/javascript "></script>
+    <script src="/qudao/v1/static/new/js/require.2.1.11.min.js " type="text/javascript " data-main="/qudao/v1/static/new/js/b/home.js?v=ce5989152e" defer async="true "></script>
+</body>
+
+</html>

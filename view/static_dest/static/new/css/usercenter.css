@@ -1,0 +1,382 @@
+/**
+ * rechargeB - rechargeB详情
+ * @version v1.0.0
+ * @link 
+ * @license ISC
+ */
+/* ==================个人中心首页============================================================ */
+
+section.section_index {
+  width: 100%;
+  padding: 0 0.4rem 3.3rem;
+}
+
+.user_header {
+  position: relative;
+  height: 1rem;
+  line-height: 1rem;
+  font-size: 0.4rem;
+  text-align: center;
+  width: 100%;
+  margin: 0.2rem auto;
+}
+
+.user_header span.orange {
+  font-size: 0.533333rem;
+  padding: 0 0.08rem;
+}
+
+.user_header:before {
+  content: '';
+  background: url('../img/line_left.png') right center no-repeat;
+  background-size: auto 0.08rem;
+  position: absolute;
+  left: 0;
+  width: 30%;
+  height: 0.08rem;
+  top: 0.51rem;
+}
+
+.user_header:after {
+  content: '';
+  background: url('../img/line_right.png') left center no-repeat;
+  background-size: auto 0.08rem;
+  position: absolute;
+  right: 0;
+  width: 30%;
+  height: 0.08rem;
+  top: 0.51rem;
+}
+
+ul.usercenter_ul {
+  width: 100%;
+  margin-top: 0rem;
+}
+
+ul.usercenter_ul li {
+  float: left;
+  width: 100%;
+  border: 0 solid #e5e5e5;
+  border-radius: 0.08rem;
+  position: relative;
+  z-index: 1;
+  margin: 0.2rem 0;
+  line-height: 0.8rem;
+  padding: 0rem 0 0 0.4rem;
+  overflow: hidden;
+  box-shadow: 0rem 0.05rem 0.08rem #C2C2C2;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: white;
+}
+
+ul.usercenter_ul li:before {
+  content: '';
+  height: 0.1rem;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #FE9B20;
+}
+
+ul.usercenter_ul li:after {
+  content: '';
+  height: 1.2rem;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #FE9B20;
+  z-index: -1;
+}
+
+ul.usercenter_ul li header {
+  width: 100%;
+  height: 1.2rem;
+  font-size: 0.4rem;
+  line-height: 1.2rem;
+  border-bottom: 0.026667rem dashed #e5e5e5;
+  display: block;
+  color: #8B572A;
+  background: url('../img/ic_shop_round@3x.png') left center no-repeat;
+  background-size: 0.7rem 0.7rem;
+  padding-left: 0.9rem;
+  margin-bottom: 0.1rem;
+}
+
+ul.usercenter_ul li p {
+  line-height: 1.1rem;
+}
+
+ul.usercenter_ul li p.price {
+  font-size: 0.693333rem;
+}
+
+ul.usercenter_ul li p.price span {
+  font-size: 0.96rem;
+}
+
+ul.usercenter_ul li dl.company_dl {
+  width: 100%;
+  height: 1.2rem;
+  line-height: 1.2rem;
+  margin-top: 0.3rem;
+  color: white;
+}
+
+ul.usercenter_ul li dl.company_dl dt {
+  float: left;
+  width: 65%;
+  border-right: 0.026667rem solid #f7ce9c;
+}
+
+ul.usercenter_ul li dl.company_dl dt i {
+  display: inline-block;
+  width: 0.4rem;
+  height: 0.4rem;
+  position: relative;
+  top: 0.08rem;
+}
+
+ul.usercenter_ul li dl.company_dl dd {
+  width: 33%;
+  text-align: center;
+  float: right;
+  font-size: 0.453333rem;
+  font-weight: bold;
+}
+
+ul.usercenter_ul li dl.company_dl dd.js_recharge_now a {
+  width: 100%;
+  height: 1.2rem;
+  color: white;
+  display: inline-block;
+}
+
+i.sale {
+  padding-right: 0.2rem;
+  width: 0.4rem;
+  background: url('../img/sale.png') center left no-repeat;
+  background-size: 0.4rem auto;
+}
+
+i.arrow {
+  width: 0.4rem;
+  padding-left: 0.15rem;
+  background: url('../img/arrow.png') center right no-repeat;
+  background-size: 0.4rem auto;
+}
+
+ul.usercenter_ul li span.bg_img {
+  position: absolute;
+  right: 0;
+  bottom: 1.2rem;
+  width: 3.6rem;
+  height: 3.6rem;
+  display: block;
+  background: url('../img/chu@3x.png') top right no-repeat;
+  background-size: 3.6rem auto;
+}
+
+ul.usercenter_ul li span.zhe {
+  position: absolute;
+  width: 100%;
+  height: 3.8rem;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* ==================个人中心详情页============================================================ */
+
+section.header_detail {
+  width: 100%;
+  padding: 0.133333rem 0.133333rem 0;
+  background-color: #FFE9CF;
+  color: white;
+  line-height: 0.8rem;
+}
+
+section.header_detail .bg {
+  background: url('../img/band.png') top left no-repeat;
+  background-size: 100% auto;
+  padding: 0.666667rem 0.666667rem 0.24rem;
+}
+
+p.title_c {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+i.star {
+  position: absolute;
+  top: 0.3rem;
+  width: 38%;
+  display: inline-block;
+  height: 0.2rem;
+}
+
+i.starl {
+  left: 0;
+  background: url('../img/star.png') top right no-repeat;
+  background-size: 0.2rem auto;
+}
+
+i.starr {
+  right: 0;
+  background: url('../img/star.png') top left no-repeat;
+  background-size: 0.2rem auto;
+}
+
+p.title_d {
+  width: 100%;
+  text-align: center;
+  font-size: 0.693333rem;
+  line-height: 1.1rem;
+}
+
+p.title_d span {
+  font-size: 0.96rem;
+}
+
+p.title_e {
+  width: 100%;
+  text-align: center;
+  font-size: 0.373333rem;
+}
+
+p.title_e i {
+  display: inline-block;
+  width: 0.36rem;
+  height: 0.36rem;
+  position: relative;
+  top: 0.06rem;
+}
+
+a.title_e {
+  width: 100%;
+  text-align: center;
+  font-size: 0.373333rem;
+  display: block;
+  color: white;
+}
+
+a.title_e i {
+  display: inline-block;
+  width: 0.36rem;
+  height: 0.36rem;
+  position: relative;
+  top: 0.06rem;
+}
+
+.user_headerd {
+  position: relative;
+  height: 1rem;
+  line-height: 1rem;
+  font-size: 0.4rem;
+  text-align: center;
+  width: 100%;
+  margin: 0.2rem auto;
+}
+
+.user_headerd:before {
+  content: '';
+  background: url('../img/line1.png') left center no-repeat;
+  background-size: auto 0.106667rem;
+  position: absolute;
+  left: 0;
+  width: 37%;
+  height: 0.106667rem;
+  top: 0.43rem;
+}
+
+.user_headerd:after {
+  content: '';
+  background: url('../img/line.png') right center no-repeat;
+  background-size: auto 0.106667rem;
+  position: absolute;
+  right: 0;
+  width: 37%;
+  height: 0.106667rem;
+  top: 0.43rem;
+}
+
+ul.section_ul {
+  width: 100%;
+  line-height: 0.7rem;
+  padding-left: 0.4rem;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  list-style-type: disc;
+  color: #E5E5E5;
+}
+
+ul.section_ul li span {
+  color: #606470;
+}
+
+/* ==================个人中心详情页new============================================================ */
+
+section.header_detail {
+  background-color: #fe901e;
+  padding: 0;
+}
+
+section.header_detail .bg {
+  background: none;
+  padding: 0.3rem 0 0;
+}
+
+a.title_e {
+  background-color: #fea543;
+  line-height: 1.2rem;
+  margin-top: 0.15rem;
+}
+
+/* ==================储值记录列表页============================================================ */
+
+section.section_list {
+  width: 100%;
+  padding: 0 0.4rem 0;
+}
+
+section.section_list dl {
+  border-bottom: 0.026667rem solid #e5e5e5;
+  padding: 0.2rem 0;
+  line-height: 0.6rem;
+}
+
+section.section_list dl dt {
+  float: right;
+  width: 32%;
+  text-align: right;
+  line-height: 1.2rem;
+}
+
+section.section_list dl dd {
+  float: left;
+  width: 67%;
+}
+
+section.section_list dl dd span.buy_back {
+  border: 0.026667rem solid #FE9B20;
+  font-size: 0.346667rem;
+  padding: 0.053333rem 0.08rem;
+  border-radius: 0.08rem;
+  margin-left: 0.133333rem;
+}
+
+section.section_list dl dd.grey {
+  font-size: 0.34rem;
+}
+
+p.click_more {
+  width: 100%;
+  height: 1.2rem;
+  line-height: 1.2rem;
+  text-align: center;
+  font-size: 0.4rem;
+}

@@ -1,0 +1,503 @@
+@import "./common/common";
+
+/* ==================储值页============================================================ */
+
+section.section_merchant {
+    width: 75%;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+    height: 1rem;
+    line-height: 1rem;
+    font-size: 17px;
+    margin: 0.2rem auto;
+    &:before {
+        content: '';
+        background: @border_color;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        /*no*/
+        top: 0.51rem;
+        z-index: 1;
+    }
+    p {
+        height: 1rem;
+        width: auto;
+        padding: 0 .23rem;
+        background-color: @background_color;
+        z-index: 2;
+        position: relative;
+        display: inline-block;
+        &:before {
+            content: '';
+            background: @border_color;
+            position: absolute;
+            left: 0;
+            width: 3px;
+            /*no*/
+            height: 3px;
+            /*no*/
+            border-radius: 100%;
+            top: 0.47rem;
+            z-index: 1;
+        }
+        &:after {
+            content: '';
+            background: @border_color;
+            position: absolute;
+            right: 0;
+            width: 3px;
+            /*no*/
+            height: 3px;
+            /*no*/
+            border-radius: 100%;
+            top: 0.47rem;
+            z-index: 1;
+        }
+    }
+    i.icon_shop {
+        background: url('@{images}/ic_store.png') top left no-repeat;
+        background-size: 100% auto;
+        width: 0.64rem;
+        height: 0.64rem;
+        margin-right: 0.2rem;
+        display: inline-block;
+        position: relative;
+        top: 0.16rem;
+    }
+}
+
+section.line {
+    width: 100%;
+    padding-left: @padding;
+    box-sizing: border-box;
+    font-size: @font_size;
+    background-color: white;
+    padding-bottom: .2rem;
+    border-top: @border_width solid @border_color;
+    /*no*/
+    dl {
+        width: 100%;
+        padding-right: @padding;
+        box-sizing: border-box;
+        line-height: 1.2rem;
+        height: 1.2rem;
+        border-bottom: @border_width solid @border_color;
+        /*no*/
+        &:after {
+            content: '';
+            clear: both;
+            height: 0;
+            line-height: 0;
+        }
+        dt {
+            width: 30%;
+            float: left;
+        }
+        dd {
+            width: 68%;
+            float: right;
+            text-align: right;
+            font-size: 16px;
+            &.black {
+                color: #000000;
+            }
+        }
+    }
+}
+
+section.section_mark {
+    width: 100%;
+    padding: 0 @padding;
+    box-sizing: border-box;
+    &.margin_b {
+        margin-bottom: 2rem;
+    }
+    .markin {
+        width: 100%;
+        padding: .2rem 10px;
+        box-sizing: border-box;
+        border: @border_width dashed @border_color;
+        /*no*/
+        line-height: 18px;
+        font-size: 12px;
+        span {
+            padding-right: 5px;
+            font-size: 20px;
+            position: relative;
+            top: .17rem;
+        }
+        a {
+            color: #000000;
+            text-decoration: underline;
+        }
+    }
+}
+
+section.section_index {
+    width: 100%;
+    padding: 0 @padding;
+    border-bottom: @border_width solid @border_color;
+    /*no*/
+    background: white;
+}
+
+p.title_a {
+    text-align: left;
+    line-height: 1rem;
+}
+
+ul.rechage_ul {
+    width: 100%;
+    margin-top: 0rem;
+}
+
+ul.rechage_ul li {
+    float: left;
+    width: 48%;
+    border: @border_width solid #C2C2C2;
+    /*no*/
+    border-radius: 3px;
+    position: relative;
+    margin: 0 0 @padding;
+    text-align: center;
+    line-height: 0.6rem;
+    padding: 0 0;
+    overflow: hidden;
+}
+
+ul.rechage_ul li:nth-child(2),
+ul.rechage_ul li:nth-child(4) {
+    float: right;
+}
+
+ul.rechage_ul li p.font_17 {
+    font-size: 17px;
+    padding-top: 0.2rem;
+    color: #000000;
+}
+
+ul.rechage_ul li p:nth-child(2) {
+    padding-bottom: 0.2rem;
+}
+
+ul.rechage_ul li span.choose {
+    position: absolute;
+    bottom: -0.3rem;
+    right: -0.3rem;
+    width: 0.7rem;
+    height: 0.7rem;
+    background: @orange;
+    color: white;
+    text-align: left;
+    border-radius: 0.5rem 0 0 0.5rem;
+    display: none;
+}
+
+ul.rechage_ul li span.choose i {
+    width: 0.25rem;
+    height: 0.12rem;
+    border: @border_width solid white;
+    /*no*/
+    border-width: 0 0 @border_width @border_width;
+    /*no*/
+    display: inline-block;
+    position: relative;
+    top: -0.18rem;
+    left: 0.1rem;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+ul.rechage_ul li.li_choose {
+    border: @border_width solid @orange;
+    /*no*/
+    color: @orange;
+    p.font_17 {
+        color: @orange;
+    }
+}
+
+ul.rechage_ul li.li_choose span.choose {
+    display: inline-block;
+}
+
+ul.rechage_ul li.li_one {
+    width: 100%;
+    padding: 0.6rem 0;
+    font-size: 18px;
+}
+
+ul.rechage_ul li.li_one p.font_17 {
+    font-size: 20px;
+}
+
+ul.rechage_ul li.li_two {
+    padding: 0.6rem 0;
+    font-size: 18px;
+}
+
+ul.rechage_ul li.li_two p.font_17 {
+    font-size: 20px;
+}
+
+dl.dl_detail {
+    background: white;
+    border-top: @border_width solid @border_color;
+    /*no*/
+    border-bottom: @border_width solid @border_color;
+    /*no*/
+    padding: 0;
+    margin: 0.3rem auto 0;
+    line-height: 1.4rem;
+}
+
+dl.dl_detail dt {
+    float: left;
+    width: 35%;
+    padding-left: @padding;
+}
+
+dl.dl_detail dd {
+    float: left;
+    width: 65%;
+    text-align: right;
+    padding-right: @padding;
+}
+
+dl.dl_detail dd.orange span {
+    font-size: .5rem;
+}
+
+img.img_wx {
+    width: 1rem;
+    height: 1rem;
+    padding-right: 3px;
+    vertical-align: middle;
+}
+
+section.dl_note {
+    background: white;
+    border-top: @border_width solid @border_color;
+    /*no*/
+    border-bottom: @border_width solid @border_color;
+    /*no*/
+    padding: 0 0px;
+    margin: 0.3rem auto .3rem;
+}
+
+section.dl_note p {
+    border-bottom: @border_width solid @border_color;
+    /*no*/
+    line-height: 1.2rem;
+    margin-left: @padding;
+}
+
+section.dl_note ul {
+    width: auto;
+    padding: 0.3rem 0 0.3rem @padding;
+    line-height: 0.62rem;
+    list-style: disc;
+    list-style-position: outside;
+    color: @border_color;
+    margin: 0 @padding;
+}
+
+section.dl_note ul li span {
+    color: #606470;
+}
+
+dl.dl_message {
+    padding: 0 0 0.1rem;
+}
+
+dl.dl_message dt {
+    padding: 0.1rem 0;
+}
+
+dl.dl_message dd {
+    margin: 0.1rem 0;
+    font-size: 13px;
+    line-height: 20px;
+}
+
+dl.dl_message dd input.text {
+    border: @border_width solid @border_color;
+    /*no*/
+    border-radius: 3px;
+    height: 1.1rem;
+    line-height: 1.1rem;
+    width: 100%;
+    padding: 0 10px;
+    font-size: .42rem;
+    color: #2F323A;
+}
+
+dl.dl_message dd input.text.border_red {
+    border: @border_width solid @red;
+    /*no*/
+    color: @red;
+}
+
+dl.dl_message dd input.text.grey {
+    color: @grey;
+}
+
+
+/* ==================储值过期显示为空=============== */
+
+.li_none {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.history_img {
+    display: inline-block;
+    width: 48%;
+    margin: 3rem 0 1.2rem 26%;
+    height: auto;
+}
+
+p.title_no {
+    font-size: 0.38rem;
+    text-align: center;
+    line-height: 0.8rem;
+    width: 68%;
+    margin: 0 auto;
+}
+
+
+/* ==================储值结果页============================================================ */
+
+.d_result {
+    width: 100%;
+    padding: 1.3rem 0 0;
+    position: relative;
+    margin: 0rem auto 0rem;
+    background: white;
+}
+
+.d_result dl.dl_detail {
+    border-top: 0;
+}
+
+dl.dl_detail.dl_result {
+    padding: 0 @padding 0;
+    line-height: 1.2rem;
+    background: white;
+}
+
+.result_ok {
+    display: block;
+    background: url('@{images}/iconfont-check.png') top left no-repeat;
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    background-size: 1.5rem 1.5rem;
+    left: 50%;
+    top: 0.5rem;
+    margin-left: -0.75rem;
+}
+
+dl.dl_detail.dl_result dt {
+    padding: 0;
+}
+
+dl.dl_detail.dl_result dd {
+    padding: 0;
+}
+
+span.blue {
+    background: #218fdb;
+    width: 0.46rem;
+    height: 0.46rem;
+    border-radius: 100%;
+    color: white;
+    margin-right: 0.1rem;
+    font-size: 12px;
+    text-align: center;
+    line-height: 0.46rem;
+    display: inline-block;
+    position: relative;
+    top: -0.05rem;
+}
+
+span.pig {
+    background: url('@{images}/ic_ecard.png') top left no-repeat;
+    background-size: 100% auto;
+    width: 0.6rem;
+    height: 0.6rem;
+    margin-right: 0.1rem;
+    display: inline-block;
+    position: relative;
+    top: 0.22rem;
+}
+
+
+/* ==================储值协议页============================================================ */
+
+section.section_protol {
+    width: 100%;
+    padding: 0 @padding;
+    background: white;
+}
+
+p {
+    font-size: 14px;
+    &.title_h1 {
+        font-size: 18px;
+        line-height: 1.2rem;
+        text-align: center;
+    }
+    &.p_detail {
+        line-height: 24px;
+        span{
+            font-weight: bold;
+            font-size: 15px;
+        }
+    }
+}
+
+.parter {
+    margin: 20px 0;
+}
+
+dl.dl_protol_d {
+    font-size: 14px;
+    line-height: 24px;
+    dt{
+        font-size: 15px;
+    }
+    dd {
+        padding: 0.05rem 0 0.05rem .2rem;
+        span {
+            display: inline-block;
+            &.span_l{
+                width: 6%;
+            }
+            &.span_r{
+                width: 94%;
+                vertical-align: text-top;
+                position: relative;
+                top: -4px;
+            }
+        }
+    }
+    &.bottom_dl{
+        margin: 20px 0;
+        dt{
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 30px;
+        }
+    }
+}
+
+footer {
+    position: relative;
+    margin-top: 15px;
+}
