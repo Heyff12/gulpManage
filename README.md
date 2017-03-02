@@ -48,6 +48,9 @@ gulp html
 
 6、px与rem像素的自适应  
 
+7、页面自动刷新（更改html/css/js）
+ 
+
  
 
 
