@@ -1,10 +1,12 @@
+'use strict';
+
 //点击储值项
 function click_chulist(obj) {
     $(obj).addClass('li_choose').siblings('li').removeClass('li_choose');
 };
-require(['../require-config'], function() {
-    require(["zepto", "yanzheng", "close_tip", "jsonp"], function($, yanzheng, close_tip, jsonp) {
-        $(function() {
+require(['../require-config'], function () {
+    require(["zepto", "yanzheng", "close_tip", "jsonp"], function ($, yanzheng, close_tip, jsonp) {
+        $(function () {
             //测试过期显示--不需要，进行测试
             // var return_expired = $('#hidden').val();
             // if (return_expired == '1') {
@@ -15,8 +17,8 @@ require(['../require-config'], function() {
             //     $('.js_content_sub_disa').show().css('display', 'inline-block');
             // }
             //储值首页----------------------------------------------------------------------------------------------------------------------------------------------------
-            $('.js_recharge_index').get(0) && (~ function() {
-                $(document).ready(function() {
+            $('.js_recharge_index').get(0) && ~function () {
+                $(document).ready(function () {
                     //获取信息todo-show
                     //get_activity_pre();
                     //获取储值规则
@@ -27,7 +29,7 @@ require(['../require-config'], function() {
                 //     var home_url = $(this).attr('data-url');
                 //     location.href = home_url;
                 // });
-                $('.js_content_sub').on('click', function() {
+                $('.js_content_sub').on('click', function () {
                     var home_url = location.protocol + '//' + location.host + '/prepaid/v1/page/b/index.html';
                     location.href = home_url;
                 });
@@ -35,7 +37,7 @@ require(['../require-config'], function() {
                 // $(document).on('click', '.js_rechage_ul li', function() {
                 //     $(this).addClass('li_choose').siblings('li').removeClass('li_choose');
                 // });
-            }());
+            }();
             //获取储值规则
             function get_rule_detail() {
                 $.ajax({
@@ -46,12 +48,12 @@ require(['../require-config'], function() {
                     //jsonpCallback:"success_jsonpCallback",
                     data: {
                         'c': yanzheng.get_hash('c'),
-                        'h': yanzheng.get_hash('h'),
+                        'h': yanzheng.get_hash('h')
                     },
-                    beforeSend: function() {
+                    beforeSend: function beforeSend() {
                         $('#loading').show();
                     },
-                    success: function(data) {
+                    success: function success(data) {
                         for (var i in data) {
                             alert(i + ":" + data[i]); //循环输出a:1,b:2,etc.  
                         }
@@ -73,13 +75,13 @@ require(['../require-config'], function() {
                             $('.zheceng1').hide();
                         }
                     },
-                    error: function(data) {
+                    error: function error(data) {
                         $('#alert_alert').show();
                         $('.zheceng1').show();
                         //$('.alert_con .alert_con_br').html('XMLHttpRequest.readyState:'+XMLHttpRequest.readyState+',XMLHttpRequest.status:'+XMLHttpRequest.status+',textStatus:'+textStatus+'!');
                         $('#alert_alert .alert_con_br').html('网络超时!');
                     },
-                    complete: function() {
+                    complete: function complete() {
                         $('#loading').hide();
                         //$('.zheceng').hide();
                     }
@@ -115,12 +117,12 @@ require(['../require-config'], function() {
                         // 'c': yanzheng.get_hash('c'),
                         // 'h': yanzheng.get_hash('h'),
                     },
-                    beforeSend: function(request) {
+                    beforeSend: function beforeSend(request) {
                         $('#loading').show();
                         $('.zheceng').show();
                         //request.setRequestHeader("sessionid", "feff17fc-c223-4a05-9ce8-0c17418c0603");
                     },
-                    success: function(data) {
+                    success: function success(data) {
                         if (data.respcd != '0000') {
                             $('#alert_alert').show();
                             $('.zheceng').show();
@@ -137,7 +139,7 @@ require(['../require-config'], function() {
                             var return_data = data.data.rules;
                             //获取规则当中储值可用的规则
                             var return_data_right = [];
-                            $(return_data).each(function(i, item) {
+                            $(return_data).each(function (i, item) {
                                 var tx_fee = return_data[i].present_amt / 100;
                                 var tx_txamt = return_data[i].pay_amt / 100;
                                 var tx_fee1 = tx_fee.toString().indexOf('.');
@@ -156,7 +158,7 @@ require(['../require-config'], function() {
                                 $('.js_content_sub').show().css('display', 'inline-block');
                                 $('.js_content_sub_disa').hide();
                             }
-                            $(return_data_right).each(function(i, item) {
+                            $(return_data_right).each(function (i, item) {
                                 var tx_fee = (return_data_right[i].present_amt / 100).toFixed(0);
                                 var tx_txamt = (return_data_right[i].pay_amt / 100).toFixed(0);
                                 var tx_index = return_data_right[i].grid_index;
@@ -193,20 +195,19 @@ require(['../require-config'], function() {
                             $('.zheceng').hide();
                         }
                     },
-                    error: function() {
+                    error: function error() {
                         $('#alert_alert').show();
                         $('.zheceng').show();
                         $('.alert_con .alert_con_br').html('XMLHttpRequest.readyState:' + XMLHttpRequest.readyState + ',XMLHttpRequest.status:' + XMLHttpRequest.status + ',textStatus:' + textStatus + '!');
                         //$('#alert_alert .alert_con_br').html('网络超时!');
                     },
-                    complete: function() {
+                    complete: function complete() {
                         $('#loading').hide();
                     }
                 });
             }
             //关闭弹框
             close_tip.close_tip();
-
-        })
-    })
-})
+        });
+    });
+});

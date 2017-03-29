@@ -1,6 +1,8 @@
-require(['../require-config'], function() {
-    require(["zepto", "ajax_rule", "yanzheng", "date_change", "scroll_more", "if_menu", "native"], function($, ajax_rule, yanzheng, date_change, scroll_more, if_menu, native) {
-        $(function() {
+"use strict";
+
+require(['../require-config'], function () {
+    require(["zepto", "ajax_rule", "yanzheng", "date_change", "scroll_more", "if_menu", "native"], function ($, ajax_rule, yanzheng, date_change, scroll_more, if_menu, native) {
+        $(function () {
             //添加图标和没有更多文字提示
             scroll_more.add_load_img('.section_action');
             var demo = new Vue({
@@ -10,8 +12,7 @@ require(['../require-config'], function() {
                         "user_num": 0, // 参与过储值活动的 总用户数
                         "total_txamt": 0, // 总充值金额
                         "total_pay_amt": 0, // 总支付金额
-                        "total_balances": 0, // 总余额
-                    },
+                        "total_balances": 0 },
                     membershome: [],
                     activities: [],
                     due_fee: 0,
@@ -22,66 +23,66 @@ require(['../require-config'], function() {
                     due_url: location.protocol + '//' + location.host + '/prepaid/v1/api/service/info',
                     action_all: '',
                     action_count: 6,
-                    action_pos: 6,
+                    action_pos: 6
                 },
-                created: function() {
+                created: function created() {
                     this.get_money(); //获取金额数据
                     this.get_member(); //获取会员
                     this.get_activity(); //获取活动列表
                     this.get_due(); //获取续费到期与否
                 },
-                mounted: function() {
+                mounted: function mounted() {
                     scroll_more.scroll_more(this.get_moredata);
                 },
-                updated: function() {
-                    scroll_more.scroll_data.body_height = Math.floor($('body').height()+90).toFixed(0);
+                updated: function updated() {
+                    scroll_more.scroll_data.body_height = Math.floor($('body').height() + 90).toFixed(0);
                     console.log('AJAX:body_height==' + scroll_more.scroll_data.body_height);
                 },
                 methods: {
                     //进入全部会员页面
-                    goto_members: function() {
+                    goto_members: function goto_members() {
                         var url_val = location.protocol + '//' + location.host + '/prepaid/v1/page/b/members/index.html';
                         location.href = url_val;
                         // if_menu.goto_url(url_val);
                     },
                     //进入资料下载界面
-                    goto_downpic: function() {
+                    goto_downpic: function goto_downpic() {
                         var url_val = location.protocol + '//' + location.host + '/prepaid/v1/page/b/show_material.html';
                         location.href = url_val;
                         //if_menu.goto_url(url_val);
                     },
                     //进入活动详情查看界面
-                    goto_scandetail: function(activity_id) {
+                    goto_scandetail: function goto_scandetail(activity_id) {
                         var url_val = location.protocol + '//' + location.host + '/prepaid/v1/page/b/activity_detail.html?activity_id=' + activity_id;
                         location.href = url_val;
                         //if_menu.goto_url(url_val);
                     },
                     //进入创建活动界面
-                    goto_create_ac: function() {
+                    goto_create_ac: function goto_create_ac() {
                         var url_val = location.protocol + '//' + location.host + '/prepaid/v1/page/b/create_activity.html';
                         location.href = url_val;
                         //if_menu.goto_url(url_val);
                     },
                     //进入立即续费界面
-                    goto_renew: function() {
+                    goto_renew: function goto_renew() {
                         var url_val = location.protocol + '//' + location.host + '/prepaid/v1/page/b/create_activity.html';
                         location.href = url_val;
                         //if_menu.goto_url(url_val);
                     },
                     //进入指定活动会员列表页
-                    goto_now_members: function(activity_id) {
+                    goto_now_members: function goto_now_members(activity_id) {
                         var url_val = location.protocol + '//' + location.host + '/prepaid/v1/page/b/members/specifies-activity.html?activity_id=' + activity_id;
                         location.href = url_val;
                         //if_menu.goto_url(url_val);
                     },
                     //进入指定活动会员列表页
-                    goto_now_money: function(activity_id) {
+                    goto_now_money: function goto_now_money(activity_id) {
                         var url_val = location.protocol + '//' + location.host + '/prepaid/v1/page/b/prepaid_amt_of_activity.html?activity_id=' + activity_id;
                         location.href = url_val;
                         //if_menu.goto_url(url_val);
                     },
                     //获取储值金额信息
-                    get_money: function() {
+                    get_money: function get_money() {
                         var _this = this;
                         // ajax_rule.ajax_rule(_this.money_url, 'get', 'json', '', '.zheceng', function(data_return) {
                         //     _this.stored = data_return;
@@ -90,17 +91,16 @@ require(['../require-config'], function() {
                             "user_num": 100, // 参与过储值活动的 总用户数
                             "total_txamt": 50000, // 总充值金额
                             "total_pay_amt": 4988000, // 总支付金额
-                            "total_balances": 99900, // 总余额
-                        };
+                            "total_balances": 99900 };
                     },
                     //获取会员
-                    get_member: function() {
+                    get_member: function get_member() {
                         var _this = this;
                         var post_data = {
                             pos: 0,
                             count: 100000,
                             q: '',
-                            activity_id: '',
+                            activity_id: ''
                         };
                         // ajax_rule.ajax_rule(_this.member_url, 'get', 'json', '', '.zheceng1', function(data_return) {
                         //     if(data_return.length==0){
@@ -116,31 +116,28 @@ require(['../require-config'], function() {
                             'recharge_amt': 50000, // 该消费者在商户下累计充值的金额
                             'mobile': "13012349876", // 消费者首次在商户下使用储值时,填写的联系方式
                             'name': "昵称", //该消费的昵称, 通过customer获得
-                            'balance': 500, // 该消费者当前余额
-                        }, {
+                            'balance': 500 }, {
                             "c": "abGSv", // hash之后的cid
                             'avatar': "../../static_dest/static/new/img/headimg.png", // 会员头像的URL
                             'recharge_times': 10, // 在该商户下累计充值次数
                             'recharge_amt': 50000, // 该消费者在商户下累计充值的金额
                             'mobile': "13012349876", // 消费者首次在商户下使用储值时,填写的联系方式
                             'name': "昵称", //该消费的昵称, 通过customer获得
-                            'balance': 500, // 该消费者当前余额
-                        }, {
+                            'balance': 500 }, {
                             "c": "abGSv", // hash之后的cid
                             'avatar': "../../static_dest/static/new/img/headimg.png", // 会员头像的URL
                             'recharge_times': 10, // 在该商户下累计充值次数
                             'recharge_amt': 50000, // 该消费者在商户下累计充值的金额
                             'mobile': "13012349876", // 消费者首次在商户下使用储值时,填写的联系方式
                             'name': "昵称", //该消费的昵称, 通过customer获得
-                            'balance': 500, // 该消费者当前余额
-                        }];
+                            'balance': 500 }];
                     },
                     //获取活动列表
-                    get_activity: function() {
+                    get_activity: function get_activity() {
                         var _this = this;
                         var post_data = {
                             pos: 0,
-                            count: 100000,
+                            count: 100000
                         };
                         // ajax_rule.ajax_rule(_this.activity_url, 'get', 'json', post_data, '.zheceng1', function(data_return) {
                         //     _this.action_all = data_return;
@@ -174,17 +171,16 @@ require(['../require-config'], function() {
                             "countdown_day": 2, // 活动还有多少天开始, 单位: 天. 向上取整, 如1.5天 -> 2天
                             "active": 1, // 活动是否有效. 1 有效, 0 无效(商户主动停止)
                             "status": 0, // 0: x天后开始, 天数从countdown_day中取, 1: 进行中, 2: 已结束, 3: 已终止
-                            "detail": [ // 按grid_index排序
-                                {
-                                    "grid_index": 1, // 储值格位
-                                    "title": "储值50元送5元", // 规则说明
-                                    "prepaid_times": 5 // 储值次数, 注意是次数
-                                }, {
-                                    "grid_index": 2, // 储值各位
-                                    "title": "储值100元送10元", // 规则说明
-                                    "prepaid_times": 5 // 储值次数, 注意是次数
-                                }
-                            ],
+                            "detail": [// 按grid_index排序
+                            {
+                                "grid_index": 1, // 储值格位
+                                "title": "储值50元送5元", // 规则说明
+                                "prepaid_times": 5 // 储值次数, 注意是次数
+                            }, {
+                                "grid_index": 2, // 储值各位
+                                "title": "储值100元送10元", // 规则说明
+                                "prepaid_times": 5 // 储值次数, 注意是次数
+                            }]
                         }, {
                             "start_time": "2016-09-22 11:22:33", // 活动开始时间
                             "end_time": "2016-10-23 22:22:22", // 活动结束时间
@@ -195,25 +191,24 @@ require(['../require-config'], function() {
                             "countdown_day": 2, // 活动还有多少天开始, 单位: 天. 向上取整, 如1.5天 -> 2天
                             "active": 1, // 活动是否有效. 1 有效, 0 无效(商户主动停止)
                             "status": 1, // 0: x天后开始, 天数从countdown_day中取, 1: 进行中, 2: 已结束, 3: 已终止
-                            "detail": [ // 按grid_index排序
-                                {
-                                    "grid_index": 1, // 储值格位
-                                    "title": "储值50元送5元", // 规则说明
-                                    "prepaid_times": 15 // 储值次数, 注意是次数
-                                }, {
-                                    "grid_index": 2, // 储值各位
-                                    "title": "储值100元送10元", // 规则说明
-                                    "prepaid_times": 25 // 储值次数, 注意是次数
-                                }, {
-                                    "grid_index": 3, // 储值格位
-                                    "title": "储值150元送15元", // 规则说明
-                                    "prepaid_times": 53 // 储值次数, 注意是次数
-                                }, {
-                                    "grid_index": 4, // 储值各位
-                                    "title": "储值200元送30元", // 规则说明
-                                    "prepaid_times": 55 // 储值次数, 注意是次数
-                                }
-                            ],
+                            "detail": [// 按grid_index排序
+                            {
+                                "grid_index": 1, // 储值格位
+                                "title": "储值50元送5元", // 规则说明
+                                "prepaid_times": 15 // 储值次数, 注意是次数
+                            }, {
+                                "grid_index": 2, // 储值各位
+                                "title": "储值100元送10元", // 规则说明
+                                "prepaid_times": 25 // 储值次数, 注意是次数
+                            }, {
+                                "grid_index": 3, // 储值格位
+                                "title": "储值150元送15元", // 规则说明
+                                "prepaid_times": 53 // 储值次数, 注意是次数
+                            }, {
+                                "grid_index": 4, // 储值各位
+                                "title": "储值200元送30元", // 规则说明
+                                "prepaid_times": 55 // 储值次数, 注意是次数
+                            }]
                         }, {
                             "start_time": "2016-09-22 11:22:33", // 活动开始时间
                             "end_time": "2016-10-23 22:22:22", // 活动结束时间
@@ -224,17 +219,16 @@ require(['../require-config'], function() {
                             "countdown_day": 2, // 活动还有多少天开始, 单位: 天. 向上取整, 如1.5天 -> 2天
                             "active": 1, // 活动是否有效. 1 有效, 0 无效(商户主动停止)
                             "status": 2, // 0: x天后开始, 天数从countdown_day中取, 1: 进行中, 2: 已结束, 3: 已终止
-                            "detail": [ // 按grid_index排序
-                                {
-                                    "grid_index": 1, // 储值格位
-                                    "title": "储值50元送5元", // 规则说明
-                                    "prepaid_times": 5 // 储值次数, 注意是次数
-                                }, {
-                                    "grid_index": 2, // 储值各位
-                                    "title": "储值100元送10元", // 规则说明
-                                    "prepaid_times": 5 // 储值次数, 注意是次数
-                                }
-                            ],
+                            "detail": [// 按grid_index排序
+                            {
+                                "grid_index": 1, // 储值格位
+                                "title": "储值50元送5元", // 规则说明
+                                "prepaid_times": 5 // 储值次数, 注意是次数
+                            }, {
+                                "grid_index": 2, // 储值各位
+                                "title": "储值100元送10元", // 规则说明
+                                "prepaid_times": 5 // 储值次数, 注意是次数
+                            }]
                         }, {
                             "start_time": "2016-09-22 11:22:33", // 活动开始时间
                             "end_time": "2016-10-23 22:22:22", // 活动结束时间
@@ -245,26 +239,25 @@ require(['../require-config'], function() {
                             "countdown_day": 2, // 活动还有多少天开始, 单位: 天. 向上取整, 如1.5天 -> 2天
                             "active": 1, // 活动是否有效. 1 有效, 0 无效(商户主动停止)
                             "status": 3, // 0: x天后开始, 天数从countdown_day中取, 1: 进行中, 2: 已结束, 3: 已终止
-                            "detail": [ // 按grid_index排序
-                                {
-                                    "grid_index": 1, // 储值格位
-                                    "title": "储值50元送5元", // 规则说明
-                                    "prepaid_times": 15 // 储值次数, 注意是次数
-                                }, {
-                                    "grid_index": 2, // 储值各位
-                                    "title": "储值100元送10元", // 规则说明
-                                    "prepaid_times": 25 // 储值次数, 注意是次数
-                                }, {
-                                    "grid_index": 3, // 储值格位
-                                    "title": "储值150元送15元", // 规则说明
-                                    "prepaid_times": 53 // 储值次数, 注意是次数
-                                }, {
-                                    "grid_index": 4, // 储值各位
-                                    "title": "储值200元送30元", // 规则说明
-                                    "prepaid_times": 55 // 储值次数, 注意是次数
-                                }
-                            ],
-                        },{
+                            "detail": [// 按grid_index排序
+                            {
+                                "grid_index": 1, // 储值格位
+                                "title": "储值50元送5元", // 规则说明
+                                "prepaid_times": 15 // 储值次数, 注意是次数
+                            }, {
+                                "grid_index": 2, // 储值各位
+                                "title": "储值100元送10元", // 规则说明
+                                "prepaid_times": 25 // 储值次数, 注意是次数
+                            }, {
+                                "grid_index": 3, // 储值格位
+                                "title": "储值150元送15元", // 规则说明
+                                "prepaid_times": 53 // 储值次数, 注意是次数
+                            }, {
+                                "grid_index": 4, // 储值各位
+                                "title": "储值200元送30元", // 规则说明
+                                "prepaid_times": 55 // 储值次数, 注意是次数
+                            }]
+                        }, {
                             "start_time": "2016-09-22 11:22:33", // 活动开始时间
                             "end_time": "2016-10-23 22:22:22", // 活动结束时间
                             "activity_id": 1234, // 活动ID
@@ -274,17 +267,16 @@ require(['../require-config'], function() {
                             "countdown_day": 2, // 活动还有多少天开始, 单位: 天. 向上取整, 如1.5天 -> 2天
                             "active": 1, // 活动是否有效. 1 有效, 0 无效(商户主动停止)
                             "status": 2, // 0: x天后开始, 天数从countdown_day中取, 1: 进行中, 2: 已结束, 3: 已终止
-                            "detail": [ // 按grid_index排序
-                                {
-                                    "grid_index": 1, // 储值格位
-                                    "title": "储值50元送5元", // 规则说明
-                                    "prepaid_times": 5 // 储值次数, 注意是次数
-                                }, {
-                                    "grid_index": 2, // 储值各位
-                                    "title": "储值100元送10元", // 规则说明
-                                    "prepaid_times": 5 // 储值次数, 注意是次数
-                                }
-                            ],
+                            "detail": [// 按grid_index排序
+                            {
+                                "grid_index": 1, // 储值格位
+                                "title": "储值50元送5元", // 规则说明
+                                "prepaid_times": 5 // 储值次数, 注意是次数
+                            }, {
+                                "grid_index": 2, // 储值各位
+                                "title": "储值100元送10元", // 规则说明
+                                "prepaid_times": 5 // 储值次数, 注意是次数
+                            }]
                         }, {
                             "start_time": "2016-09-22 11:22:33", // 活动开始时间
                             "end_time": "2016-10-23 22:22:22", // 活动结束时间
@@ -295,26 +287,25 @@ require(['../require-config'], function() {
                             "countdown_day": 2, // 活动还有多少天开始, 单位: 天. 向上取整, 如1.5天 -> 2天
                             "active": 1, // 活动是否有效. 1 有效, 0 无效(商户主动停止)
                             "status": 3, // 0: x天后开始, 天数从countdown_day中取, 1: 进行中, 2: 已结束, 3: 已终止
-                            "detail": [ // 按grid_index排序
-                                {
-                                    "grid_index": 1, // 储值格位
-                                    "title": "储值50元送5元", // 规则说明
-                                    "prepaid_times": 15 // 储值次数, 注意是次数
-                                }, {
-                                    "grid_index": 2, // 储值各位
-                                    "title": "储值100元送10元", // 规则说明
-                                    "prepaid_times": 25 // 储值次数, 注意是次数
-                                }, {
-                                    "grid_index": 3, // 储值格位
-                                    "title": "储值150元送15元", // 规则说明
-                                    "prepaid_times": 53 // 储值次数, 注意是次数
-                                }, {
-                                    "grid_index": 4, // 储值各位
-                                    "title": "储值200元送30元", // 规则说明
-                                    "prepaid_times": 55 // 储值次数, 注意是次数
-                                }
-                            ],
-                        },{
+                            "detail": [// 按grid_index排序
+                            {
+                                "grid_index": 1, // 储值格位
+                                "title": "储值50元送5元", // 规则说明
+                                "prepaid_times": 15 // 储值次数, 注意是次数
+                            }, {
+                                "grid_index": 2, // 储值各位
+                                "title": "储值100元送10元", // 规则说明
+                                "prepaid_times": 25 // 储值次数, 注意是次数
+                            }, {
+                                "grid_index": 3, // 储值格位
+                                "title": "储值150元送15元", // 规则说明
+                                "prepaid_times": 53 // 储值次数, 注意是次数
+                            }, {
+                                "grid_index": 4, // 储值各位
+                                "title": "储值200元送30元", // 规则说明
+                                "prepaid_times": 55 // 储值次数, 注意是次数
+                            }]
+                        }, {
                             "start_time": "2016-09-22 11:22:33", // 活动开始时间
                             "end_time": "2016-10-23 22:22:22", // 活动结束时间
                             "activity_id": 1234, // 活动ID
@@ -324,17 +315,16 @@ require(['../require-config'], function() {
                             "countdown_day": 2, // 活动还有多少天开始, 单位: 天. 向上取整, 如1.5天 -> 2天
                             "active": 1, // 活动是否有效. 1 有效, 0 无效(商户主动停止)
                             "status": 2, // 0: x天后开始, 天数从countdown_day中取, 1: 进行中, 2: 已结束, 3: 已终止
-                            "detail": [ // 按grid_index排序
-                                {
-                                    "grid_index": 1, // 储值格位
-                                    "title": "储值50元送5元", // 规则说明
-                                    "prepaid_times": 5 // 储值次数, 注意是次数
-                                }, {
-                                    "grid_index": 2, // 储值各位
-                                    "title": "储值100元送10元", // 规则说明
-                                    "prepaid_times": 5 // 储值次数, 注意是次数
-                                }
-                            ],
+                            "detail": [// 按grid_index排序
+                            {
+                                "grid_index": 1, // 储值格位
+                                "title": "储值50元送5元", // 规则说明
+                                "prepaid_times": 5 // 储值次数, 注意是次数
+                            }, {
+                                "grid_index": 2, // 储值各位
+                                "title": "储值100元送10元", // 规则说明
+                                "prepaid_times": 5 // 储值次数, 注意是次数
+                            }]
                         }, {
                             "start_time": "2016-09-22 11:22:33", // 活动开始时间
                             "end_time": "2016-10-23 22:22:22", // 活动结束时间
@@ -345,26 +335,25 @@ require(['../require-config'], function() {
                             "countdown_day": 2, // 活动还有多少天开始, 单位: 天. 向上取整, 如1.5天 -> 2天
                             "active": 1, // 活动是否有效. 1 有效, 0 无效(商户主动停止)
                             "status": 3, // 0: x天后开始, 天数从countdown_day中取, 1: 进行中, 2: 已结束, 3: 已终止
-                            "detail": [ // 按grid_index排序
-                                {
-                                    "grid_index": 1, // 储值格位
-                                    "title": "储值50元送5元", // 规则说明
-                                    "prepaid_times": 15 // 储值次数, 注意是次数
-                                }, {
-                                    "grid_index": 2, // 储值各位
-                                    "title": "储值100元送10元", // 规则说明
-                                    "prepaid_times": 25 // 储值次数, 注意是次数
-                                }, {
-                                    "grid_index": 3, // 储值格位
-                                    "title": "储值150元送15元", // 规则说明
-                                    "prepaid_times": 53 // 储值次数, 注意是次数
-                                }, {
-                                    "grid_index": 4, // 储值各位
-                                    "title": "储值200元送30元", // 规则说明
-                                    "prepaid_times": 55 // 储值次数, 注意是次数
-                                }
-                            ],
-                        },{
+                            "detail": [// 按grid_index排序
+                            {
+                                "grid_index": 1, // 储值格位
+                                "title": "储值50元送5元", // 规则说明
+                                "prepaid_times": 15 // 储值次数, 注意是次数
+                            }, {
+                                "grid_index": 2, // 储值各位
+                                "title": "储值100元送10元", // 规则说明
+                                "prepaid_times": 25 // 储值次数, 注意是次数
+                            }, {
+                                "grid_index": 3, // 储值格位
+                                "title": "储值150元送15元", // 规则说明
+                                "prepaid_times": 53 // 储值次数, 注意是次数
+                            }, {
+                                "grid_index": 4, // 储值各位
+                                "title": "储值200元送30元", // 规则说明
+                                "prepaid_times": 55 // 储值次数, 注意是次数
+                            }]
+                        }, {
                             "start_time": "2016-09-22 11:22:33", // 活动开始时间
                             "end_time": "2016-10-23 22:22:22", // 活动结束时间
                             "activity_id": 1234, // 活动ID
@@ -374,17 +363,16 @@ require(['../require-config'], function() {
                             "countdown_day": 2, // 活动还有多少天开始, 单位: 天. 向上取整, 如1.5天 -> 2天
                             "active": 1, // 活动是否有效. 1 有效, 0 无效(商户主动停止)
                             "status": 2, // 0: x天后开始, 天数从countdown_day中取, 1: 进行中, 2: 已结束, 3: 已终止
-                            "detail": [ // 按grid_index排序
-                                {
-                                    "grid_index": 1, // 储值格位
-                                    "title": "储值50元送5元", // 规则说明
-                                    "prepaid_times": 5 // 储值次数, 注意是次数
-                                }, {
-                                    "grid_index": 2, // 储值各位
-                                    "title": "储值100元送10元", // 规则说明
-                                    "prepaid_times": 5 // 储值次数, 注意是次数
-                                }
-                            ],
+                            "detail": [// 按grid_index排序
+                            {
+                                "grid_index": 1, // 储值格位
+                                "title": "储值50元送5元", // 规则说明
+                                "prepaid_times": 5 // 储值次数, 注意是次数
+                            }, {
+                                "grid_index": 2, // 储值各位
+                                "title": "储值100元送10元", // 规则说明
+                                "prepaid_times": 5 // 储值次数, 注意是次数
+                            }]
                         }, {
                             "start_time": "2016-09-22 11:22:33", // 活动开始时间
                             "end_time": "2016-10-23 22:22:22", // 活动结束时间
@@ -395,26 +383,25 @@ require(['../require-config'], function() {
                             "countdown_day": 2, // 活动还有多少天开始, 单位: 天. 向上取整, 如1.5天 -> 2天
                             "active": 1, // 活动是否有效. 1 有效, 0 无效(商户主动停止)
                             "status": 3, // 0: x天后开始, 天数从countdown_day中取, 1: 进行中, 2: 已结束, 3: 已终止
-                            "detail": [ // 按grid_index排序
-                                {
-                                    "grid_index": 1, // 储值格位
-                                    "title": "储值50元送5元", // 规则说明
-                                    "prepaid_times": 15 // 储值次数, 注意是次数
-                                }, {
-                                    "grid_index": 2, // 储值各位
-                                    "title": "储值100元送10元", // 规则说明
-                                    "prepaid_times": 25 // 储值次数, 注意是次数
-                                }, {
-                                    "grid_index": 3, // 储值格位
-                                    "title": "储值150元送15元", // 规则说明
-                                    "prepaid_times": 53 // 储值次数, 注意是次数
-                                }, {
-                                    "grid_index": 4, // 储值各位
-                                    "title": "储值200元送30元", // 规则说明
-                                    "prepaid_times": 55 // 储值次数, 注意是次数
-                                }
-                            ],
-                        },{
+                            "detail": [// 按grid_index排序
+                            {
+                                "grid_index": 1, // 储值格位
+                                "title": "储值50元送5元", // 规则说明
+                                "prepaid_times": 15 // 储值次数, 注意是次数
+                            }, {
+                                "grid_index": 2, // 储值各位
+                                "title": "储值100元送10元", // 规则说明
+                                "prepaid_times": 25 // 储值次数, 注意是次数
+                            }, {
+                                "grid_index": 3, // 储值格位
+                                "title": "储值150元送15元", // 规则说明
+                                "prepaid_times": 53 // 储值次数, 注意是次数
+                            }, {
+                                "grid_index": 4, // 储值各位
+                                "title": "储值200元送30元", // 规则说明
+                                "prepaid_times": 55 // 储值次数, 注意是次数
+                            }]
+                        }, {
                             "start_time": "2016-09-22 11:22:33", // 活动开始时间
                             "end_time": "2016-10-23 22:22:22", // 活动结束时间
                             "activity_id": 1234, // 活动ID
@@ -424,17 +411,16 @@ require(['../require-config'], function() {
                             "countdown_day": 2, // 活动还有多少天开始, 单位: 天. 向上取整, 如1.5天 -> 2天
                             "active": 1, // 活动是否有效. 1 有效, 0 无效(商户主动停止)
                             "status": 2, // 0: x天后开始, 天数从countdown_day中取, 1: 进行中, 2: 已结束, 3: 已终止
-                            "detail": [ // 按grid_index排序
-                                {
-                                    "grid_index": 1, // 储值格位
-                                    "title": "储值50元送5元", // 规则说明
-                                    "prepaid_times": 5 // 储值次数, 注意是次数
-                                }, {
-                                    "grid_index": 2, // 储值各位
-                                    "title": "储值100元送10元", // 规则说明
-                                    "prepaid_times": 5 // 储值次数, 注意是次数
-                                }
-                            ],
+                            "detail": [// 按grid_index排序
+                            {
+                                "grid_index": 1, // 储值格位
+                                "title": "储值50元送5元", // 规则说明
+                                "prepaid_times": 5 // 储值次数, 注意是次数
+                            }, {
+                                "grid_index": 2, // 储值各位
+                                "title": "储值100元送10元", // 规则说明
+                                "prepaid_times": 5 // 储值次数, 注意是次数
+                            }]
                         }, {
                             "start_time": "2016-09-22 11:22:33", // 活动开始时间
                             "end_time": "2016-10-23 22:22:22", // 活动结束时间
@@ -445,26 +431,25 @@ require(['../require-config'], function() {
                             "countdown_day": 2, // 活动还有多少天开始, 单位: 天. 向上取整, 如1.5天 -> 2天
                             "active": 1, // 活动是否有效. 1 有效, 0 无效(商户主动停止)
                             "status": 3, // 0: x天后开始, 天数从countdown_day中取, 1: 进行中, 2: 已结束, 3: 已终止
-                            "detail": [ // 按grid_index排序
-                                {
-                                    "grid_index": 1, // 储值格位
-                                    "title": "储值50元送5元", // 规则说明
-                                    "prepaid_times": 15 // 储值次数, 注意是次数
-                                }, {
-                                    "grid_index": 2, // 储值各位
-                                    "title": "储值100元送10元", // 规则说明
-                                    "prepaid_times": 25 // 储值次数, 注意是次数
-                                }, {
-                                    "grid_index": 3, // 储值格位
-                                    "title": "储值150元送15元", // 规则说明
-                                    "prepaid_times": 53 // 储值次数, 注意是次数
-                                }, {
-                                    "grid_index": 4, // 储值各位
-                                    "title": "储值200元送30元", // 规则说明
-                                    "prepaid_times": 55 // 储值次数, 注意是次数
-                                }
-                            ],
-                        },{
+                            "detail": [// 按grid_index排序
+                            {
+                                "grid_index": 1, // 储值格位
+                                "title": "储值50元送5元", // 规则说明
+                                "prepaid_times": 15 // 储值次数, 注意是次数
+                            }, {
+                                "grid_index": 2, // 储值各位
+                                "title": "储值100元送10元", // 规则说明
+                                "prepaid_times": 25 // 储值次数, 注意是次数
+                            }, {
+                                "grid_index": 3, // 储值格位
+                                "title": "储值150元送15元", // 规则说明
+                                "prepaid_times": 53 // 储值次数, 注意是次数
+                            }, {
+                                "grid_index": 4, // 储值各位
+                                "title": "储值200元送30元", // 规则说明
+                                "prepaid_times": 55 // 储值次数, 注意是次数
+                            }]
+                        }, {
                             "start_time": "2016-09-22 11:22:33", // 活动开始时间
                             "end_time": "2016-10-23 22:22:22", // 活动结束时间
                             "activity_id": 1234, // 活动ID
@@ -474,17 +459,16 @@ require(['../require-config'], function() {
                             "countdown_day": 2, // 活动还有多少天开始, 单位: 天. 向上取整, 如1.5天 -> 2天
                             "active": 1, // 活动是否有效. 1 有效, 0 无效(商户主动停止)
                             "status": 2, // 0: x天后开始, 天数从countdown_day中取, 1: 进行中, 2: 已结束, 3: 已终止
-                            "detail": [ // 按grid_index排序
-                                {
-                                    "grid_index": 1, // 储值格位
-                                    "title": "储值50元送5元", // 规则说明
-                                    "prepaid_times": 5 // 储值次数, 注意是次数
-                                }, {
-                                    "grid_index": 2, // 储值各位
-                                    "title": "储值100元送10元", // 规则说明
-                                    "prepaid_times": 5 // 储值次数, 注意是次数
-                                }
-                            ],
+                            "detail": [// 按grid_index排序
+                            {
+                                "grid_index": 1, // 储值格位
+                                "title": "储值50元送5元", // 规则说明
+                                "prepaid_times": 5 // 储值次数, 注意是次数
+                            }, {
+                                "grid_index": 2, // 储值各位
+                                "title": "储值100元送10元", // 规则说明
+                                "prepaid_times": 5 // 储值次数, 注意是次数
+                            }]
                         }, {
                             "start_time": "2016-09-22 11:22:33", // 活动开始时间
                             "end_time": "2016-10-23 22:22:22", // 活动结束时间
@@ -495,26 +479,25 @@ require(['../require-config'], function() {
                             "countdown_day": 2, // 活动还有多少天开始, 单位: 天. 向上取整, 如1.5天 -> 2天
                             "active": 1, // 活动是否有效. 1 有效, 0 无效(商户主动停止)
                             "status": 3, // 0: x天后开始, 天数从countdown_day中取, 1: 进行中, 2: 已结束, 3: 已终止
-                            "detail": [ // 按grid_index排序
-                                {
-                                    "grid_index": 1, // 储值格位
-                                    "title": "储值50元送5元", // 规则说明
-                                    "prepaid_times": 15 // 储值次数, 注意是次数
-                                }, {
-                                    "grid_index": 2, // 储值各位
-                                    "title": "储值100元送10元", // 规则说明
-                                    "prepaid_times": 25 // 储值次数, 注意是次数
-                                }, {
-                                    "grid_index": 3, // 储值格位
-                                    "title": "储值150元送15元", // 规则说明
-                                    "prepaid_times": 53 // 储值次数, 注意是次数
-                                }, {
-                                    "grid_index": 4, // 储值各位
-                                    "title": "储值200元送30元", // 规则说明
-                                    "prepaid_times": 55 // 储值次数, 注意是次数
-                                }
-                            ],
-                        },{
+                            "detail": [// 按grid_index排序
+                            {
+                                "grid_index": 1, // 储值格位
+                                "title": "储值50元送5元", // 规则说明
+                                "prepaid_times": 15 // 储值次数, 注意是次数
+                            }, {
+                                "grid_index": 2, // 储值各位
+                                "title": "储值100元送10元", // 规则说明
+                                "prepaid_times": 25 // 储值次数, 注意是次数
+                            }, {
+                                "grid_index": 3, // 储值格位
+                                "title": "储值150元送15元", // 规则说明
+                                "prepaid_times": 53 // 储值次数, 注意是次数
+                            }, {
+                                "grid_index": 4, // 储值各位
+                                "title": "储值200元送30元", // 规则说明
+                                "prepaid_times": 55 // 储值次数, 注意是次数
+                            }]
+                        }, {
                             "start_time": "2016-09-22 11:22:33", // 活动开始时间
                             "end_time": "2016-10-23 22:22:22", // 活动结束时间
                             "activity_id": 1234, // 活动ID
@@ -524,17 +507,16 @@ require(['../require-config'], function() {
                             "countdown_day": 2, // 活动还有多少天开始, 单位: 天. 向上取整, 如1.5天 -> 2天
                             "active": 1, // 活动是否有效. 1 有效, 0 无效(商户主动停止)
                             "status": 2, // 0: x天后开始, 天数从countdown_day中取, 1: 进行中, 2: 已结束, 3: 已终止
-                            "detail": [ // 按grid_index排序
-                                {
-                                    "grid_index": 1, // 储值格位
-                                    "title": "储值50元送5元", // 规则说明
-                                    "prepaid_times": 5 // 储值次数, 注意是次数
-                                }, {
-                                    "grid_index": 2, // 储值各位
-                                    "title": "储值100元送10元", // 规则说明
-                                    "prepaid_times": 5 // 储值次数, 注意是次数
-                                }
-                            ],
+                            "detail": [// 按grid_index排序
+                            {
+                                "grid_index": 1, // 储值格位
+                                "title": "储值50元送5元", // 规则说明
+                                "prepaid_times": 5 // 储值次数, 注意是次数
+                            }, {
+                                "grid_index": 2, // 储值各位
+                                "title": "储值100元送10元", // 规则说明
+                                "prepaid_times": 5 // 储值次数, 注意是次数
+                            }]
                         }, {
                             "start_time": "2016-09-22 11:22:33", // 活动开始时间
                             "end_time": "2016-10-23 22:22:22", // 活动结束时间
@@ -545,25 +527,24 @@ require(['../require-config'], function() {
                             "countdown_day": 2, // 活动还有多少天开始, 单位: 天. 向上取整, 如1.5天 -> 2天
                             "active": 1, // 活动是否有效. 1 有效, 0 无效(商户主动停止)
                             "status": 3, // 0: x天后开始, 天数从countdown_day中取, 1: 进行中, 2: 已结束, 3: 已终止
-                            "detail": [ // 按grid_index排序
-                                {
-                                    "grid_index": 1, // 储值格位
-                                    "title": "储值50元送5元", // 规则说明
-                                    "prepaid_times": 15 // 储值次数, 注意是次数
-                                }, {
-                                    "grid_index": 2, // 储值各位
-                                    "title": "储值100元送10元", // 规则说明
-                                    "prepaid_times": 25 // 储值次数, 注意是次数
-                                }, {
-                                    "grid_index": 3, // 储值格位
-                                    "title": "储值150元送15元", // 规则说明
-                                    "prepaid_times": 53 // 储值次数, 注意是次数
-                                }, {
-                                    "grid_index": 4, // 储值各位
-                                    "title": "储值200元送30元", // 规则说明
-                                    "prepaid_times": 55 // 储值次数, 注意是次数
-                                }
-                            ],
+                            "detail": [// 按grid_index排序
+                            {
+                                "grid_index": 1, // 储值格位
+                                "title": "储值50元送5元", // 规则说明
+                                "prepaid_times": 15 // 储值次数, 注意是次数
+                            }, {
+                                "grid_index": 2, // 储值各位
+                                "title": "储值100元送10元", // 规则说明
+                                "prepaid_times": 25 // 储值次数, 注意是次数
+                            }, {
+                                "grid_index": 3, // 储值格位
+                                "title": "储值150元送15元", // 规则说明
+                                "prepaid_times": 53 // 储值次数, 注意是次数
+                            }, {
+                                "grid_index": 4, // 储值各位
+                                "title": "储值200元送30元", // 规则说明
+                                "prepaid_times": 55 // 储值次数, 注意是次数
+                            }]
                         }];
                         _this.activities = _this.action_all.slice(0, _this.action_pos);
                         _this.action_ing = _this.activities[0].status;
@@ -577,16 +558,16 @@ require(['../require-config'], function() {
                             _this.action_pos += _this.action_count;
                             scroll_more.scroll_data.scroll_if = true;
                         }
-                        scroll_more.scroll_data.body_height = Math.floor($('body').height()+90).toFixed(0);
+                        scroll_more.scroll_data.body_height = Math.floor($('body').height() + 90).toFixed(0);
                         $('.load').hide();
                         console.log('AJAX:scroll_if==' + scroll_more.scroll_data.scroll_if);
                         console.log('AJAX:nomor_show==' + scroll_more.scroll_data.nomor_show);
                     },
                     //获取费用是否到期
-                    get_due: function() {
+                    get_due: function get_due() {
                         var _this = this;
                         var post_data = {
-                            h: yanzheng.get_hash('h'),
+                            h: yanzheng.get_hash('h')
                         };
                         // ajax_rule.ajax_rule(_this.due_url, 'get', 'json', '', '.zheceng2', function(data_return) {
                         //     _this.due_fee = data_return.expired;
@@ -594,7 +575,7 @@ require(['../require-config'], function() {
                         _this.due_fee = 0;
                     },
                     //获取更多数据
-                    get_moredata: function() {
+                    get_moredata: function get_moredata() {
                         this.activities = this.action_all.slice(0, this.action_pos);
                         console.log(this.activities.length);
                         if (this.action_all.length - this.action_pos <= 0) {
@@ -611,13 +592,13 @@ require(['../require-config'], function() {
                         console.log('AJAX:nomor_show==' + scroll_more.scroll_data.nomor_show);
                     },
                     //判断动画是否出现
-                    donghua_if: function(activity_id) {
+                    donghua_if: function donghua_if(activity_id) {
                         var _this = this;
                         var post_data = {
                             'guide_type': 1,
                             'activity_id': activity_id
                         };
-                        ajax_rule.ajax_rule('/prepaid/v1/api/b/guide', 'get', 'json', post_data, '.zheceng2', function(data_return) {
+                        ajax_rule.ajax_rule('/prepaid/v1/api/b/guide', 'get', 'json', post_data, '.zheceng2', function (data_return) {
                             var show = data_return.show;
                             if (show == '1') {
                                 //发送已调用动画
@@ -626,7 +607,7 @@ require(['../require-config'], function() {
                         });
                     },
                     //发送已调用动画
-                    donghua_off: function(activity_id) {
+                    donghua_off: function donghua_off(activity_id) {
                         var _this = this;
                         var post_data = {
                             'guide_type': 1,
@@ -635,7 +616,7 @@ require(['../require-config'], function() {
                         ajax_rule.ajax_rule('/prepaid/v1/api/b/guide', 'POST', 'json', post_data, '.zheceng1');
                     },
                     //处理时间格式从2016-09-22 11:22:33到2016.9.18
-                    datechange: function(time) {
+                    datechange: function datechange(time) {
                         var date_val = time.substr(0, 10);
                         var date_value = date_val.split('-');
                         var year = date_value[0];
@@ -645,7 +626,7 @@ require(['../require-config'], function() {
                         return new_date;
                     },
                     //处理结束时间格式，如果time2和time1年份相同，则time2只返回月份和日期；否则返回完整的年月日
-                    datechange2: function(time1, time2) {
+                    datechange2: function datechange2(time1, time2) {
                         var date_val1 = time1.substr(0, 10);
                         var date_val2 = time2.substr(0, 10);
                         var date_value1 = date_val1.split('-');
@@ -662,15 +643,15 @@ require(['../require-config'], function() {
                         }
                     },
                     //处理日期1位数
-                    num_change: function(num) {
+                    num_change: function num_change(num) {
                         if (num < 10) {
                             return num.substr(-1);
                         } else {
                             return num;
                         }
-                    },
+                    }
                 }
             });
-        })
-    })
-})
+        });
+    });
+});

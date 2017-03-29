@@ -1,29 +1,32 @@
+'use strict';
+
 //点击会员列表
 function memberto(obj) {
     var c = $(obj).attr('data-c');
     var url_val = location.protocol + '//' + location.host + '/prepaid/v1/page/b/members/detail.html?c=' + c;
     location.href = url_val;
 };
-require(['../require-config2'], function() {
-    require(["zepto", "yanzheng", "close_tip", "ajax_rule", "scroll_more", "if_menu"], function($, yanzheng, close_tip, ajax_rule, scroll_more, if_menu) {
-        $(function() {
+require(['../require-config2'], function () {
+    require(["zepto", "yanzheng", "close_tip", "ajax_rule", "scroll_more", "if_menu"], function ($, yanzheng, close_tip, ajax_rule, scroll_more, if_menu) {
+        $(function () {
             //判断 处置活动首页显示右上角导航
             if_menu.if_menu();
             //滚动加载---------------------------------------------------------------   
-            var b = 1, //测试专用--变更加载数据
-                times_add = 0; //测试专用--控制停止加载数据判断依据  
+            var b = 1,
+                //测试专用--变更加载数据
+            times_add = 0; //测试专用--控制停止加载数据判断依据  
             //添加图标和没有更多文字提示
             scroll_more.add_load_img('.js_member_list');
             //默认执行--测试专用    
             scroll_more.scroll_more(append_ul);
             //活动储值详情----------------------------------------------------------------------------------------------------------------------------------------------------
-            $('.js_member_list').get(0) && (~ function() {
-                $(document).ready(function() {
+            $('.js_member_list').get(0) && ~function () {
+                $(document).ready(function () {
                     //获取会员列表todo-show
                     //get_rechargeli();
                     append_ul();
                 });
-            }());
+            }();
             //测试
             function append_ul() {
                 var con_list = '<li><dl><dt><img src="../../../bin/static/img/wxchar.png"></dt><dd>韩梅梅</dd><dd class="grey"><i class="icon_tel"></i>13189569856</dd><dd class="grey">储值<span class="orange">2次</span></dd><div class="clearfix"></div></dl><p><span class="grey">余额</span><br/><span class="orange">￥<i class="i_normal">35.26</i></span></p></li>';
@@ -74,7 +77,7 @@ require(['../require-config2'], function() {
             function get_rechargeli() {
                 var data = {
                     'pos': $('#js_pos').val(),
-                    'count': 20,
+                    'count': 20
                 };
                 ajax_rule.ajax_rule('/prepaid/v1/api/b/members', 'GET', 'json', data, '.zheceng', get_list);
             }
@@ -87,7 +90,7 @@ require(['../require-config2'], function() {
                 }
                 $('.js_li_none').hide();
                 $('.js_member_detail').show();
-                $(return_data).each(function(i, item) {
+                $(return_data).each(function (i, item) {
                     var cz_avatar = return_data[i].avatar;
                     var cz_recharge_times = return_data[i].recharge_times;
                     var cz_mobile = return_data[i].mobile;
@@ -116,6 +119,6 @@ require(['../require-config2'], function() {
             }
             //关闭弹框
             close_tip.close_tip();
-        })
-    })
-})
+        });
+    });
+});

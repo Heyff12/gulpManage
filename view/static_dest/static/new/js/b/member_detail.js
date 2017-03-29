@@ -1,18 +1,21 @@
-require(['../require-config2'], function() {
-    require(["zepto", "yanzheng", "close_tip", "scroll_more"], function($, yanzheng, close_tip, scroll_more) {
-        $(function() {
+"use strict";
+
+require(['../require-config2'], function () {
+    require(["zepto", "yanzheng", "close_tip", "scroll_more"], function ($, yanzheng, close_tip, scroll_more) {
+        $(function () {
             //流水号
             var trade_listnum = new Array();
             //滚动加载---------------------------------------------------------------   
-            var b = 1, //测试专用--变更加载数据
-                times_add = 0; //测试专用--控制停止加载数据判断依据 
+            var b = 1,
+                //测试专用--变更加载数据
+            times_add = 0; //测试专用--控制停止加载数据判断依据 
             //添加图标和没有更多文字提示
             scroll_more.add_load_img('.js_member_detail');
             //默认执行--测试专用   
             scroll_more.scroll_more(append_ul);
             //活动储值详情----------------------------------------------------------------------------------------------------------------------------------------------------
-            $('.js_member_detail').get(0) && (~ function() {
-                $(document).ready(function() {
+            $('.js_member_detail').get(0) && ~function () {
+                $(document).ready(function () {
                     //获取会员信息todo-show
                     //get_member();
                     //获取会员消费储值列表todo-show
@@ -20,7 +23,7 @@ require(['../require-config2'], function() {
                     //测试
                     append_ul();
                 });
-            }());
+            }();
             //测试
             function append_ul() {
                 var con_list = '<li><dl><dd>储值赠送<span class="buy_back orange">储值50送5</span></dd><dd class="grey">2016-08-10 15:06:55</dd><div class="clearfix"></div></dl><span class="history_num orange">+<i class="i_normal">5.00</i></span><div class="clearfix"></div></li> <li><dl><dd>储值</dd><dd class="grey">2016-08-10 15:06:55</dd><div class="clearfix"></div></dl><span class="history_num orange">+<i class="i_normal">50.00</i></span><div class="clearfix"></div></li>';
@@ -74,11 +77,11 @@ require(['../require-config2'], function() {
                     type: 'GET',
                     dataType: 'json',
                     data: {},
-                    beforeSend: function() {
+                    beforeSend: function beforeSend() {
                         $('#loading').show();
                         $('.zheceng').show();
                     },
-                    success: function(data) {
+                    success: function success(data) {
                         if (data.respcd != '0000') {
                             $('#alert_alert').show();
                             $('.zheceng').show();
@@ -104,13 +107,13 @@ require(['../require-config2'], function() {
                             $('.zheceng').hide();
                         }
                     },
-                    error: function(data) {
+                    error: function error(data) {
                         $('#alert_alert').show();
                         $('.zheceng').show();
                         //$('.alert_con .alert_con_br').html('XMLHttpRequest.readyState:'+XMLHttpRequest.readyState+',XMLHttpRequest.status:'+XMLHttpRequest.status+',textStatus:'+textStatus+'!');
                         $('#alert_alert .alert_con_br').html('网络超时!');
                     },
-                    complete: function() {
+                    complete: function complete() {
                         $('#loading').hide();
                     }
                 });
@@ -125,13 +128,13 @@ require(['../require-config2'], function() {
                         'c': yanzheng.get_hash(c),
                         'biz_type': '1,2',
                         'pos': $('#js_pos').val(),
-                        'count': 20,
+                        'count': 20
                     },
-                    beforeSend: function() {
+                    beforeSend: function beforeSend() {
                         $('#loading').show();
                         $('.zheceng').show();
                     },
-                    success: function(data) {
+                    success: function success(data) {
                         if (data.respcd != '0000') {
                             $('#alert_alert').show();
                             $('.zheceng').show();
@@ -143,7 +146,7 @@ require(['../require-config2'], function() {
                         } else {
                             var return_data = data.data;
                             var last_len = 0;
-                            $(return_data).each(function(i, item) {
+                            $(return_data).each(function (i, item) {
                                 var dl_data_set_l = trade_listnum.length;
 
                                 var tx_txamt = (return_data[i].txamt / 100).toFixed(2);
@@ -202,13 +205,13 @@ require(['../require-config2'], function() {
                             scroll_more.scroll_data.body_height = Math.floor($('body').height()).toFixed(0);
                         }
                     },
-                    error: function(data) {
+                    error: function error(data) {
                         $('#alert_alert').show();
                         $('.zheceng').show();
                         //$('.alert_con .alert_con_br').html('XMLHttpRequest.readyState:'+XMLHttpRequest.readyState+',XMLHttpRequest.status:'+XMLHttpRequest.status+',textStatus:'+textStatus+'!');
                         $('#alert_alert .alert_con_br').html('网络超时!');
                     },
-                    complete: function() {
+                    complete: function complete() {
                         $('#loading').hide();
                     }
                 });
@@ -218,9 +221,8 @@ require(['../require-config2'], function() {
 
             function nomoredata_hide() {
                 //$('#nomoredata').hide();
-                $("#nomoredata").animate({ opacity: 0, }, 500, 'ease-out');
+                $("#nomoredata").animate({ opacity: 0 }, 500, 'ease-out');
             }
-
-        })
-    })
-})
+        });
+    });
+});

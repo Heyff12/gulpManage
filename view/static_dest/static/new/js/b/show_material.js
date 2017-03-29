@@ -1,24 +1,26 @@
-require(['../require-config'], function() {
-    require(["zepto", "ajax_rule"], function($, ajax_rule) {
-        $(function() {
+"use strict";
+
+require(['../require-config'], function () {
+    require(["zepto", "ajax_rule"], function ($, ajax_rule) {
+        $(function () {
             //设置菜单空---取消了native的引用
             // var menu_data = { menus: [] };
             // native.setNavMenu(menu_data, function(cb) {
             //     console.log(cb.ret);
             // });
             //设置储值活动----------------------------------------------------------------------------------------------------------------------------------------------------
-            $(document).ready(function() {
+            $(document).ready(function () {
                 //获取图片
                 ajax_rule.ajax_rule('/prepaid/v1/api/b/materials', 'GET', 'json', '', '.zheceng', get_pic);
             });
             //点击切换
-            $('.js_section_ul').on('click', 'li', function() {
+            $('.js_section_ul').on('click', 'li', function () {
                 var li_index = $(this).index();
                 $(this).addClass('tab').siblings('li').removeClass('tab');
                 $('.js_section_index').eq(li_index).show().siblings('.js_section_index').hide();
             });
             //点击提交
-            $('.js_emailpic_sub').on('click', function() {
+            $('.js_emailpic_sub').on('click', function () {
                 location.href = location.protocol + '//' + location.host + '/prepaid/v1/page/b/down_material.html';
                 // if (typeof QFPAY !== "undefined") {
                 //     var go_url = {

@@ -1,6 +1,8 @@
-require(['../require-config'], function() {
-    require(["zepto", "yanzheng", "close_tip"], function($, yanzheng, close_tip) {
-        $(function() {
+"use strict";
+
+require(['../require-config'], function () {
+    require(["zepto", "yanzheng", "close_tip"], function ($, yanzheng, close_tip) {
+        $(function () {
             //滚动下拉-------start--------------------------------------------------------
             var timer_rt = null;
             var scroll_if = false;
@@ -10,23 +12,23 @@ require(['../require-config'], function() {
             // console.log(window_height);
             // console.log(body_height); 
 
-            var dl_data = $(".js_datadl").map(function() {
+            var dl_data = $(".js_datadl").map(function () {
                 return $(this).attr('data-bizsn');
             });
             //var dl_data_set = new Set(dl_data.get(0));     
             //活动储值详情----------------------------------------------------------------------------------------------------------------------------------------------------
-            $('.js_activity_detail').get(0) && (~ function() {
-                $(document).ready(function() {
+            $('.js_activity_detail').get(0) && ~function () {
+                $(document).ready(function () {
                     //获取当前活动充值统计todo-show
                     //get_recharge();
                     //获取当前活动充值流水
                     //get_rechargeli();
                     append_ul();
                 });
-                $(window).on('scroll', function(e) {
+                $(window).on('scroll', function (e) {
                     //var history_top = $(document).scrollTop();
                     //var history_top = document.documentElement.scrollTop || document.body.scrollTop;
-                    var history_top=document.documentElement.scrollTop||document.body.scrollTop;
+                    var history_top = document.documentElement.scrollTop || document.body.scrollTop;
                     if (history_top < body_height - window_height) {
                         clearTimeout(timer_rt);
                     } else if (scroll_if) {
@@ -36,7 +38,7 @@ require(['../require-config'], function() {
                         timer_rt = window.setTimeout(append_ul, 3000);
                     }
                 });
-            }());
+            }();
             function append_ul() {
                 var con_list = '<li class="js_datadl" data-bizsn=""><dl><dt><img src="../../bin/static/img/ic_shop_round@3x.png"></dt><dd>储值赠送<span class="buy_back orange">储值50送5</span></dd><dd class="grey">2016-08-10 15:06:55</dd><div class="clearfix"></div></dl><span class="history_num">￥<i class="i_normal">5</i></span><div class="clearfix"></div></li>';
                 var con_list1 = '<li class="js_datadl" data-bizsn=""><dl><dt><img src="../../bin/static/img/wxchar.png"></dt><dd>储值赠送<span class="buy_back orange">储值50送5</span></dd><dd class="grey">2016-08-10 15:06:55</dd><div class="clearfix"></div></dl><span class="history_num">￥<i class="i_normal">5</i></span><div class="clearfix"></div></li>';
@@ -48,7 +50,7 @@ require(['../require-config'], function() {
                     list = con_list1;
                     b = 1;
                 }
-                for(var i=0;i<20;i++){
+                for (var i = 0; i < 20; i++) {
                     $('.js_ul_history').append(list);
                 }
                 $('.load').hide();
@@ -68,11 +70,11 @@ require(['../require-config'], function() {
                     data: {
                         //'activity_id':yanzheng.get_hash('activity_id'),
                     },
-                    beforeSend: function() {
+                    beforeSend: function beforeSend() {
                         $('#loading').show();
                         $('.zheceng1').show();
                     },
-                    success: function(data) {
+                    success: function success(data) {
                         if (data.respcd != '0000') {
                             $('#alert_alert').show();
                             $('.zheceng1').show();
@@ -90,13 +92,13 @@ require(['../require-config'], function() {
                             $('.zheceng1').hide();
                         }
                     },
-                    error: function(data) {
+                    error: function error(data) {
                         $('#alert_alert').show();
                         $('.zheceng1').show();
                         //$('.alert_con .alert_con_br').html('XMLHttpRequest.readyState:'+XMLHttpRequest.readyState+',XMLHttpRequest.status:'+XMLHttpRequest.status+',textStatus:'+textStatus+'!');
                         $('#alert_alert .alert_con_br').html('网络超时!');
                     },
-                    complete: function() {
+                    complete: function complete() {
                         $('#loading').hide();
                     }
                 });
@@ -111,13 +113,13 @@ require(['../require-config'], function() {
                         'biz_type_l': 1,
                         //'activity_id':yanzheng.get_hash('activity_id'),
                         'pos': $('#js_pos').val(),
-                        'count': 20,
+                        'count': 20
                     },
-                    beforeSend: function() {
+                    beforeSend: function beforeSend() {
                         $('#loading').show();
                         $('.zheceng').show();
                     },
-                    success: function(data) {
+                    success: function success(data) {
                         if (data.respcd != '0000') {
                             $('#alert_alert').show();
                             $('.zheceng').show();
@@ -128,8 +130,8 @@ require(['../require-config'], function() {
                             }
                         } else {
                             var return_data = data.data;
-                            $(return_data).each(function(i, item) {
-                                var dl_data = $(".js_datadl").map(function() {
+                            $(return_data).each(function (i, item) {
+                                var dl_data = $(".js_datadl").map(function () {
                                     return $(this).attr('data-bizsn');
                                 }).get();
                                 var dl_data_set_l = dl_data.length;
@@ -179,20 +181,19 @@ require(['../require-config'], function() {
                             console.log(scroll_if);
                         }
                     },
-                    error: function(data) {
+                    error: function error(data) {
                         $('#alert_alert').show();
                         $('.zheceng').show();
                         //$('.alert_con .alert_con_br').html('XMLHttpRequest.readyState:'+XMLHttpRequest.readyState+',XMLHttpRequest.status:'+XMLHttpRequest.status+',textStatus:'+textStatus+'!');
                         $('#alert_alert .alert_con_br').html('网络超时!');
                     },
-                    complete: function() {
+                    complete: function complete() {
                         $('#loading').hide();
                     }
                 });
             }
             //关闭弹框
             close_tip.close_tip();
-
         });
     });
 });

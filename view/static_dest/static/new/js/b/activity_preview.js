@@ -1,19 +1,21 @@
+'use strict';
+
 //点击储值项
 function click_chulist(obj) {
     $(obj).addClass('li_choose').siblings('li').removeClass('li_choose');
 };
-require(['../require-config'], function() {
-    require(["zepto", "yanzheng", "ajax_rule", "localstorage", "date_change"], function($, yanzheng, ajax_rule, localstorage, date_change) {
-        $(function() {
+require(['../require-config'], function () {
+    require(["zepto", "yanzheng", "ajax_rule", "localstorage", "date_change"], function ($, yanzheng, ajax_rule, localstorage, date_change) {
+        $(function () {
             //---取消了native if_menu的引用0106
             //设置储值活动----------------------------------------------------------------------------------------------------------------------------------------------------
             var preview_data = ['start_time', 'end_time', 'rules', 'desc', 'mch_mobile', 'merchant_name'];
-            $(document).ready(function() {
+            $(document).ready(function () {
                 //获取初始值
                 localstorage.get_storage(get_data);
             });
             //点击提交预览
-            $('.js_preview_sub').on('click', function() {
+            $('.js_preview_sub').on('click', function () {
                 //提交数据
                 var data_post = localstorage.get_data_all(preview_data);
                 data_post.start_time = date_change.time_change_long(data_post.start_time) + ' 00:00:00';

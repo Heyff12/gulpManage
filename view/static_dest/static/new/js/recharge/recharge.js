@@ -1,3 +1,5 @@
+'use strict';
+
 function hideMenu() {
     WeixinJSBridge.call('hideOptionMenu');
     WeixinJSBridge.call('hideToolbar');
@@ -16,12 +18,12 @@ if (typeof WeixinJSBridge == "undefined") {
 function click_chulist(obj) {
     $(obj).addClass('li_choose').siblings('li').removeClass('li_choose');
 };
-require(['../require-config'], function() {
-    require(["zepto", "ajax_rule"], function($, ajax_rule) {
-        $(function() {
+require(['../require-config'], function () {
+    require(["zepto", "ajax_rule"], function ($, ajax_rule) {
+        $(function () {
             //修改--储值协议链接
-            if(location.href.split('?').length>1){
-                $('.js_protol_url').attr('href','/prepaid/v1/page/c/pacp.html?'+location.href.split('?')[1]);
+            if (location.href.split('?').length > 1) {
+                $('.js_protol_url').attr('href', '/prepaid/v1/page/c/pacp.html?' + location.href.split('?')[1]);
             }
             //储值首页----------------------------------------------------------------------------------------------------------------------------------------------------
             //判断屏幕是否超过一屏，按钮是否是固定
@@ -31,24 +33,24 @@ require(['../require-config'], function() {
             var scr_mobile = false,
                 src_rule = false,
                 src_note = false;
-            $(document).ready(function() {
+            $(document).ready(function () {
                 //获取储值列表todo-show
                 var data_rules = {
                     'c': get_hash('c'),
-                    'h': get_hash('h'),
+                    'h': get_hash('h')
                 };
                 ajax_rule.ajax_rule('/prepaid/v1/api/c/recharge/rules', 'GET', 'json', data_rules, '.zheceng', get_rules);
 
                 //获取储值规则
                 var data_rulesdetail = {
                     'c': get_hash('c'),
-                    'h': get_hash('h'),
+                    'h': get_hash('h')
                 };
                 ajax_rule.ajax_rule('/prepaid/v1/api/c/rulexplain', 'GET', 'json', data_rulesdetail, '.zheceng1', get_rulesdetail);
 
                 //获取商家名称
                 var data_merchant = {
-                    'h': get_hash('h'),
+                    'h': get_hash('h')
                 };
                 ajax_rule.ajax_rule('/prepaid/v1/api/c/merchant_info', 'GET', 'json', data_merchant, '.zheceng1', get_merchant);
 
@@ -57,26 +59,26 @@ require(['../require-config'], function() {
                     'c': get_hash('c'),
                     'h': get_hash('h'),
                     'o': get_hash('o'),
-                    'grid_index': '1',
+                    'grid_index': '1'
                 };
                 ajax_rule.ajax_rule('/prepaid/v1/api/c/recharge/before', 'GET', 'json', data_before, '.zheceng2', get_bindinfo_if, get_bindinfo_if_error);
 
                 //获取储值余额
                 var data_balance = {
                     'c': get_hash('c'),
-                    'h': get_hash('h'),
+                    'h': get_hash('h')
                 };
                 ajax_rule.ajax_rule('/prepaid/v1/api/c/balance', 'GET', 'json', data_balance, '.zheceng1', get_balance);
             });
             //点击购买弹出填写信息——————add_new
-            $('.js_content_sub').on('click', function() {
+            $('.js_content_sub').on('click', function () {
                 _hmt.push(['_trackEvent', 'recharge', 'click', 'recharge_buy']);
                 //充值前校验
                 var data_before = {
                     'c': get_hash('c'),
                     'h': get_hash('h'),
                     'o': get_hash('o'),
-                    'grid_index': $('.js_rechage_ul li.li_choose').attr('data-index'),
+                    'grid_index': $('.js_rechage_ul li.li_choose').attr('data-index')
                 };
                 ajax_rule.ajax_rule('/prepaid/v1/api/c/recharge/before', 'GET', 'json', data_before, '.zheceng2', get_pay_money);
             });
@@ -111,7 +113,7 @@ require(['../require-config'], function() {
                 var return_data = return_data_data.rules;
                 //获取规则当中储值可用的规则
                 var return_data_right = [];
-                $(return_data).each(function(i, item) {
+                $(return_data).each(function (i, item) {
                     var tx_fee = (return_data[i].present_amt / 100).toFixed(0);
                     var tx_txamt = (return_data[i].pay_amt / 100).toFixed(0);
                     if (tx_fee >= 1 && tx_txamt >= 1) {
@@ -127,7 +129,7 @@ require(['../require-config'], function() {
                     $('.js_content_sub_disa').hide();
                     $('.js_content_sub').show().css('display', 'inline-block');
                 }
-                $(return_data_right).each(function(i, item) {
+                $(return_data_right).each(function (i, item) {
                     var tx_fee = (return_data_right[i].present_amt / 100).toFixed(0);
                     var tx_txamt = (return_data_right[i].pay_amt / 100).toFixed(0);
                     var tx_index = return_data_right[i].grid_index;
@@ -199,7 +201,7 @@ require(['../require-config'], function() {
                         'c': get_hash('c'),
                         'h': get_hash('h'),
                         'o': get_hash('o'),
-                        'grid_index': $('.js_rechage_ul li.li_choose').attr('data-index'),
+                        'grid_index': $('.js_rechage_ul li.li_choose').attr('data-index')
                     };
                     ajax_rule.ajax_rule('/prepaid/v1/api/c/recharge', 'POST', 'json', data_recharge, '.zheceng2', get_recharge);
                 }
@@ -218,11 +220,10 @@ require(['../require-config'], function() {
                     screen_button();
                 } else {
                     var data_bindinfo = {
-                        'c': get_hash('c'),
+                        'c': get_hash('c')
                     };
                     ajax_rule.ajax_rule(' /prepaid/v1/api/c/bindinfo', 'GET', 'json', data_bindinfo, '.zheceng1', get_bindinfo, get_bindinfo_error);
                 }
-
             }
             //
             function get_bindinfo_if_error() {
@@ -247,6 +248,6 @@ require(['../require-config'], function() {
                     }
                 }
             }
-        })
+        });
     });
 });

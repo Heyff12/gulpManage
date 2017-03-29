@@ -1,3 +1,5 @@
+'use strict';
+
 //删除规则
 function delete_rule(obj) {
     var dd_list = $('.js_rule dd').length - 0;
@@ -11,14 +13,14 @@ function delete_rule(obj) {
     $('.js_add_activity').find('.add_rule').css('display', 'inline-block');
     $('.js_add_activity').find('.add_rule_no').css('display', 'none');
 }
-require(['../require-config'], function() {
-    require(["zepto", "yanzheng", "ajax_rule", "localstorage", "iosselect", "date_get", "alert_word"], function($, yanzheng, ajax_rule, localstorage, iosselect, date_get, alert_word) {
-        $(function() {
+require(['../require-config'], function () {
+    require(["zepto", "yanzheng", "ajax_rule", "localstorage", "iosselect", "date_get", "alert_word"], function ($, yanzheng, ajax_rule, localstorage, iosselect, date_get, alert_word) {
+        $(function () {
             //加载提示弹框
             alert_word.toast_data_short('body', '储值金额不可超过2000元');
             var today_times = date_get.nowYear + '/' + date_get.nowMonth + '/' + date_get.nowDate + ' 00:00:00';
             //设置储值活动----------------------------------------------------------------------------------------------------------------------------------------------------
-            $(document).ready(function() {
+            $(document).ready(function () {
                 //获取店铺名称
                 var data_shopname = {};
                 //ajax_rule.ajax_rule('/prepaid/v1/api/b/merchant_info', 'GET', 'json', '', '.zheceng', get_shopname);
@@ -26,7 +28,7 @@ require(['../require-config'], function() {
                 localstorage.get_storage(get_data);
             });
             //点击开始时间
-            $('.js_startime').on('click', function() {
+            $('.js_startime').on('click', function () {
                 var showDom = document.querySelector('.js_startime');
                 var year = showDom.dataset['year'];
                 var month = showDom.dataset['month'];
@@ -42,7 +44,7 @@ require(['../require-config'], function() {
                     twoLevelId: month,
                     threeLevelId: day,
                     //showLoading: true,
-                    callback: function(year_data, month_data, day_data) {
+                    callback: function callback(year_data, month_data, day_data) {
                         showDom.dataset['year'] = year_data.id;
                         showDom.dataset['month'] = month_data.id;
                         showDom.dataset['day'] = day_data.id;
@@ -56,7 +58,7 @@ require(['../require-config'], function() {
                 });
             });
             //点击到期时间
-            $('.js_endtime').on('click', function() {
+            $('.js_endtime').on('click', function () {
                 var showDom = document.querySelector('.js_endtime');
                 var year = showDom.dataset['year'];
                 var month = showDom.dataset['month'];
@@ -72,7 +74,7 @@ require(['../require-config'], function() {
                     twoLevelId: month,
                     threeLevelId: day,
                     //showLoading: true,
-                    callback: function(year_data, month_data, day_data) {
+                    callback: function callback(year_data, month_data, day_data) {
                         showDom.dataset['year'] = year_data.id;
                         showDom.dataset['month'] = month_data.id;
                         showDom.dataset['day'] = day_data.id;
@@ -82,7 +84,7 @@ require(['../require-config'], function() {
                 });
             });
             //点击增加规则
-            $('.js_add_activity').on('click', function() {
+            $('.js_add_activity').on('click', function () {
                 var dd_list = $('.js_rule dd').length - 0;
                 var dd_detail = '<dd data-index="">储值<input class="text text_short js_chu js_storule" type="tel" value="" name="pay_amt" />元送<input class="text text_short js_song js_storule" type="tel" value="" name="present_amt" />元<i class="delete js_ruledelete" onclick="delete_rule(this)"></i></dd>';
                 if (dd_list <= 3) {
@@ -115,7 +117,7 @@ require(['../require-config'], function() {
             //     $('.js_add_activity').find('.add_rule_no').css('display', 'none');
             // });
             //填写储值赠送金额
-            $(document).on('input', '.js_storule', function() {
+            $(document).on('input', '.js_storule', function () {
                 var crash_now_str = $(this).val();
                 //将非数字的字符替换为空
                 var crash_now_strend = crash_now_str.replace(/[^\d]/g, '');
@@ -140,7 +142,7 @@ require(['../require-config'], function() {
                 }
                 if (crash_now_strend.split('.').length > 1) {
                     var crash_end_l = crash_now_strend.split('.')[1].substr(0, 2);
-                    crash_now_strend = (crash_end_z - 0) + '.' + crash_end_l;
+                    crash_now_strend = crash_end_z - 0 + '.' + crash_end_l;
                 } else {
                     crash_now_strend = crash_end_z - 0;
                 }
@@ -154,7 +156,7 @@ require(['../require-config'], function() {
                 $(this).val(crash_now_strend);
             });
             //填写备注验证
-            $('.js_note').on('input', function() {
+            $('.js_note').on('input', function () {
                 var len_val = $(this).val();
                 var len = len_val.length - 0;
                 if (len <= 40) {
@@ -198,19 +200,19 @@ require(['../require-config'], function() {
             //     //     $('.js_note').val(len_val.substr(0, 40));
             //     // }
             // });
-            function callback(){
+            function callback() {
                 var len_val = $('.js_note').val();
                 $('.js_note').val(len_val.substr(0, 40));
             }
             //点击提交预览
-            $('.js_addactivity_sub').on('click', function() {
+            $('.js_addactivity_sub').on('click', function () {
                 yanzheng.tel_activity('.js_tel');
                 yanzheng.name_test('.js_note', 0, 40);
                 time_area();
-                $('.js_storule').each(function() {
+                $('.js_storule').each(function () {
                     yanzheng.numprice_test(this, 0, 4, 2000);
                 });
-                $('.js_storule').each(function() {
+                $('.js_storule').each(function () {
                     if ($(this).hasClass('error_tips')) {
                         alert_word.alert_word_show_short();
                         return false;

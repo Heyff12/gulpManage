@@ -1,13 +1,13 @@
-require(['../require-config'], function() {
-    require(["zepto", "yanzheng", "ajax_rule"], function($, yanzheng, ajax_rule) {
-        $(function() {
+"use strict";
+
+require(['../require-config'], function () {
+    require(["zepto", "yanzheng", "ajax_rule"], function ($, yanzheng, ajax_rule) {
+        $(function () {
             //---取消了native if_menu的引用0106
             //发送物料----------------------------------------------------------------------------------------------------------------------------------------------------
-            $(document).ready(function() {
-
-            });
+            $(document).ready(function () {});
             //点击提交
-            $('.js_email_sub').on('click', function() {
+            $('.js_email_sub').on('click', function () {
                 //验证邮箱
                 yanzheng.email_test('.js_mail');
                 var error_len = $('.error_tips').length;
@@ -20,7 +20,7 @@ require(['../require-config'], function() {
                 ajax_rule.ajax_rule('/prepaid/v1/api/b/materials/send', 'POST', 'json', data_mail, '.zheceng', send_pic);
             });
             //点击关闭
-            $('.js_close_email').on('click', function() {
+            $('.js_close_email').on('click', function () {
                 //返回储值活动首页
                 location.href = location.protocol + '//' + location.host + '/prepaid/v1/page/b/index.html';
                 // var url_val = location.protocol + '//' + location.host + '/prepaid/v1/page/b/index.html';

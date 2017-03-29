@@ -1,3 +1,5 @@
+'use strict';
+
 var zepto = require('../plug/zepto.min');
 var yanzheng = require('../common/yanzheng');
 var add_bounced = require('../common/add_bounced');
@@ -6,7 +8,7 @@ var localstorage = require('../common/localstorage');
 var iosselect = require('../common/iosselect');
 var date_get = require('../common/date_get');
 //设置储值活动----------------------------------------------------------------------------------------------------------------------------------------------------
-$(document).ready(function() {
+$(document).ready(function () {
     //获取店铺名称
     var data_shopname = {};
     //ajax_rule.ajax_rule(url, 'GET', 'json', data_shopname, '.zheceng', get_shopname);
@@ -14,7 +16,7 @@ $(document).ready(function() {
     localstorage.get_storage(get_data);
 });
 //点击开始时间
-$('.js_startime').on('click', function() {
+$('.js_startime').on('click', function () {
     var showDom = document.querySelector('.js_startime');
     var year = showDom.dataset['year'];
     var month = showDom.dataset['month'];
@@ -30,7 +32,7 @@ $('.js_startime').on('click', function() {
         twoLevelId: month,
         threeLevelId: day,
         //showLoading: true,
-        callback: function(year_data, month_data, day_data) {
+        callback: function callback(year_data, month_data, day_data) {
             showDom.dataset['year'] = year_data.id;
             showDom.dataset['month'] = month_data.id;
             showDom.dataset['day'] = day_data.id;
@@ -44,7 +46,7 @@ $('.js_startime').on('click', function() {
     });
 });
 //点击到期时间
-$('.js_endtime').on('click', function() {
+$('.js_endtime').on('click', function () {
     var showDom = document.querySelector('.js_endtime');
     var year = showDom.dataset['year'];
     var month = showDom.dataset['month'];
@@ -60,7 +62,7 @@ $('.js_endtime').on('click', function() {
         twoLevelId: month,
         threeLevelId: day,
         //showLoading: true,
-        callback: function(year_data, month_data, day_data) {
+        callback: function callback(year_data, month_data, day_data) {
             showDom.dataset['year'] = year_data.id;
             showDom.dataset['month'] = month_data.id;
             showDom.dataset['day'] = day_data.id;
@@ -70,7 +72,7 @@ $('.js_endtime').on('click', function() {
     });
 });
 //点击增加规则
-$('.js_add_activity').on('click', function() {
+$('.js_add_activity').on('click', function () {
     var dd_list = $('.js_rule dd').length - 0;
     var dd_detail = '<dd data-index="">储值<input class="text text_short js_chu js_storule" type="text" value="" name="chu" />元送<input class="text text_short js_song js_storule" type="text" value="" name="song" />元<i class="delete js_ruledelete"></i></dd>';
     if (dd_list <= 3) {
@@ -90,7 +92,7 @@ $('.js_add_activity').on('click', function() {
     }
 });
 //点击删除规则
-$(document).on('click', '.js_ruledelete', function() {
+$(document).on('click', '.js_ruledelete', function () {
     var dd_list = $('.js_rule dd').length - 0;
     if (dd_list == 2) {
         //删除第一条数据后面的删除按钮
@@ -103,7 +105,7 @@ $(document).on('click', '.js_ruledelete', function() {
     $('.js_add_activity').find('.add_rule_no').css('display', 'none');
 });
 //填写储值赠送金额
-$(document).on('input', '.js_storule', function() {
+$(document).on('input', '.js_storule', function () {
     var crash_now_str = $(this).val();
     //字符长的时候减小字号
     if (crash_now_str.length <= 10) {
@@ -134,7 +136,7 @@ $(document).on('input', '.js_storule', function() {
     }
     if (crash_now_strend.split('.').length > 1) {
         var crash_end_l = crash_now_strend.split('.')[1].substr(0, 2);
-        crash_now_strend = (crash_end_z - 0) + '.' + crash_end_l;
+        crash_now_strend = crash_end_z - 0 + '.' + crash_end_l;
     } else {
         crash_now_strend = crash_end_z - 0;
     }
@@ -143,7 +145,7 @@ $(document).on('input', '.js_storule', function() {
     $(this).val(crash_now_strend);
 });
 //填写备注验证
-$('.js_note').on('input', function() {
+$('.js_note').on('input', function () {
     var len_val = $(this).val();
     var len = len_val.length - 0;
     if (len <= 40) {
@@ -153,11 +155,11 @@ $('.js_note').on('input', function() {
     }
 });
 //点击提交预览
-$('.js_addactivity_sub').on('click', function() {
+$('.js_addactivity_sub').on('click', function () {
     yanzheng.tel_activity('.js_tel');
     yanzheng.name_test('.js_note', 0, 40);
     time_area();
-    $('.js_storule').each(function() {
+    $('.js_storule').each(function () {
         yanzheng.numprice_test(this, 0, 4);
     });
     var error_len = $('.error_tips').length;

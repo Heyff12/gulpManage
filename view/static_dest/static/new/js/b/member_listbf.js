@@ -1,12 +1,14 @@
+'use strict';
+
 //点击会员列表
 function memberto(obj) {
     var c = $(obj).attr('data-c');
     var url_val = location.protocol + '//' + location.host + '/prepaid/v1/page/b/members/detail.html?c=' + c;
     location.href = url_val;
 };
-require(['../require-config2'], function() {
-    require(["zepto", "yanzheng", "close_tip"], function($, yanzheng, close_tip) {
-        $(function() {
+require(['../require-config2'], function () {
+    require(["zepto", "yanzheng", "close_tip"], function ($, yanzheng, close_tip) {
+        $(function () {
             //滚动下拉-------start--------------------------------------------------------
             var timer_rt = null;
             var scroll_if = false;
@@ -19,14 +21,14 @@ require(['../require-config2'], function() {
             // console.log(window_height);
             // console.log(body_height); 
             //活动储值详情----------------------------------------------------------------------------------------------------------------------------------------------------
-            $('.js_member_list').get(0) && (~ function() {
-                $(document).ready(function() {
+            $('.js_member_list').get(0) && ~function () {
+                $(document).ready(function () {
                     //获取会员列表todo-show
                     //get_rechargeli();
                     append_ul();
                 });
-            }());
-            $(window).on('scroll', function(e) {
+            }();
+            $(window).on('scroll', function (e) {
                 // console.log(scroll_if); 
                 //var history_top = $(document).scrollTop();
                 //console.log(history_top); 
@@ -43,7 +45,7 @@ require(['../require-config2'], function() {
                         timer_rt = window.setTimeout(append_ul, 3000);
                     }
                     if (nomor_show) {
-                        $("#nomoredata").animate({ opacity: 0.7, }, 500, 'ease-out');
+                        $("#nomoredata").animate({ opacity: 0.7 }, 500, 'ease-out');
                         window.setTimeout(nomoredata_hide, 3000);
                         nomor_show = false;
                     }
@@ -54,7 +56,7 @@ require(['../require-config2'], function() {
 
             function nomoredata_hide() {
                 //$('#nomoredata').hide();
-                $("#nomoredata").animate({ opacity: 0, }, 500, 'ease-out');
+                $("#nomoredata").animate({ opacity: 0 }, 500, 'ease-out');
             }
 
             function append_ul() {
@@ -81,7 +83,7 @@ require(['../require-config2'], function() {
                     body_height = Math.floor($('body').height()).toFixed(0);
                     if (last_len <= 0) {
                         //$('#nomoredata').show();
-                        $("#nomoredata").animate({ opacity: 0.7, }, 500, 'ease-out');
+                        $("#nomoredata").animate({ opacity: 0.7 }, 500, 'ease-out');
                         window.setTimeout(nomoredata_hide, 3000);
                         nomor_show = false;
                     } else {
@@ -111,13 +113,13 @@ require(['../require-config2'], function() {
                     dataType: 'json',
                     data: {
                         'pos': $('#js_pos').val(),
-                        'count': 20,
+                        'count': 20
                     },
-                    beforeSend: function() {
+                    beforeSend: function beforeSend() {
                         $('#loading').show();
                         $('.zheceng').show();
                     },
-                    success: function(data) {
+                    success: function success(data) {
                         if (data.respcd != '0000') {
                             $('#alert_alert').show();
                             $('.zheceng').show();
@@ -128,7 +130,7 @@ require(['../require-config2'], function() {
                             }
                         } else {
                             var return_data = data.data;
-                            $(return_data).each(function(i, item) {
+                            $(return_data).each(function (i, item) {
                                 var cz_avatar = return_data[i].avatar;
                                 var cz_recharge_times = return_data[i].recharge_times;
                                 var cz_mobile = return_data[i].mobile;
@@ -142,7 +144,7 @@ require(['../require-config2'], function() {
                             if (return_data.length < 20) {
                                 if (pos_val > 0) {
                                     $('.load').hide();
-                                    $("#nomoredata").animate({ opacity: 0.7, }, 500, 'ease-out');
+                                    $("#nomoredata").animate({ opacity: 0.7 }, 500, 'ease-out');
                                     window.setTimeout(nomoredata_hide, 2000);
                                 }
                                 // $('#alert_alert').show();
@@ -159,19 +161,19 @@ require(['../require-config2'], function() {
                             body_height = $('body').height();
                         }
                     },
-                    error: function(data) {
+                    error: function error(data) {
                         $('#alert_alert').show();
                         $('.zheceng').show();
                         //$('.alert_con .alert_con_br').html('XMLHttpRequest.readyState:'+XMLHttpRequest.readyState+',XMLHttpRequest.status:'+XMLHttpRequest.status+',textStatus:'+textStatus+'!');
                         $('#alert_alert .alert_con_br').html('网络超时!');
                     },
-                    complete: function() {
+                    complete: function complete() {
                         $('#loading').hide();
                     }
                 });
             }
             //关闭弹框
             close_tip.close_tip();
-        })
-    })
-})
+        });
+    });
+});
