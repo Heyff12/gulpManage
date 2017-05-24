@@ -6,6 +6,9 @@
 // 引入 gulp及组件
 var gulp = require('gulp'), //基础库
     imagemin = require('gulp-imagemin'), //图片压缩
+    pngquant = require('imagemin-pngquant'),//深度压缩png
+    cache = require('gulp-cache'),//只压缩修改的图片
+
     less = require('gulp-less'), //less
     minifycss = require('gulp-minify-css'), //css压缩
     autoprefixer = require('gulp-autoprefixer'), //使用gulp-autoprefixer根据设置浏览器版本自动处理浏览器前缀
@@ -24,45 +27,37 @@ var gulp = require('gulp'), //基础库
     runSequence = require('run-sequence'), //按顺序执行
     rev = require('gulp-rev'), //- 对文件名加MD5后缀
     revCollector = require('gulp-rev-collector'), //- 路径html替换
+    sourcemaps = require('gulp-sourcemaps'), //soucemap--生成
     connect = require('gulp-connect'), //搭建服务器并自动更新更改--本文件没用使用，而是用的browser-sync
     livereload = require('gulp-livereload'), //livereload,可以合上面配合使用（暂时没用）
     browserSync = require('browser-sync').create(), //页面实时刷新
-    babel = require("gulp-babel"), //编译es6
-
-    //-------------------以下未使用------------------------------------------------------------------
-    tinylr = require('tiny-lr'), //livereload
-    server = tinylr(),
-    port = 35729,
-    useref = require('gulp-useref'), //资源内文件合并替换
-    revReplace = require('gulp-rev-replace'),
-    rrev = require('gulp-rev-append'), //给页面的引用添加版本号，清除页面引用缓存
-    shell = require('gulp-shell'),
-    amdOptimize = require('amd-optimize'), //打包 require.js 模块依赖
-    fs = require('fs'),
-    changed = require('gulp-changed'), //检测变化的文件
-    jscs = require('gulp-jscs'); //代码风格检测
+    babel = require("gulp-babel"); //编译es6; //代码风格检测
 var file_road = {
     cssSrc: './src/less/**/*.less',
     cssDst: './static_dest/static/new/css',
+    cssSrc_mid: './static_dest/static/new/css/**/*.css',
     cssDst_end: '../bin/static/new/css',
 
     reqconjs_src: ['./src/js/require-config.js', './src/js/require-config2.js'],
-    jsSrc: ['./src/js/{common,plug}/*.js', './src/js/require.2.1.11.min.js'],
+    jsSrc: ['./src/js/{common,plug}/**/*.js', './src/js/require.2.1.11.min.js'],
     jsNum_src: ['./src/js/**/*.js', '!./src/js/common/*.js', '!./src/js/plug/**/*.js', '!./src/js/require.2.1.11.min.js', '!./src/js/require-config.js', '!./src/js/require-config2.js'],
     jsDst: './static_dest/static/new/js',
-    //jsDst_mid: ['./static_dest/static/new/js/**/*.js', '!./static_dest/static/new/js/require-config.js', '!./static_dest/static/new/js/require-config2.js'],
     jsDst_end: '../bin/static/new/js',
+    reqconjs_src_mid: ['./static_dest/static/new/js/require-config.js', './static_dest/static/new/js/require-config2.js'],
+    jsSrc_mid: ['./static_dest/static/new/js/{common,plug}/**/*.js', './static_dest/static/new/js/require.2.1.11.min.js'],
+    jsNum_src_mid: ['./static_dest/static/new/js/**/*.js', '!./static_dest/static/new/js/common/*.js', '!./static_dest/static/new/js/plug/**/*.js', '!./static_dest/static/new/js/require.2.1.11.min.js', '!./static_dest/static/new/js/require-config.js', '!./static_dest/static/new/js/require-config2.js'],
 
     imgSrc: './src/img/**/*',
     imgDst: './static_dest/static/new/img',
+    imgSrc_mid: './static_dest/static/new/img/**/*',
     imgDst_end: '../bin/static/new/img',
 
     htmlSrc: './html/**/*.html',
     htmlDst_mid: './static_dest/template', //测试
+    htmlSrc_mid: './static_dest/template/**/*.html',
     htmlDst: '../bin/template',
 
     w_cssSrc: 'src/less/**/*.less',
-    //w_jsSrc: ['src/js/**/*.js', '!src/js/require-config.js', '!src/js/require-config2.js'],
     w_jsrecon_Src: ['src/js/require-config.js', 'src/js/require-config2.js'],
     w_jsSrc: ['src/js/common/*.js', 'src/js/plug/**/*.js', 'src/js/require.2.1.11.min.js'],
     w_jsnum_Src: ['src/js/**/*.js', '!src/js/common/*.js', '!src/js/plug/**/*.js', '!src/js/require.2.1.11.min.js', '!src/js/require-config.js', '!src/js/require-config2.js'],
@@ -71,14 +66,17 @@ var file_road = {
 
     //w_cleanall: ['../bin/**/*', './static_dest/static/new/**/*', './rev/**/*'],//原则情况全部
     w_cleanall: ['../bin/static/new/**/*', '../bin/template/**/*.html', '!../bin/template/usercenter/*.html', '!../bin/template/recharge/result.html', './static_dest/static/', './static_dest/template/', './rev/'], //实际有些不能删除
+    w_cleanall_dev: ['./static_dest/static/', './static_dest/template/', './rev/'],
+    w_cleanall_build: ['../bin/static/new/**/*', '../bin/template/**/*.html', '!../bin/template/usercenter/*.html', '!../bin/template/recharge/result.html'], //实际有些不能删除
 
-    //src_source: './src/**/*',
+
     w_src_source: 'src/**/*',
     w_dst_source: './static_dest/static/new/**/*',
     w_dsthtml_source: '../bin/template/**/*',
 
-    // copy_src: './static_dest/static/new/**/*',
-    // copy_dest: '../bin/static/new',
+    //sourcemaps
+    source_src:'./static_dest/static/new/maps/**/*.map',
+    source_dst:'../bin/static/new/maps',
 };
 var pkg = require('./package.json');
 var banner = ['/**',
@@ -89,33 +87,37 @@ var banner = ['/**',
     ' */',
     ''
 ].join('\n');
-// connect启动本地服务------------------------------------------------------------------------------------------------------------------------------------------
+// connect启动本地服务--暂未使用----------------------------------------------------------------------------------------------------------------------------------------
 gulp.task('webserver', function() {
     connect.server({
         livereload: true,
-        port: 2333
+        port: 1111
     });
 });
 // 样式处理------------------------------------------------------------------------------------------------------------------------------------------
-gulp.task('css', function() {
+gulp.task('css_dev', function() { //less编译，px rem转化，压缩，生成sourcemaps,实时刷新
     var processors = [px2rem({ remUnit: 37.5 })];
     gulp.src(file_road.cssSrc)
+        .pipe(sourcemaps.init({ loadMaps: true, largeFile: true })) //soucemap生成
         .pipe(less({ style: 'expanded' }))
         .pipe(autoprefixer({
             browsers: ['last 2 versions', 'Android >= 4.0', 'last 2 Explorer versions', 'last 3 Safari versions', 'Firefox >= 20', '> 5%'],
             cascade: true, //是否美化属性值 默认：true 像这样：//-webkit-transform: rotate(45deg);transform: rotate(45deg);
             remove: true //是否去掉不必要的前缀 默认：true 
         }))
-        .pipe(postcss(processors)) //--变得有点小
+        .pipe(postcss(processors)) //--px转rem
         .pipe(header(banner, { pkg: pkg })) //增加头部注释
+        .pipe(minifycss()) //压缩
+        .pipe(sourcemaps.write('../maps/css')) //soucemap生成
+        .pipe(rev()) //生成版本号        
         .pipe(gulp.dest(file_road.cssDst)) //本地目录
-        .pipe(rev())
-        .pipe(minifycss()) //todo暂时隐藏压缩
-        .pipe(gulp.dest(file_road.cssDst_end)) //最终目录
         .pipe(rev.manifest())
         .pipe(gulp.dest('rev/css'))
-        .pipe(browserSync.stream());
-
+        .pipe(browserSync.stream()); //实时修改刷新
+});
+gulp.task('css_build', function() { //生成版本号
+    gulp.src(file_road.cssSrc_mid) //本地目录
+        .pipe(gulp.dest(file_road.cssDst_end)) //最终目录
 });
 
 //语法检查------------------------------------------------------------------------------------------------------------------------------------------
@@ -131,152 +133,144 @@ gulp.task('jshint', function() {
         .pipe(jshint.reporter('fail'));
 });
 // js处理------------------------------------------------------------------------------------------------------------------------------------------
-gulp.task('js', function() {
-    gulp.src(file_road.jsSrc)
+//替换显示require-config的路径
+gulp.task('reqconjs_dev', function() { //代码检测，实时更新
+    gulp.src(file_road.reqconjs_src)
         .pipe(jshint.reporter('default')) //代码检测
         .pipe(gulp.dest(file_road.jsDst)) //本地目录--未压缩
+        .pipe(browserSync.stream())
+});
+gulp.task('reqconjs_build', function() { //替换静态路径
+    gulp.src(file_road.reqconjs_src_mid)
+        .pipe(replace('../../../../static_dest/static', '/qudao/v1/static'))
+        .pipe(replace('../../../static_dest/static', '/qudao/v1/static'))
+        .pipe(gulp.dest(file_road.jsDst_end))
+});
+//common、pulg的处理
+gulp.task('js_dev', function() { //代码检测，增加头部注释、压缩，生成sourcemaps，实时刷新
+    gulp.src(file_road.jsSrc)
+        //.pipe(sourcemaps.init({loadMaps: true,largeFile: true}))//soucemap生成
+        .pipe(jshint.reporter('default')) //代码检测
+        .pipe(header(banner, { pkg: pkg })) //增加头部注释
         .pipe(uglify({ //todo暂时隐藏压缩
             mangle: false, //类型：Boolean 默认：true 是否修改变量名
             compress: true, //类型：Boolean 默认：true 是否完全压缩
             //preserveComments: 'all' //保留所有注释
             mangle: { except: ['require', 'exports', 'module', '$'] } //排除混淆关键字
         }))
-        .pipe(header(banner, { pkg: pkg })) //增加头部注释
-        .pipe(gulp.dest(file_road.jsDst_end)) //最终目录
-        .pipe(browserSync.stream());
-});
-//替换显示require-config的路径
-gulp.task('reqconjs', function() {
-    gulp.src(file_road.reqconjs_src)
-        .pipe(jshint.reporter('default')) //代码检测
+        //.pipe(sourcemaps.write('../maps/js'))//soucemap生成
         .pipe(gulp.dest(file_road.jsDst)) //本地目录--未压缩
-        .pipe(replace('../../../static_dest/static', '/qudao/v1/static'))
-        .pipe(replace('../../static_dest/static', '/qudao/v1/static'))
-        .pipe(gulp.dest(file_road.jsDst_end))
-        .pipe(browserSync.stream())
+        .pipe(browserSync.stream()); //实时修改刷新
+});
+gulp.task('js_build', function() { //转移到最终目录
+    gulp.src(file_road.jsSrc_mid)
+        .pipe(gulp.dest(file_road.jsDst_end)) //最终目录
 });
 //生存版本号
-gulp.task('jsnum', function() {
+gulp.task('jsnum_dev', function() { //代码检测，es6使用，增加头部注释，生成sourcemaps，压缩，实时刷新
     gulp.src(file_road.jsNum_src)
         .pipe(jshint.reporter('default')) //代码检测
         .pipe(babel({
             presets: ['es2015']
         }))
-        .pipe(gulp.dest(file_road.jsDst)) //本地目录--未压缩
-        .pipe(rev()) //增加版本号
+        .pipe(header(banner, { pkg: pkg })) //增加头部注释
+        .pipe(sourcemaps.init({ loadMaps: true, largeFile: true })) //soucemap生成
         .pipe(uglify({ //todo暂时隐藏压缩
             mangle: false, //类型：Boolean 默认：true 是否修改变量名
             compress: true, //类型：Boolean 默认：true 是否完全压缩
             //preserveComments: 'all' //保留所有注释
             mangle: { except: ['require', 'exports', 'module', '$'] } //排除混淆关键字
         }))
-        .pipe(header(banner, { pkg: pkg })) //增加头部注释
-        .pipe(gulp.dest(file_road.jsDst_end)) //最终目录
+        .pipe(sourcemaps.write('../maps/js')) //soucemap生成
+        .pipe(rev()) //增加版本号
+        .pipe(gulp.dest(file_road.jsDst)) //本地目录--未压缩
         .pipe(rev.manifest()) //生存json文件
         .pipe(gulp.dest('rev/js'))
         .pipe(browserSync.stream());
 });
-//第二次不执行--start
-// gulp.task('js',function() {
-//     gulp.src(file_road.jsSrc)
-//         .pipe(jshint.reporter('default')) //代码检测
-//         .pipe(gulp.dest(file_road.jsDst));
-//     gulp.src(file_road.jsDst_mid)     //本地目录
-//         .pipe(uglify({ //todo暂时隐藏压缩
-//             mangle: false, //类型：Boolean 默认：true 是否修改变量名
-//             compress: true, //类型：Boolean 默认：true 是否完全压缩
-//             //preserveComments: 'all' //保留所有注释
-//             mangle: { except: ['require', 'exports', 'module', '$'] } //排除混淆关键字
-//         }))
-//         .pipe(header(banner, { pkg: pkg })) //增加头部注释
-//         .pipe(browserSync.reload({stream:true}))
-//         .pipe(gulp.dest(file_road.jsDst_end)); //最终目录
-// });
-// gulp.task('js', ['js_mid'], function() {
-//     gulp.src(file_road.jsDst_mid) //本地目录
-//         .pipe(uglify({ //todo暂时隐藏压缩
-//             mangle: false, //类型：Boolean 默认：true 是否修改变量名
-//             compress: true, //类型：Boolean 默认：true 是否完全压缩
-//             //preserveComments: 'all' //保留所有注释
-//             mangle: { except: ['require', 'exports', 'module', '$'] } //排除混淆关键字
-//         }))
-//         .pipe(header(banner, { pkg: pkg })) //增加头部注释
-//         .pipe(browserSync.reload({stream:true}))
-//         .pipe(gulp.dest(file_road.jsDst_end)); //最终目录
-// });
-// gulp.task('js_mid', function() {
-//     gulp.src(file_road.jsSrc)
-//         .pipe(jshint.reporter('default')) //代码检测
-//         .pipe(gulp.dest(file_road.jsDst)); //输出未压缩代码
-// });
-//第二次不执行--end
+gulp.task('jsnum_build', function() { //生成版本号
+    gulp.src(file_road.jsNum_src_mid)
+        .pipe(gulp.dest(file_road.jsDst_end)) //最终目录
+});
 
 // 图片处理------------------------------------------------------------------------------------------------------------------------------------------
-gulp.task('images', function() {
+gulp.task('images_dev', function() { //压缩，实时刷新
     gulp.src(file_road.imgSrc)
-        .pipe(imagemin({
-            optimizationLevel: 5, //类型：Number  默认：3  取值范围：0-7（优化等级）
-            progressive: true, //类型：Boolean 默认：false 无损压缩jpg图片
-            interlaced: true, //类型：Boolean 默认：false 隔行扫描gif进行渲染
-            multipass: true //类型：Boolean 默认：false 多次优化svg直到完全优化
-        }))
+        .pipe(cache(imagemin([
+            imagemin.gifsicle({ interlaced: true }),
+            imagemin.jpegtran({ progressive: true }),
+            imagemin.optipng({ optimizationLevel: 7 }),
+            imagemin.svgo({ plugins: [{ removeViewBox: true }] })
+        ], {
+            // optimizationLevel: 5, //类型：Number  默认：3  取值范围：0-7（优化等级）
+            // progressive: true, //类型：Boolean 默认：false 无损压缩jpg图片
+            // interlaced: true, //类型：Boolean 默认：false 隔行扫描gif进行渲染
+            // multipass: true, //类型：Boolean 默认：false 多次优化svg直到完全优化
+            verbose: true, //打印进度
+            use: [pngquant()],
+        })))
         .pipe(gulp.dest(file_road.imgDst)) //本地目录
-        .pipe(gulp.dest(file_road.imgDst_end)) //最终目录
         .pipe(browserSync.stream());
+});
+gulp.task('images_build', function() { //压缩
+    gulp.src(file_road.imgSrc_mid)
+        .pipe(gulp.dest(file_road.imgDst_end)); //最终目录
 });
 
 // 清空图片、样式、js---最终使用del------------------------------------------------------------------------------------------------------------------------------------------
-gulp.task('del', function(cb) {
-    del(file_road.w_cleanall, { force: true }, cb);
+gulp.task('del_dev', function(cb) {
+    del(file_road.w_cleanall_dev, { force: true }, cb);
 });
-//clean经常报错，清理多次
-// gulp.task("clean", function() {
-//         return gulp.src(file_road.w_cleanbin)
-//             .pipe(clean({ force: true }));
-//     })
+gulp.task('del_build', function(cb) {
+    del(file_road.w_cleanall_build, { force: true }, cb);
+});
 
 // HTML处理--init使用------------------------------------------------------------------------------------------------------------------------------------------
-// gulp.task('html_mid', function() {
-//     gulp.src(file_road.htmlSrc)
-//         .pipe(header('# coding: utf-8 \n')) //增加头部代码
-//         .pipe(replace('../../../static_dest/static', '/qudao/v1/static'))
-//         .pipe(replace('../../static_dest/static', '/qudao/v1/static'))
-//         .pipe(browserSync.reload({stream:true}))
-//         .pipe(gulp.dest(file_road.htmlDst_mid))
-// });
-gulp.task('html', function() {
+gulp.task('html_dev', function() { //复制到template，实时刷新
     gulp.src(['rev/**/*.json', file_road.htmlSrc])
-        .pipe(revCollector({ replaceReved: true }))
-        .pipe(header('# coding: utf-8 \n')) //增加头部代码
-        .pipe(replace('../../../static_dest/static', '/qudao/v1/static'))
-        .pipe(replace('../../static_dest/static', '/qudao/v1/static'))
-        .pipe(gulp.dest(file_road.htmlDst))
+        .pipe(revCollector({ replaceReved: true })) //替换版本号
+        .pipe(gulp.dest(file_road.htmlDst_mid))
         .pipe(browserSync.stream())
 });
+gulp.task('html_build', function() { //替换版本号、增加特定头部代码、替换静态资源路径
+    gulp.src(file_road.htmlSrc_mid)
+        .pipe(header('# coding: utf-8 \n')) //增加头部代码
+        .pipe(replace('../../../static', '/qudao/v1/static'))
+        .pipe(replace('../../static', '/qudao/v1/static'))
+        .pipe(gulp.dest(file_road.htmlDst))
+});
+// 将maps的sourcemaps文件复制到最终目录-----------------------------------------------------------------------------
+gulp.task('source_build', function() { //压缩
+    gulp.src(file_road.source_src)
+        .pipe(gulp.dest(file_road.source_dst)); //最终目录
+});
 // 监听任务 运行语句 gulp watch------------------------------------------------------------------------------------------------------------------------------------------
-gulp.task('watch', function() {
+gulp.task('watch_dev', function() {
     //livereload启用
     //livereload.listen();
     browserSync.init({
+        port: 1111,
+        ui: {
+            port: 1112
+        },
         server: {
             baseDir: "./",
-            //files: ['./html/**/*.html', './static_dest/static/new/css/**/*.css', './static_dest/static/new/js/**/*.js'],
         },
     });
 
     // 监听html
-    gulp.watch(file_road.w_htmlSrc, ['html']);
+    gulp.watch(file_road.w_htmlSrc, ['html_dev']);
 
     // 监听css
-    gulp.watch(file_road.w_cssSrc, ['css']);
+    gulp.watch(file_road.w_cssSrc, ['css_dev']);
 
     // 监听images
-    gulp.watch(file_road.w_imgSrc, ['images']);
+    gulp.watch(file_road.w_imgSrc, ['images_dev']);
 
     // 监听js
-    gulp.watch(file_road.w_jsSrc, ['js']);
-    gulp.watch(file_road.w_jsrecon_Src, ['reqconjs']);
-    gulp.watch(file_road.w_jsnum_Src, ['jsnum']);
+    gulp.watch(file_road.w_jsSrc, ['js_dev']);
+    gulp.watch(file_road.w_jsrecon_Src, ['reqconjs_dev']);
+    gulp.watch(file_road.w_jsnum_Src, ['jsnum_dev']);
 
     //监听删除
     var watcher = gulp.watch([file_road.w_src_source, file_road.w_htmlSrc]);
@@ -306,37 +300,33 @@ gulp.task('watch', function() {
     });
 });
 
-//暂时没有使用
-gulp.task('init', function() {
-    gulp.start('css', 'images', 'js', 'reqconjs', 'html', 'watch');
-});
-//初始化静态资源
-gulp.task('static', function(done) {
-    runSequence(
-        ['images', 'css'], ['js', 'reqconjs', 'jsnum'], ['html'],
-        done);
-});
-// 默认任务 清空图片、样式、js并重建 运行语句 gulp
-// gulp.task('default', function() {
-//     gulp.start('css', 'images', 'js', 'watch');
-// });
 
 //#########################先执行 gulp del  清理文件,再执行gulp static编译文件,上传到服务器时，再执行一次 gulp html(增加上css版本号)//
 //#########################先执行 gulp del  清理文件,再执行gulp static编译文件,上传到服务器时，再执行一次 gulp html(增加上css版本号)//
 //#########################先执行 gulp del  清理文件,再执行gulp static编译文件,上传到服务器时，再执行一次 gulp html(增加上css版本号)//
-//开发构建--未执行['jshint'],
-// gulp.task('dev', function(done) {
-//     runSequence(
-//         ['webserver'], ['images', 'css'], ['js', 'reqconjs', 'jsnum'], ['html'], ['watch'],
-//         done);
-// });//执行--connect启用服务器及时刷新
+//开发过程中  gulp del_dev && gulp dev（先删除，再生成，同时实时检测）
 gulp.task('dev', function(done) {
     runSequence(
-        ['images', 'css'], ['js', 'reqconjs', 'jsnum'], ['html'], ['watch'],
+        ['images_dev', 'css_dev'], ['js_dev', 'reqconjs_dev', 'jsnum_dev'], ['html_dev'], ['watch_dev'],
         done);
 });
 gulp.task('default', ['dev']);
 
-//删除不可用
+
+//最终生成并提交代码过程中  gulp del_dev && gulp static_dev && gulp del_build && gulp static_build（先删除，再生成）
+//初始化静态资源
+gulp.task('static_dev', function(done) {
+    runSequence(
+        ['images_dev', 'css_dev'], ['js_dev', 'reqconjs_dev', 'jsnum_dev'], ['html_dev'],
+        done);
+});
+gulp.task('static_build', function(done) {
+    runSequence(
+        ['images_build', 'css_build'], ['js_build', 'reqconjs_build', 'jsnum_build'], ['html_build'],['source_build'],
+        done);
+});
+
+
 
 //重要备注：less文件名和路径中当中不能包含‘less’；html文件名当中不能包含‘.’
+//重要备注：图片的名称最好以ic/icon/a/……开头，否则，难以通过图片压缩编译；尤其是r/s/t/u/v/w开头的难以编译

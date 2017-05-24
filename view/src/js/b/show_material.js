@@ -8,6 +8,7 @@ require(['../require-config'], function() {
             // });
             //设置储值活动----------------------------------------------------------------------------------------------------------------------------------------------------
             $(document).ready(function() {
+                console.log('测试sourcemaps');
                 //获取图片
                 ajax_rule.ajax_rule('/prepaid/v1/api/b/materials', 'GET', 'json', '', '.zheceng', get_pic);
             });

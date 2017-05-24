@@ -3,6 +3,7 @@ require(['../require-config'], function() {
         $(function() {
             //添加图标和没有更多文字提示
             scroll_more.add_load_img('.section_action');
+            console.log('测试sourcemaps');
             var demo = new Vue({
                 el: '#wap',
                 data: {
@@ -111,7 +112,7 @@ require(['../require-config'], function() {
                         // });
                         _this.membershome = [{
                             "c": "abGSv", // hash之后的cid
-                            'avatar': "../../static_dest/static/new/img/headimg.png", // 会员头像的URL
+                            'avatar': "../../static/new/img/headimg.png", // 会员头像的URL
                             'recharge_times': 10, // 在该商户下累计充值次数
                             'recharge_amt': 50000, // 该消费者在商户下累计充值的金额
                             'mobile': "13012349876", // 消费者首次在商户下使用储值时,填写的联系方式
@@ -119,7 +120,7 @@ require(['../require-config'], function() {
                             'balance': 500, // 该消费者当前余额
                         }, {
                             "c": "abGSv", // hash之后的cid
-                            'avatar': "../../static_dest/static/new/img/headimg.png", // 会员头像的URL
+                            'avatar': "../../static/new/img/headimg.png", // 会员头像的URL
                             'recharge_times': 10, // 在该商户下累计充值次数
                             'recharge_amt': 50000, // 该消费者在商户下累计充值的金额
                             'mobile': "13012349876", // 消费者首次在商户下使用储值时,填写的联系方式
@@ -127,7 +128,7 @@ require(['../require-config'], function() {
                             'balance': 500, // 该消费者当前余额
                         }, {
                             "c": "abGSv", // hash之后的cid
-                            'avatar': "../../static_dest/static/new/img/headimg.png", // 会员头像的URL
+                            'avatar': "../../static/new/img/headimg.png", // 会员头像的URL
                             'recharge_times': 10, // 在该商户下累计充值次数
                             'recharge_amt': 50000, // 该消费者在商户下累计充值的金额
                             'mobile': "13012349876", // 消费者首次在商户下使用储值时,填写的联系方式

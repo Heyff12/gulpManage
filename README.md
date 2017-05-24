@@ -31,6 +31,20 @@ gulp html
 
 ```
 
+``` bash
+# 开发过程中执行 
+
+npm run dev  
+
+
+
+# 生成线上文件时 
+
+npm run build  
+ 
+
+
+```
 
 ## 项目说明
 
@@ -48,7 +62,9 @@ gulp html
 
 6、px与rem像素的自适应  
 
-7、页面自动刷新（更改html/css/js）
+7、页面自动刷新（更改html/css/js） 
+
+8、生成sourcemaps文件（更改html/css/js）
  
 
  

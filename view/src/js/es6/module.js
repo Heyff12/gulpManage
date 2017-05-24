@@ -1,4 +1,3 @@
-import "babel-polyfill"
 import {firstName, lastName, year} from './profile.js';
 console.log(firstName)
 function timeout(ms){
