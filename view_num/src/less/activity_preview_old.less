@@ -1,0 +1,198 @@
+@import "./common/common";
+
+/* ==================储值预览============================================================ */
+
+section.section_index {
+    width: 100%;
+    padding: 0 @padding;
+    border-bottom: 1px solid @border_color;
+    background: white;
+    background: url('@{images}/wxchar.png') top left no-repeat none;
+}
+
+p.title_a {
+    text-align: left;
+    line-height: 1rem;
+}
+
+ul.rechage_ul {
+    width: 100%;
+    margin-top: 0rem;
+}
+
+ul.rechage_ul li {
+    float: left;
+    width: 48%;
+    border: 1px solid #C2C2C2;
+    border-radius: @border_radius;
+    position: relative;
+    margin: 0 0 @padding;
+    text-align: center;
+    line-height: 0.6rem;
+    padding: 0 0;
+    overflow: hidden;
+}
+
+ul.rechage_ul li:nth-child(2),
+ul.rechage_ul li:nth-child(4) {
+    float: right;
+}
+
+ul.rechage_ul li p.font_17 {
+    font-size: 17px;
+    padding-top: 0.2rem;
+}
+
+ul.rechage_ul li p:nth-child(2) {
+    padding-bottom: 0.2rem;
+}
+
+ul.rechage_ul li span.choose {
+    position: absolute;
+    bottom: -0.3rem;
+    right: -0.3rem;
+    width: 0.7rem;
+    height: 0.7rem;
+    background: @orange;
+    color: white;
+    text-align: left;
+    border-radius: 0.5rem 0 0 0.5rem;
+    display: none;
+}
+
+ul.rechage_ul li span.choose i {
+    width: 0.25rem;
+    height: 0.12rem;
+    border: 1px solid white;
+    border-width: 0 0 1px 1px;
+    display: inline-block;
+    position: relative;
+    top: -0.18rem;
+    left: 0.1rem;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+ul.rechage_ul li.li_choose {
+    border: 1px solid @orange;
+    color: @orange;
+}
+
+ul.rechage_ul li.li_choose span.choose {
+    display: inline-block;
+}
+
+ul.rechage_ul li.li_one {
+    width: 100%;
+    padding: 0.6rem 0;
+    font-size: 18px;
+}
+
+ul.rechage_ul li.li_one p.font_17 {
+    font-size: 20px;
+}
+
+ul.rechage_ul li.li_two {
+    padding: 0.6rem 0;
+    font-size: 18px;
+}
+
+ul.rechage_ul li.li_two p.font_17 {
+    font-size: 20px;
+}
+
+dl.dl_detail {
+    background: white;
+    border-top: 1px solid @border_color;
+    border-bottom: 1px solid @border_color;
+    padding: 0;
+    margin: 0.3rem auto 0;
+    line-height: 1.4rem;
+}
+
+dl.dl_detail dt {
+    float: left;
+    width: 35%;
+    padding-left: @padding;
+}
+
+dl.dl_detail dd {
+    float: left;
+    width: 65%;
+    text-align: right;
+    padding-right: @padding;
+}
+
+dl.dl_detail dd.orange span {
+    font-size: 19px;
+}
+
+img.img_wx {
+    width: 1rem;
+    height: 1rem;
+    padding-right: 3px;
+    vertical-align: middle;
+}
+
+section.dl_note {
+    background: white;
+    border-top: 1px solid @border_color;
+    border-bottom: 1px solid @border_color;
+    padding: 0 0px;
+    margin: 0.3rem auto 3.3rem;
+}
+
+section.dl_note p {
+    border-bottom: 1px solid @border_color;
+    line-height: 1.2rem;
+    margin-left: @padding;
+}
+
+section.dl_note ul {
+    width: auto;
+    padding: 0.3rem 0 0.3rem @padding;
+    line-height: 0.62rem;
+    list-style: disc;
+    list-style-position: outside;
+    color: @border_color;
+    margin: 0 @padding;
+}
+
+section.dl_note ul li span {
+    color: @black;
+}
+
+dl.dl_message {
+    padding: 0 0 0.1rem;
+}
+
+dl.dl_message dt {
+    padding: 0.1rem 0;
+}
+
+dl.dl_message dd {
+    margin: 0.1rem 0;
+    font-size: 13px;
+    line-height: 20px;
+}
+
+dl.dl_message dd input.text {
+    border: 1px solid @border_color;
+    border-radius: @border_radius;
+    height: 1.1rem;
+    line-height: 1.1rem;
+    width: 100%;
+    padding: 0 10px;
+    font-size: 16px;
+    color: @input_color;
+}
+
+dl.dl_message dd input.text.border_red {
+    border: 1px solid @red;
+    color: @red;
+}
+
+dl.dl_message dd input.text.grey {
+    color: @grey;
+}
+

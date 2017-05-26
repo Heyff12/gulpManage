@@ -1,0 +1,155 @@
+@import "./common/common";
+
+/* ==================储值会员信息--列表============================================================ */
+
+.li_none {
+    width: 100%;
+    height: 100%;
+    display: none;
+    .history_img {
+        display: inline-block;
+        width: 48%;
+        margin: 3rem 0 1.2rem 26%;
+        height: auto;
+    }
+    p.title_no {
+        font-size: @font_size;
+        text-align: center;
+        line-height: 0.8rem;
+        width: 68%;
+        margin: 0 auto;
+    }
+}
+
+section.section_search {
+    width: 100%;
+    padding: 0.2rem @padding;
+    line-height: 1.4rem;
+    height: 1.4rem;
+    background: @background_color;
+    .search_out{
+        width: 100%;
+        border:@border_width solid @border_color;
+        border-radius: @border_radius;
+        height: 1rem;
+        line-height: 1rem;
+        padding-left: 0.8rem;
+        box-sizing: border-box;
+        position: relative;
+        background: white;
+        i.icon_search{            
+            background: url('@{images}/ic_search.png') center left no-repeat;
+            background-size: 0.4rem auto;
+            position: absolute;
+            display: inline-block;
+            width: 0.4rem;
+            height: 0.5rem;
+            left: 0.2rem;
+            top:0.2rem;
+        }
+        input.text{
+            background: none;
+            border:none;
+            width: 100%;
+            height: 0.9rem;
+            line-height: 0.9rem;
+            position: relative;
+            top:-0.04rem;
+            font-size: @font_size;
+        }
+    }
+}
+
+section.section_history {
+    width: 100%;
+    background: white;
+    padding-left: @padding;
+    box-sizing: border-box;
+    ul.ul_history {
+        width: 100%;
+        li {
+            width: 100%;
+            border-bottom: @border_width solid @border_color;
+            padding: 0.2rem @padding 0.2rem 0;
+            box-sizing: border-box;
+            height: 2.12rem;
+            &:after{
+                content: '';
+                width: 0;
+                height: 0;
+                font-size: 0;
+                line-height: 0;
+                clear: both;
+            }
+            p {
+                display: block;
+                float: right;
+                width: 38%;
+                text-align: right;
+                line-height: 0.6rem;
+                font-size: 14px; 
+                padding:0rem 0.6rem 0 0;  
+                margin-top: 0.2rem;   
+                box-sizing: border-box;  
+                height: 1.2rem;  
+                background: url('@{images}/ic_next.png') center right no-repeat;  
+                background-size: 0.32rem auto; 
+                span.orange{
+                    i{
+                        font-size: 20px;
+                    }
+                } 
+            }
+            dl {
+                float: left;
+                width: 60%;
+                dt {
+                    float: left;
+                    width: 1.5rem;
+                    max-width: 30%;
+                    top: 0.1rem;
+                    position: relative;
+                    border-radius: @border_radius;
+                    overflow: hidden;
+                    img {
+                        height: 1.5rem;
+                        width: auto;
+                    }
+                }
+                dd {
+                    float: right;
+                    width: 69%;
+                    line-height: 0.54rem;
+                    &.grey {
+                        font-size: 14px;
+                    }
+                    span.buy_back {
+                        border: @border_width solid @orange;
+                        font-size: 13px;
+                        padding: 2px 3px;
+                        border-radius: @border_radius;
+                        margin-left: 5px;
+                    }
+                }
+                i.icon_tel{            
+                    background: url('@{images}/ic_tel.png') center left no-repeat;
+                    background-size: 0.26rem auto;
+                    position: relative;
+                    display: inline-block;
+                    width: 0.26rem;
+                    height: 0.5rem;
+                    left: 0rem;
+                    top:0.12rem;
+                    padding-right: 0.1rem;
+                }
+            }
+        }
+    }
+    p.click_more {
+        width: 100%;
+        height: 1.2rem;
+        line-height: 1.2rem;
+        text-align: center;
+        font-size: 0.4rem;
+    }
+}

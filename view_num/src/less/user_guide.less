@@ -1,0 +1,41 @@
+@import "./common/common";
+
+/* ==================储值教程============================================================ */
+
+section.section_index {
+    width: 100%;
+    padding: 0.2rem @padding;
+    box-sizing: border-box;
+    background: white;
+    margin: .2rem 0;
+    font-size: @font_size;
+    p{
+        width: 100%;
+        border-bottom: dashed @border_color @border_width@border_width;/*no*/
+        line-height: 1rem;
+        text-align: center;
+        font-weight: bold;
+    }
+    ul {
+        width: 100%;
+        line-height: 0.7rem;
+        padding: .1rem 0 .1rem 0;
+        box-sizing: border-box;
+        font-size: 14px;
+        li {
+            width: 100%;
+            span.num {
+                display: inline-block;
+                width: 0.4rem;
+                height: 0.4rem;
+                line-height: 0.4rem;
+                text-align: center;
+                background: @orange;
+                color: white;
+                border-radius: 100%;
+                margin-right: 5px;
+                font-size: .36rem;
+            }
+        }
+    }
+}

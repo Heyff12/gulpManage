@@ -95,7 +95,7 @@ gulp.task('webserver', function() {
     });
 });
 // 样式处理------------------------------------------------------------------------------------------------------------------------------------------
-gulp.task('css_dev', function() { //less编译，px rem转化，压缩，生成sourcemaps,实时刷新
+gulp.task('css_dev', function() { //less编译，px rem转化，压缩，生成sourcemaps,生成版本号,实时刷新
     var processors = [px2rem({ remUnit: 37.5 })];
     gulp.src(file_road.cssSrc)
         .pipe(sourcemaps.init({ loadMaps: true, largeFile: true })) //soucemap生成
@@ -115,7 +115,7 @@ gulp.task('css_dev', function() { //less编译，px rem转化，压缩，生成s
         .pipe(gulp.dest('rev/css'))
         .pipe(browserSync.stream()); //实时修改刷新
 });
-gulp.task('css_build', function() { //生成版本号
+gulp.task('css_build', function() { //
     gulp.src(file_road.cssSrc_mid) //本地目录
         .pipe(gulp.dest(file_road.cssDst_end)) //最终目录
 });
@@ -167,7 +167,7 @@ gulp.task('js_build', function() { //转移到最终目录
         .pipe(gulp.dest(file_road.jsDst_end)) //最终目录
 });
 //生存版本号
-gulp.task('jsnum_dev', function() { //代码检测，es6使用，增加头部注释，生成sourcemaps，压缩，实时刷新
+gulp.task('jsnum_dev', function() { //代码检测，es6使用，增加头部注释，生成sourcemaps，压缩，生成版本号,实时刷新
     gulp.src(file_road.jsNum_src)
         .pipe(jshint.reporter('default')) //代码检测
         .pipe(babel({
@@ -188,7 +188,7 @@ gulp.task('jsnum_dev', function() { //代码检测，es6使用，增加头部注
         .pipe(gulp.dest('rev/js'))
         .pipe(browserSync.stream());
 });
-gulp.task('jsnum_build', function() { //生成版本号
+gulp.task('jsnum_build', function() { //
     gulp.src(file_road.jsNum_src_mid)
         .pipe(gulp.dest(file_road.jsDst_end)) //最终目录
 });
@@ -304,7 +304,7 @@ gulp.task('watch_dev', function() {
 //#########################先执行 gulp del  清理文件,再执行gulp static编译文件,上传到服务器时，再执行一次 gulp html(增加上css版本号)//
 //#########################先执行 gulp del  清理文件,再执行gulp static编译文件,上传到服务器时，再执行一次 gulp html(增加上css版本号)//
 //#########################先执行 gulp del  清理文件,再执行gulp static编译文件,上传到服务器时，再执行一次 gulp html(增加上css版本号)//
-//开发过程中  gulp del_dev && gulp dev（先删除，再生成，同时实时检测）
+
 gulp.task('dev', function(done) {
     runSequence(
         ['images_dev', 'css_dev'], ['js_dev', 'reqconjs_dev', 'jsnum_dev'], ['html_dev'], ['watch_dev'],
@@ -312,8 +312,8 @@ gulp.task('dev', function(done) {
 });
 gulp.task('default', ['dev']);
 
-
-//最终生成并提交代码过程中  gulp del_dev && gulp static_dev && gulp del_build && gulp static_build（先删除，再生成）
+//开发过程中  gulp del_dev && gulp static_dev && gulp html_dev && gulp watch_dev（先删除，再生成，再次执行html_dev替换版本号，最后实时检测）
+//最终生成并提交代码过程中  gulp del_dev && gulp static_dev && gulp html_dev && gulp del_build && gulp static_build（先删除，再生成，在替换版本号，再删除bin和template,再转移文件）
 //初始化静态资源
 gulp.task('static_dev', function(done) {
     runSequence(
@@ -330,3 +330,4 @@ gulp.task('static_build', function(done) {
 
 //重要备注：less文件名和路径中当中不能包含‘less’；html文件名当中不能包含‘.’
 //重要备注：图片的名称最好以ic/icon/a/……开头，否则，难以通过图片压缩编译；尤其是r/s/t/u/v/w开头的难以编译
+//重要备注：没有修改的文件，版本号不发生变化

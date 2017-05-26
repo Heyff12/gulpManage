@@ -3,7 +3,7 @@ require(['../require-config'], function() {
         $(function() {
             //添加图标和没有更多文字提示
             scroll_more.add_load_img('.section_action');
-            console.log('测试sourcemaps');
+            console.log('测试sourcemaps+444444');
             var demo = new Vue({
                 el: '#wap',
                 data: {
