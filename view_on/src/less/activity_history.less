@@ -1,0 +1,109 @@
+@import "./common/common";
+
+/* ==================历史活动============================================================ */
+.li_none {
+    width: 100%;
+    height: 100%;
+    display: none;
+    .history_img {
+        display: inline-block;
+        width: 48%;
+        margin: 3rem 0 1.2rem 26%;
+        height: auto;
+    }
+    p.title_no {
+        font-size: @font_size;
+        text-align: center;
+        line-height: 0.8rem;
+        width: 68%;
+        margin: 0 auto;
+    }
+}
+section.section_history {
+    width: auto;
+    margin: .3rem @padding .4rem;
+    padding: 0;
+    border-radius: @border_radius;
+    box-shadow: 3px 0 10px @shadow_color;
+    background: white;
+    position: relative;
+    overflow: hidden;
+    &:before {
+        content: '';
+        background: #FCEFDF;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 1rem;
+        top: 0;
+        z-index: 0;
+    }
+    p.time {
+        width: 100%;
+        height: 1rem;
+        line-height: 1rem;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
+    ul.message {
+        width: 100%;
+        text-align: center;
+        border-bottom: dashed @border_color @border_width;/*no*/
+        margin: .3rem 0 0;
+        padding-bottom: .3rem;
+        &:after {
+            content: '';
+            clear: both;
+            line-height: 0;
+            height: 0;
+            display: block;
+        }
+        li {
+            width: 50%;
+            float: left;
+            padding: 0;
+            font-size: 14px;
+            line-height: 0.7rem;
+            border-right: solid @border_color @border_width;/*no*/
+            color: @grey;
+            &:nth-child(2) {
+                border: 0;
+                float: right;
+                width: 48%;
+            }
+            span.span_num {
+                font-size: 18px;
+                color: @black;
+                i {
+                    font-style: normal;
+                    font-size: 30px;
+                    padding-right: 5px;
+                    color: @orange;
+                }
+            }
+        }
+    }
+    ul.rules {
+        width: 100%;
+        padding-left: @padding;
+        box-sizing: border-box;
+        line-height: 1rem;
+        color: @grey;
+        li {
+            width: 100%;
+            padding-right: @padding;
+            box-sizing: border-box;
+            border-top: solid @border_color @border_width;/*no*/
+            &:nth-child(1) {
+                border: 0;
+            }
+            span.fr{
+                color: @black;
+                i{
+                    font-weight: normal;
+                }
+            }
+        }
+    }
+}
