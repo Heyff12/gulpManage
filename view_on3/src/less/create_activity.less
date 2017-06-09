@@ -1,0 +1,214 @@
+@import "./common/common";
+@import "./lib/iosselect/iosSelect"; //ios select样式
+
+/* ==================设置储值活动============================================================ */
+
+input[type="text"]:disabled {
+    background-color: white;
+}
+input[type="tel"]:disabled {
+    background-color: white;
+}
+
+.padding_b {
+    padding-bottom: 1.8rem;
+}
+
+h3.title {
+    width: 100%;
+    padding: 0 @padding;
+    box-sizing: border-box;
+    line-height: .4rem;
+    font-weight: normal;
+    font-size: 14px;
+    margin-top: .3rem;
+}
+
+p.remark {
+    width: 100%;
+    padding: 0 @padding;
+    box-sizing: border-box;
+    line-height: .6rem;
+    font-size: 14px;
+    span {
+        display: none;
+        width: 100%;
+        line-height: .6rem;
+        i.xing {
+            font-size: 18px;
+            padding-right: 5px;
+            position: relative;
+            top: .13rem;
+        }
+        i.ic_tips {
+            display: inline-block;
+            width: .36rem;
+            height: .36rem;
+            border-radius: 100%;
+            background: url('@{images}/ic_tips.png') center center no-repeat;
+            background-size: .36rem auto;
+            position: relative;
+            top: .08rem;
+            margin-right: 5px;
+        }
+    }
+    &.error_tips {
+        span {
+            display: inline-block;
+        }
+    }
+    &.span_tips {
+        span {
+            display: inline-block;
+        }
+    }
+}
+
+section.section_index {
+    width: 100%;
+    padding: 0 0 0 @padding;
+    box-sizing: border-box;
+    background: white;
+    line-height: 1rem;
+    border-top: solid @border_color @border_width;
+    /*no*/
+    border-bottom: solid @border_color @border_width;
+    /*no*/
+    margin: .3rem 0 0;
+    dl {
+        width: 100%;
+        padding: .1rem @padding .1rem 0;
+        box-sizing: border-box;
+        &:after {
+            content: " ";
+            display: block;
+            font-size: 0;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+            overflow: hidden;
+        }
+        dt {
+            width: 30%;
+            float: left;
+            text-align: left;
+        }
+        dd {
+            width: 70%;
+            float: right;
+            text-align: right;
+            input.text {
+                border: solid @border_color @border_width;
+                /*no*/
+                height: .8rem;
+                line-height: .8rem;
+                width: 60%;
+                padding: 0 5px;
+                text-align: right;
+                font-size: 16px;
+                &.text_shot2 {
+                    width: 35%;
+                    text-align: center;
+                }
+                &.text_short {
+                    width: 16%;
+                    text-align: center;
+                    margin: 0 5px;
+                    &.error_tips {
+                        border: solid @red @border_width;
+                        /*no*/
+                    }
+                }
+            }
+            i.delete {
+                display: inline-block;
+                width: .4rem;
+                height: .4rem;
+                border-radius: 100%;
+                background: url('@{images}/ic_delete.png') center center no-repeat;
+                background-size: .4rem auto;
+                position: relative;
+                top: .05rem;
+                margin-left: 5px;
+            }
+        }
+        &.rule {
+            position: relative;
+            padding: 0;
+            min-height: 1.3rem;
+            dt {
+                position: absolute;
+                top: .15rem;
+                span {
+                    width: .8rem;
+                    height: .8rem;
+                    line-height: .8rem;
+                    text-align: center;
+                    display: inline-block;
+                    border: solid white @border_width;
+                    /*no*/
+                    &.add_rule {
+                        border: solid @orange @border_width;
+                        /*no*/
+                        i {
+                            display: inline-block;
+                            width: .4rem;
+                            height: .4rem;
+                            background: url('@{images}/ic_jia.png') center center no-repeat;
+                            background-size: .4rem auto;
+                            position: relative;
+                            top: .06rem;
+                        }
+                    }
+                    &.add_rule_no {
+                        border: solid @border_color @border_width;
+                        /*no*/
+                        background: @border_color;
+                        display: none;
+                        i {
+                            display: inline-block;
+                            width: .4rem;
+                            height: .4rem;
+                            background: url('@{images}/ic_jiaw.png') center center no-repeat;
+                            background-size: .4rem auto;
+                            position: relative;
+                            top: .06rem;
+                        }
+                    }
+                }
+            }
+            dd {
+                width: 100%;
+                border-top: solid @border_color @border_width;
+                /*no*/
+                padding: .2rem @padding .2rem 0;
+                &:nth-child(2) {
+                    border: 0;
+                }
+            }
+        }
+    }
+}
+
+section.section_mid {
+    width: 100%;
+    padding: .2rem @padding;
+    box-sizing: border-box;
+    background: white;
+    border-top: solid @border_color @border_width;
+    /*no*/
+    border-bottom: solid @border_color @border_width;
+    /*no*/
+    margin: .3rem 0 0;
+    textarea {
+        width: 100%;
+        background: none;
+        border: none;
+        font-size: @font_size;
+    }
+    p.wordtip {
+        width: 100%;
+        text-align: right;
+        font-size: 14px;
+    }
+}

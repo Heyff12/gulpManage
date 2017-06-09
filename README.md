@@ -105,5 +105,11 @@ npm run build
 ---
 
 
+## view目录说明 
+1、view——一步到位，本地编译压缩后复制到线上文件夹（压缩、map、版本）  
+2、view_mun——分成本地开发和线上部署两个步骤  
+3、view_on——同上  
+4、view_on2——在3的基础上，将压缩、生成sourcemaps都转移到线上部署npm run build执行；同上不删除开发过程中的img文件夹（img压缩执行不完全）；小于10M的图片转化成base64编码，减少http请求  
+5、view_on2——在4的基础上，尝试将require模块合并
 
 

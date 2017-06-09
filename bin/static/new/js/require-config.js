@@ -1,5 +1,5 @@
 require.config({
-    baseUrl: "/qudao/v1/static/new/js",
+    baseUrl: "/prepaid/v1/static/new/js",
     paths: {
         "jquery": ["plug/jquery-2.1.4.min", "plug/jquery-1.7.2.min", "http://libs.baidu.com/jquery/2.0.3/jquery"],
         "zepto": "plug/zepto.min",
@@ -26,6 +26,8 @@ require.config({
         "jsbridge": "common/jsbridge",//环境还未准备好,bridge 还未注入,H5跟 Native还不能交互,放进队列中
         "native": "common/native",//解析app方法
         "alert_word": "common/alert_word",//提示文字
+        "wxjsbridge": "common/wxjsbridge",//微信菜单屏蔽
+        "wx": "plug/jweixin-1.2.0",//微信菜单屏蔽
     },
     shim: {　　　　　　
         'mobiscroll': {　　　　　　　　
