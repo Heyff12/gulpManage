@@ -15,7 +15,9 @@ define(["mock"], function(mock) {　
         console.log(mock.mock(activities));//打印生成的数据
         mock.mock(/prepaid\/v1\/api\/b\/stat\/activities/, 'get', activities);
     }
-    get_activities();
+    get_activities();//直接执行，避免在正式文件中进行调用，便器上线时减少代码屏蔽量
+
+
     var members = {
         "respcd": "0000",
         "respmsg": "OK",
@@ -35,6 +37,8 @@ define(["mock"], function(mock) {　
         mock.mock(/prepaid\/v1\/api\/b\/members/, 'get', members);
     }
     get_members();
+
+
     var activity_history = {
         "respcd": "0000",
         "respmsg": "OK",
@@ -63,6 +67,8 @@ define(["mock"], function(mock) {　
         mock.mock(/prepaid\/v1\/api\/b\/activity_history/, 'get', activity_history);
     }
     get_activity_history();//直接执行，避免在正式文件中进行调用，便器上线时减少代码屏蔽量
+
+    
     var service_info = {
         "respcd": "0000",
         "respmsg": "OK",
