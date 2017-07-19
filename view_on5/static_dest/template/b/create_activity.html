@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>设置储值活动</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <script>window.PointerEvent = void 0</script>
+    <script type="text/javascript" src="../../static_dest/static/new/js/plug/flexible.debug.js"></script>
+    <link rel="stylesheet" href="../../static_dest/static/new/css/create_activity.css">
+</head>
+
+<body>
+    <div id="wap" class="padding_b js_setactivity_index">
+        <section class="section_index">
+            <dl>
+                <dt>活动时间</dt>
+                <dd>
+                    <input type="hidden" class="js_storage" name="start_time" id="startime" value="" />
+                    <input class="text text_shot2 js_startime" type="text" value="" placeholder=""  readonly="readonly" data-year="" data-month="" data-day="" />
+                    <span class="black">至</span>
+                    <input type="hidden" class="js_storage" name="end_time" id="endtime" value="" />
+                    <input class="text text_shot2 js_endtime" type="text" value="" placeholder="" readonly="readonly" data-year="" data-month="" data-day="" />
+                </dd>
+            </dl>
+        </section>
+        <p class="remark red js_timetips">
+            <span></span>
+        </p>
+        <h3 class="title">储值规则</h3>
+        <section class="section_index">
+            <dl class="rule js_rule">
+                <dt class="js_add_activity">
+                    <span class="add_rule"><i></i></span>
+                    <span class="add_rule_no"><i></i></span>
+                </dt>
+                <dd data-index="">储值<input class="text text_short js_chu js_storule" type="tel" value="" name="pay_amt" />元送
+                    <input class="text text_short js_song js_storule" type="tel" value="" name="present_amt" />元</dd>
+            </dl>
+        </section>
+        <p class="remark red js_rule_error">
+            <span><i class="i_normal xing">*</i>最多只可创建4条规则</span>
+        </p>
+        <h3 class="title">储值规则备注</h3>
+        <section class="section_mid">
+            <textarea class="text js_storage js_note" maxlength="40" id="js_note" name="desc" placeholder="请输入备注内容"></textarea>
+            <p class="wordtip js_wordtip">还可以输入<span></span>字</p>
+        </section>
+        <p class="remark red">
+            <span><i class="ic_tips"></i>描述太简单了，试着丰富一些吧</span>
+        </p>
+        <section class="section_index">
+            <dl>
+                <dt>商户电话</dt>
+                <dd>
+                    <input class="text js_storage js_tel" type="tel" value="" placeholder="固定电话或手机" name="mch_mobile" />
+                </dd>
+            </dl>
+        </section>
+        <p class="remark red">
+            <span><i class="ic_tips"></i>请您填写固定电话或手机号码</span>
+        </p>
+        <input type="hidden" class="js_storage js_shopname" name="merchant_name" value="" />
+        <section class="section_footer">
+            <span class="content_sub js_addactivity_sub">提交预览</span>
+        </section>
+    </div>
+    <div class="ios_select_container"></div>
+    <script src="../../static_dest/static/new/js/require.2.1.11.min.js" type="text/javascript" data-main="../../static_dest/static/new/js/b/create_activity.js" defer async="true"></script>
+</body>
+
+</html>

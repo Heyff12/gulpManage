@@ -1,0 +1,20 @@
+{
+  "name": "rechargeB",
+  "description": "rechargeB详情",
+  "main": "index.js",
+  "authors": [
+    "heyff"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/Heyff12/gulpManage",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "mockjs": "^1.0.0"
+  }
+}

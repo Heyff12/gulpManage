@@ -1,4 +1,5 @@
-view/node_modules/
-view/node_modules_natural/
-view/rev/
 node_modules/
+node_modules_natural/
+rev/
+node_modules/
+bower_components/
