@@ -111,7 +111,8 @@ npm run build
 3、view_on——同上  
 4、view_on2——在3的基础上，将压缩、生成sourcemaps都转移到线上部署npm run build执行；同上不删除开发过程中的img文件夹（img压缩执行不完全）；小于10M的图片转化成base64编码，减少http请求  
 5、view_on2——在4的基础上，尝试将require模块合并  
-6、view_on5——正式环境,分npm run dev  和 npm run build 两种方式，增加了mock数据的模式。A-mock数据的name.js文件统一放在src/js/common/mock 文件夹下面，名字name保持与调用该js的主文件名字相同（便于后期测试维护）；B-mock文件夹下面的js文件同样需要在require-config.js中进行路径名称注册，名称格式mock_name,便于查看文件逻辑  
+6、view_on5——正式环境,分npm run dev  和 npm run build 两种方式，增加了mock数据的模式。A-mock数据的name.js文件统一放在src/js/common/mock 文件夹下面，名字name保持与调用该js的主文件名字相同（便于后期测试维护）；B-mock文件夹下面的js文件同样需要在require-config.js中进行路径名称注册，名称格式mock_name,便于查看文件逻辑；mock查看http://mockjs.com/0.1/#natural  
+  
 
 
 
