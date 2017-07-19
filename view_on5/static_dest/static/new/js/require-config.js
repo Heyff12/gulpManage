@@ -28,6 +28,8 @@ require.config({
         "alert_word": "common/alert_word",//提示文字
         "wxjsbridge": "common/wxjsbridge",//微信菜单屏蔽
         "wx": "plug/jweixin-1.2.0",//微信菜单屏蔽
+        "mock": "http://mockjs.com/dist/mock",//mockjs
+        "mock_index": "common/mock/index",//mock数据，b端首页
     },
     shim: {　　　　　　
         'mobiscroll': {　　　　　　　　

@@ -122,7 +122,7 @@ gulp.task('css_dev', function() { //less编译，px rem转化,实时刷新,图�
             extensions: ['svg', 'png', /\.jpg#datauri$/i],
             exclude: [/\.server\.(com|net)\/dynamic\//, '--live.jpg'],
             maxImageSize: 10 * 1024, // bytes 
-            debug: true
+            debug: false
         })) //图片转成64位编码
         .pipe(gulp.dest(file_road.cssDst)) //本地目录
         .pipe(browserSync.stream()); //实时修改刷新

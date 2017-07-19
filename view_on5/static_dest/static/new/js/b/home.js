@@ -1,8 +1,12 @@
 "use strict";
 
 require(['../require-config'], function () {
-    require(["zepto", "ajax_rule", "yanzheng", "date_change", "scroll_more", "if_menu", "native"], function ($, ajax_rule, yanzheng, date_change, scroll_more, if_menu, native) {
+    require(["zepto", "ajax_rule", "yanzheng", "date_change", "scroll_more", "if_menu", "native", "mock_index"], function ($, ajax_rule, yanzheng, date_change, scroll_more, if_menu, native, mock_index) {
         $(function () {
+            mock_index.get_activities();
+            mock_index.get_members();
+            mock_index.get_activity_history();
+            mock_index.get_service_info();
             var is_qfgroup = false;
             //设置右边的菜单按钮
             var menu_data = {
