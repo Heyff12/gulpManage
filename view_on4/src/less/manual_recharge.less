@@ -1,0 +1,70 @@
+@import "recharge";
+
+section.section_merchant:before{
+  width: 0px;
+}
+
+section.section_index{
+  p {
+    i.icon_select{
+      background: url('@{images}/ic_notSelected.png') center left no-repeat;
+      background-size: 0.45rem auto;
+      position: relative;
+      display: inline-block;
+      width: 0.45rem;
+      height: 0.45rem;
+      top:0.08rem;
+    }
+  }
+  dd {
+    margin-left: 0.55rem;
+    line-height: 1rem;
+    margin-bottom: 0.4rem;
+  }
+}
+
+ul.rechage_ul{
+  padding-left: 0.55rem;
+  width: 95%;
+}
+
+input.text{
+  display: inline-block;
+  border: 1px solid #C2C2C2;
+  /*no*/
+  border-radius: @border_radius;
+  /*no*/
+  width: 100%;
+  font-size: 0.4rem;
+  line-height: 1rem;
+  height: 1rem;
+  text-indent: 0.1rem;
+}
+
+section.section_index div.s_rules_amount.selected i.icon_selected{
+  background: url('@{images}/ic_selected.png') center left no-repeat;
+  background-size: 0.45rem auto;
+}
+
+section.section_index div.s_custom_amount.selected i.icon_selected{
+  background: url('@{images}/ic_selected.png') center left no-repeat;
+  background-size: 0.45rem auto;
+}
+
+section.section_index div.s_custom_amount.selected input.text{
+  border-color: @orange;
+}
+
+section.section_index p.selected dd input.text{
+  border-color: @orange;
+}
+
+section.verifyCode_sec{
+    background: white;
+    padding: 0.4rem 0.4rem;
+    margin: 0.3rem 0;
+    font-size: 0.4rem;
+    dd {
+      margin-top: 0.2rem;
+    }
+}

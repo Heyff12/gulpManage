@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>请您填写信息</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <script type="text/javascript" src="../../static_dest/static/new/js/plug/flexible.debug.js"></script>
+    <link rel="stylesheet" href="../../static_dest/static/new/css/recharge_info.css">
+</head>
+
+<body>
+    <div id="wap">
+        <input class="js_hidden_first" type="hidden" value="0" />
+        <input class="js_grid_index" name="grid_index" type="hidden" value="" />
+        <div class="js_first_bind">
+            <section class="section_reg">
+                <dl class="hang dt_no">
+                    <dt></dt>
+                    <dd>
+                        <input class="text js_message_tel" type="text" value="" placeholder="请输入手机号" name="mobile" />
+                    </dd>
+                </dl>
+                <dl class="hang dt_no">
+                    <dt></dt>
+                    <dd>
+                        <input type="text" name="" value="" class="text text_shot2 js_code" placeholder="请输入验证码" />
+                        <p class="entycode" id="get_identyCode">
+                            <span class="get_entycode js_get_entycode">获取验证码</span>
+                            <span class="show_entycode js_show_entycode"><i class="i_normal">61</i>秒后重发</span>
+                        </p>
+                    </dd>
+                </dl>
+            </section>
+            <p class="reg_title">以下两项可以选填</p>
+            <section class="section_reg">
+                <dl class="hang">
+                    <dt>姓名<span class="right_arrow"><i class="i_normal">!</i></span></dt>
+                    <dd>
+                        <input class="text js_message_name" type="text" value="" placeholder="请留下您的真实姓名" name="name" />
+                    </dd>
+                </dl>
+                <dl class="hang">
+                    <dt>生日<span class="right_arrow"><i class="i_normal">!</i></span></dt>
+                    <dd>
+                        <input type="hidden" name="birthday" id="birthday" value="" />
+                        <input class="text text_shot js_message_birth" type="text" value="" placeholder="" readonly="readonly" data-year="" data-month="" data-day="" />
+                    </dd>
+                </dl>
+            </section>
+            <p class="remark grey">
+                <span>*</span>留下您的生日，可能会有生日惊喜哦~
+            </p>
+            <section class="section_succ">
+                <dl>
+                    <dt>储值友情提醒</dt>
+                    <dd>储值资金会直接打给<span class="js_shopname">伏牛堂</span> ，好近仅提供技术支持，如有问题请及时联系商户！</dd>
+                </dl>
+            </section>
+            <section class="section_footer">
+                <span class="content_sub js_alert_message">确认</span>
+            </section>
+        </div>
+        <div class="js_secondshop" style="display: none;">
+            <section class="section_reg">
+                <dl class="hang">
+                    <dt>储值账户<span class="right_arrow"><i class="i_normal">!</i></span></dt>
+                    <dd>
+                        <input class="text text_orange js_message_tel" type="text" value="455454545454455" placeholder="" name="name" readonly="readonly" />
+                    </dd>
+                </dl>
+            </section>
+            <p class="remark grey">
+                <span>*</span>您曾经使用过好近储值，本次储值会存入此账号
+            </p>
+            <section class="section_succ">
+                <dl>
+                    <dt>储值友情提醒</dt>
+                    <dd>储值资金会直接打给<span class="js_shopname">伏牛堂</span> ，好近仅提供技术支持，如有问题请及时联系商户！</dd>
+                </dl>
+                <span class="content_sub span_marT js_alert_message2">确认</span>
+            </section>
+        </div>
+    </div>
+    <div class="ios_select_container"></div>
+    <script src="../../static_dest/static/new/js/require.2.1.11.min.js" type="text/javascript" data-main="../../static_dest/static/new/js/recharge/recharge_info.js" defer async="true"></script>
+</body>
+
+</html>

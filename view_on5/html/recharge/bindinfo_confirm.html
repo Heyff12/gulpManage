@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>信息确认</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <script type="text/javascript" src="../../static_dest/static/new/js/plug/flexible.debug.js"></script>
+    <link rel="stylesheet" href="../../static_dest/static/new/css/recharge_info.css">
+</head>
+
+<body>
+    <div id="wap" class="js_bindinfo_confirm">
+        <input class="js_hidden_first" type="hidden" value="0" />
+        <input class="js_grid_index" name="grid_index" type="hidden" value="" />
+        <section class="section_reg">
+            <dl class="hang">
+                <dt>储值账户<span class="right_arrow"><i class="i_normal">!</i></span></dt>
+                <dd>
+                    <input class="text text_orange js_message_tel" type="text" value="" placeholder="" name="name" readonly="readonly" />
+                </dd>
+            </dl>
+        </section>
+        <p class="remark grey">
+        <span>*</span>您曾经使用过${qd_name}储值，本次储值会存入此账号
+        </p>
+        <section class="section_succ">
+            <dl>
+                <dt>储值友情提醒</dt>
+                <dd>储值资金会直接打给<span class="js_shopname"></span>，${qd_name}仅提供技术支持，如有问题请及时联系商户！</dd>
+            </dl>
+            <span class="content_sub span_marT js_alert_message2">确认</span>
+        </section>
+    </div>
+    <div class="ios_select_container"></div>
+    <script src="../../static_dest/static/new/js/require.2.1.11.min.js" type="text/javascript" data-main="../../static_dest/static/new/js/recharge/recharge_info.js" defer async="true"></script>
+</body>
+
+</html>

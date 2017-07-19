@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>储值会员详情</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <script type="text/javascript" src="../../../static_dest/static/new/js/plug/flexible.debug.js"></script>
+    <link rel="stylesheet" href="../../../static_dest/static/new/css/member_detail.css">
+</head>
+
+<body class="bg_white">
+    <div id="wap" class="js_member_detail">
+        <input id="js_pos" type="hidden" value="0" />
+        <section class="member_t">
+            <dl>
+                <dt><img class="js_m_img" src=""></dt>
+                <div class="manual_but"><i class="icon_edit"></i>手动储值 <i class="icon_right"></i></div>
+                <dd class="js_m_name"></dd>
+                <dd class="grey"><i class="icon_tel"></i><span class="js_m_tel"></span></dd>
+                <div class="clearfix"></div>
+            </dl>
+            <ul>
+                <li>余额
+                    <br/><span class="orange">￥<i class="i_normal js_m_loft"></i></span></li>
+                <li>累计储值
+                    <br/><span class="orange">￥<i class="i_normal js_m_all"></i></span></li>
+                <li>储值次数
+                    <br/><span class="orange"><i class="i_normal js_m_times"></i>次</span></li>
+                <div class="clearfix"></div>
+            </ul>
+        </section>
+        <section class="height_15"></section>
+        <section class="section_history">
+            <ul class="ul_history js_ul_history">
+                <div class="js_empty">
+                    <img src="../../../static_dest/static/new/img/wu@3x.png" alt="">
+                    <p class="empty_title gray">亲，此会员还未进行过储值～</p>
+                </div>
+            </ul>
+            <div class="load"></div>
+        </section>
+    </div>
+    <div class="nomoredata" id="nomoredata">没有更多数据了</div>
+    <div id="loading"></div>
+    <div id="load_small_bg">
+        <div id="load_small"><i></i><br/><span>数据加载中</span></div>
+    </div>
+    <!-- </*弹框*/>  -->
+    <div class="alert_con" id="alert_alert">
+        <div class="alert_con_t orange">提示<span class="pass_close js_alert_con_close">×</span></div>
+        <div class="alert_con_b">
+            <div class="alert_con_br"></div>
+            <div class="clearfix"></div>
+            <span class="alert_con_close js_alert_con_close">确定</span>
+        </div>
+    </div>
+    <div class="zheceng"></div>
+    <div class="zheceng1"></div>
+    <div class="zheceng2"></div>
+    <script src="../../../static_dest/static/new/js/require.2.1.11.min.js" type="text/javascript" data-main="../../../static_dest/static/new/js/b/member_detail.js" defer async="true"></script>
+</body>
+
+</html>

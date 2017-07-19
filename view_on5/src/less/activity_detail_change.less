@@ -1,0 +1,142 @@
+@import "./common/common";
+div {
+    font-size: 15px;
+    color: #2F323A;
+}
+
+#nav-bar {
+    position: relative;
+    width: 100%;
+    height: 1.4rem;
+    line-height: 1.4rem;
+    border-bottom: dashed 1px #DEDEDE;/*no*/
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.nav-left {
+    text-align: center;
+    padding-left: 15px;
+    float: left;
+}
+
+.nav-right {
+    padding-right: 15px;
+    float: right;
+}
+
+.js-storedValue {
+    font-size: 20px;
+}
+
+.js-amount {
+    font-size: 18px;
+}
+
+#content {
+    background-color: white;
+}
+
+.detail-list {
+    height: 2.2rem;
+}
+
+.list-content {
+    display: inline-block;
+    margin: 0.31rem 15px;
+    box-sizing: border-box;
+    width: calc(100% - 30px);
+    height: calc(100% - 0.62rem - 2px);
+    position: relative;
+}
+
+.list-content img {
+    width: 1.58rem;
+    height: 1.58rem;
+    border-radius: 3px;
+}
+
+.box-orange {
+    border-radius: 3px;
+    border: solid 1px #FF8100;/*no*/
+    color: #FF8100;
+    padding: 2px 5px;
+    box-sizing: border-box;
+    font-size: 13px;
+    margin-left: 5px;
+}
+
+.js-name {
+    position: absolute;
+    height: 0.79rem;
+    line-height: 0.79rem;
+    left: 1.8rem;
+}
+
+.list-content .amount {
+    position: absolute;
+    height: 50%;
+    width: auto;
+    right: 0;
+    top: 25%;
+}
+
+.list-content .js-date {
+    position: absolute;
+    font-size: 13px;
+    color: #A7A9AE;
+    bottom: 0;
+    height: 0.79rem;
+    line-height: 0.79rem;
+    left: calc(1.8rem);
+}
+
+.footer-line {
+    margin-left: 15px;
+    width: calc(100% - 15px);
+    height: 1px;/*no*/
+    background-color: #DEDEDE;
+}
+
+
+/*加载框*/
+
+.pullRefresh {
+    width: 100%;
+    height: 0.6rem;
+    text-align: center;
+    display: none;
+    bottom: 5px;
+}
+
+.pullRefresh img {
+    width: 0.6rem;
+    height: auto;
+}
+
+@-moz-keyframes rotateLoading {
+    0% {
+        -moz-transform: rotate(0deg);
+    }
+    100% {
+        -moz-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes rotateLoading {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes rotateLoading {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

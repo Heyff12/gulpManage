@@ -1,0 +1,94 @@
+@import "./lib/date/jquery_mobile";
+@import "./lib/date/mobiscroll";
+@import "./common/common";
+/* ==================储值页============================================================ */
+section.section_index{width: 100%; padding: 0 15px; border-bottom: 1px solid #e5e5e5; background: white; background: url('../img/wxchar.png') top left no-repeat none;}
+p.title_a{  text-align: left; line-height: 1rem;}
+ul.rechage_ul{width: 100%;margin-top: 0rem; }
+ul.rechage_ul li{float: left; width: 48%;border:1px solid #C2C2C2;border-radius: 3px;position: relative;margin: 0 0 15px;
+text-align: center;line-height: 0.6rem; padding: 0 0; overflow: hidden;}
+ul.rechage_ul li:nth-child(2),ul.rechage_ul li:nth-child(4){float: right;}
+ul.rechage_ul li p.font_17{font-size: 17px;padding-top: 0.2rem;}
+ul.rechage_ul li p:nth-child(2){padding-bottom: 0.2rem;}
+ul.rechage_ul li span.choose{position: absolute;bottom: -0.3rem;right: -0.3rem; width: 0.7rem; height: 0.7rem;background: #FE9B20;
+  color: white;text-align: left;border-radius: 0.5rem 0 0 0.5rem;display: none;}
+ul.rechage_ul li span.choose i{ width: 0.25rem; height: 0.12rem; border:1px solid white; border-width: 0 0 1px 1px; display: inline-block;
+  position: relative;top:-0.18rem; left: 0.1rem;
+  transform:rotate(-45deg);
+  -webkit-transform:rotate(-45deg);}
+ul.rechage_ul li.li_choose{border:1px solid #FE9B20;color: #FE9B20;}
+ul.rechage_ul li.li_choose span.choose{display: inline-block;}
+ul.rechage_ul li.li_one{width: 100%;padding: 0.6rem 0;font-size: 18px;}
+ul.rechage_ul li.li_one p.font_17{font-size: 20px;}
+ul.rechage_ul li.li_two{padding: 0.6rem 0;font-size: 18px;}
+ul.rechage_ul li.li_two p.font_17{font-size: 20px;}
+dl.dl_detail{background: white; border-top: 1px solid #e5e5e5;border-bottom: 1px solid #e5e5e5; 
+  padding:0; margin: 0.3rem auto 0; line-height: 1.4rem; }
+dl.dl_detail dt{float: left;width: 35%;padding-left: 15px;}
+dl.dl_detail dd{float: left;width: 65%; text-align: right; padding-right: 15px;}
+dl.dl_detail dd.orange span{font-size: 19px;}
+img.img_wx{ width:1rem; height: 1rem; padding-right: 3px;vertical-align: middle;}
+
+section.dl_note{background: white; border-top: 1px solid #e5e5e5;border-bottom: 1px solid #e5e5e5; 
+  padding:0 0px; margin: 0.3rem auto 3.3rem;}
+section.dl_note p{border-bottom: 1px solid #e5e5e5; line-height: 1.2rem; margin-left: 15px;}
+section.dl_note ul{width: auto; padding: 0.3rem 0 0.3rem 15px; line-height: 0.62rem;list-style: disc; list-style-position: outside;
+color: #E5E5E5;margin: 0 15px;}
+section.dl_note ul li span{color: #606470;}
+dl.dl_message{padding: 0 0 0.1rem;}
+dl.dl_message dt{ padding: 0.1rem 0;}
+dl.dl_message dd{margin: 0.1rem 0; font-size: 13px; line-height: 20px;}
+dl.dl_message dd input.text{ border:1px solid #e5e5e5; border-radius: 3px; height: 1.1rem; line-height: 1.1rem; width: 100%; 
+  padding: 0 10px; font-size: 16px;color: #2F323A;}
+dl.dl_message dd input.text.border_red{border:1px solid #db2f22; color: #db2f22;} 
+dl.dl_message dd input.text.grey{color: #A7A9AE;}
+/* ==================储值过期显示为空=============== */
+.li_none{ width: 100%; height: 100%; display: none;}
+.history_img{display: inline-block; width: 48%; margin: 3rem 0 1.2rem 26%; height: auto;}
+p.title_no{ font-size: 0.38rem; text-align: center; line-height: 0.8rem; width: 68%; margin: 0 auto;}
+/* ==================储值结果页============================================================ */  
+.d_result{width: 100%; padding: 1.3rem 0 0; position: relative; margin: 0rem auto 0rem; background: white;}
+.d_result dl.dl_detail{border-top: 0;}
+dl.dl_detail.dl_result{ padding: 0 15px 0;line-height: 1.2rem;background: white; }
+.result_ok{display: block; background: url('../img/iconfont-check.png') top left no-repeat; width: 1.5rem; height: 1.5rem;
+position: absolute;background-size: 1.5rem 1.5rem; left: 50%; top: 0.5rem; margin-left:-0.75rem;}
+dl.dl_detail.dl_result dt{padding: 0;}
+dl.dl_detail.dl_result dd{padding: 0;}
+span.blue{background: #218fdb; width: 0.46rem; height: 0.46rem; border-radius: 100%; color: white; margin-right: 0.1rem; font-size: 12px;
+text-align: center; line-height: 0.46rem; display: inline-block; position: relative;top:-0.05rem;}
+span.pig{background: url('../img/ic_ecard.png') top left no-repeat; background-size: 100% auto; width: 0.6rem; height: 0.6rem;  margin-right: 0.1rem; 
+ display: inline-block; position: relative;top:0.22rem;}
+/* ==================储值协议页============================================================ */ 
+section.section_protol{width: 100%; padding: 0 15px;  background: white; }
+p.title_h1{font-size: 0.5rem; line-height: 1.2rem; text-align: center;}
+dl.dl_protol_d{font-size: 15px; line-height: 0.65rem;}
+dl.dl_protol_d dd{padding: 0.05rem 0;}
+dl.dl_protol_d dd span{padding-right: 3px;}
+/* ==================日历============================================================ */ 
+.ui-page-theme-a .ui-body-inherit{border: none;
+    text-shadow: 0 0 0 white;margin: 0;}
+.ui-shadow-inset{box-shadow: none;-webkit-box-shadow:none;}
+.ui-page-theme-a{text-shadow: none;color: #606470;}
+.dwwb{border-bottom: 1px solid #fff;background:white;
+border-color: rgba(255,255,255,.3);}
+.dwbc-p .dwbw .dwb{ background:#f7f7f7; border-radius: 3px; border:1px solid #e5e5e5;width: 80%;
+display: inline-block;
+height: 2em; line-height: 2em; text-align: center;}
+.dwbc-p .dwbw .dwb.dwb-a{background:#5e87b0; color:white;}
+.jqm .dwv {background: #FE9B20;color: #fff;border-radius: 3px;text-shadow:0 0 0;}
+.ui-body-d {
+    border: 1px solid #e5e5e5;
+    color: #333;
+    text-shadow: 0 1px 0 #fff;
+    background: #fff;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#fff));
+    background-image: -webkit-linear-gradient(#fff,#fff);
+    background-image: -moz-linear-gradient(#fff,#fff);
+    background-image: -ms-linear-gradient(#fff,#fff);
+    background-image: -o-linear-gradient(#fff,#fff);
+    background-image: linear-gradient(#fff,#fff);
+}
+
+
+
+

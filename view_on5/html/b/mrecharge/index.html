@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>手动储值</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <script type="text/javascript" src="../../../static_dest/static/new/js/plug/flexible.debug.js"></script>
+    <link rel="stylesheet" href="../../../static_dest/static/new/css/manual_recharge.css">
+</head>
+
+<body>
+    <div id="wap" class="js_recharge_index">
+        <div class="js_li_show">
+            <section class="section_merchant">
+                <p>
+                    <i class="icon_shop"></i><span class="js_shopname"></span>
+                </p>
+            </section>
+            <section class="line">
+                <dl class="js_mobilehang">
+                    <dt>储值账户</dt>
+                    <dd class="black js_mobile"></dd>
+                </dl>
+                <dl>
+                    <dt>当前余额</dt>
+                    <dd class="orange"><span class="js_balance">0.00</span>元</dd>
+                </dl>
+            </section>
+            <section class="section_index">
+                <div class="js_recharge_rulediv s_rules_amount">
+                    <!--<p class="title_a js_rules_title"><i class="icon_select icon_selected"></i> 请选择储值金额</p>-->
+                    <!--<ul class="rechage_ul js_rechage_ul">-->
+                    <!--<li>-->
+                    <!--<p class="font_17">储值<span class="js_rechar_num">50</span>元</p>-->
+                    <!--<p>送<span class="js_rechar_sendnum">5</span>元</p>-->
+                    <!--<span class="choose"><i class="choose_i"></i></span>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                    <!--<p class="font_17">储值<span class="js_rechar_num">100</span>元</p>-->
+                    <!--<p>送<span class="js_rechar_sendnum">10</span>元</p>-->
+                    <!--<span class="choose"><i class="choose_i"></i></span>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                    <!--<p class="font_17">储值<span class="js_rechar_num">150</span>元</p>-->
+                    <!--<p>送<span class="js_rechar_sendnum">15</span>元</p>-->
+                    <!--<span class="choose"><i class="choose_i"></i></span>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                    <!--<p class="font_17">储值<span class="js_rechar_num">200</span>元</p>-->
+                    <!--<p>送<span class="js_rechar_sendnum">20</span>元</p>-->
+                    <!--<span class="choose"><i class="choose_i"></i></span>-->
+                    <!--</li>-->
+                    <!--</ul>-->
+                </div>
+                <div class="clearfix"></div>
+                <div class="s_custom_amount">
+                    <p class="title_a js_custom_title"><i class="icon_select icon_selected"></i> 自定义其他储值金额</p>
+                    <dd>
+                        <input class="text js_custom_amount" type="text" placeholder="请输入储值金额" readonly="readonly" value="">
+                    </dd>
+                </div>
+            </section>
+            <section class="verifyCode_sec">
+                <p>因资金安全考虑，请输入账户登录密码</p>
+                <dd>
+                    <input class="text js_password" type="password" placeholder="请输入账户登录密码" value="">
+                </dd>
+            </section>
+            <section class="section_footer js_fixed_button">
+                <span class="content_sub js_content_sub" submiting="false" style="display: block;">立即储值</span>
+                <span class="content_sub disa js_content_sub_disa" style="display: none;">立即储值</span>
+            </section>
+            <footer class="js_relative_button" style="display:none;">
+                <span class="content_sub js_content_sub">立即储值</span>
+                <span class="content_sub disa js_content_sub_disa">立即储值</span>
+            </footer>
+        </div>
+    </div>
+    <script src="../../../static_dest/static/new/js/require.2.1.11.min.js" type="text/javascript" data-main="../../../static_dest/static/new/js/b/manual_recharge.js" defer async="true"></script>
+</body>
+
+</html>

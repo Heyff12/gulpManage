@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>活动详情</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <script type="text/javascript" src="../../static_dest/static/new/js/plug/flexible.debug.js"></script>
+    <link rel="stylesheet" href="../../static_dest/static/new/css/activity_detail.css">
+</head>
+<body>
+<div id="wap" class="activity_detail">
+    <div id="alert_view">
+        <div class="alert_content">
+            <p class="alert_message">确定要停止此次活动？</p>
+            <div class="alert_but_view">
+                <span class="alert_but_cancel">取消</span>
+                <span class="alert_but_confirm">确定</span>
+            </div>
+        </div>
+    </div>
+    <ul class="detail_section">
+        <li class="detail_cell">
+            <dd class="grey">状态</dd>
+            <dt class="js_status"></dt>
+
+        </li>
+        <li class="detail_cell">
+            <dd class="grey">活动时间</dd>
+            <dt class="black js_activity_date"></dt>
+        </li>
+        <li class="detail_cell">
+            <dd class="grey">更新时间</dd>
+            <dt class="black js_update_date"></dt>
+        </li>
+    </ul>
+    <ul id="rule_section" class="detail_section">
+        <li class="detail_cell">
+            <dd class="grey">储值规则</dd>
+            <dt class="black js_first_rule"></dt>
+        </li>
+    </ul>
+    <ul class="detail_section">
+        <li class="detail_cell">
+            <dd class="grey">储值规则备注</dd>
+        </li>
+        <li>
+            <p class="js_desription">储值后不能兑换现金，不能与店内其他优惠同享，储值金额不能退款，不能更名；</p>
+        </li>
+    </ul>
+    <div class="but_content">
+        <span class="detail_but js_modify_but">修改活动</span>
+        <span class="detail_interval"></span>
+        <span class="detail_but js_stop_but">停止活动</span>
+    </div>
+</div>
+
+
+
+<script src="../../static_dest/static/new/js/require.2.1.11.min.js" type="text/javascript"
+        data-main="../../static_dest/static/new/js/b/activity_detail.js" defer async="true"></script>
+</body>
+</html>

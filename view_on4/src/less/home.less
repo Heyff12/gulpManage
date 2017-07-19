@@ -1,0 +1,233 @@
+@import "./common/common";
+
+/* ==================会员储值-首页============================================================ */
+
+section.section_index {
+    width: 10rem;
+    background: url('@{images}/topbg.png') bottom left no-repeat;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    .ul_top {
+        width: 10rem;
+        text-align: center;
+        color: white;
+        li {
+            width: 5rem;
+            float: left;
+            padding: 22px 0 28px 0;
+            font-size: 13px;
+            line-height: 34px;
+            color: rgba(255, 255, 255, 0.76);
+            span.span_num {
+                color: white;
+                font-size: 18px;
+                i {
+                    font-style: normal;
+                    font-size: 34px;
+                    padding-right: 5px;
+                }
+            }
+        }
+    }
+}
+section.top_margin{
+    margin-top: 126px;
+}
+i.icon_r {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background: url('@{images}/arrow-rr.png') center center no-repeat;
+    background-size: auto 15px;
+}
+dl.headpic {
+    width: 100%;
+    background: white;
+    box-sizing: border-box;
+    padding: @padding;
+    height: 35 + @padding *2;
+    line-height: 35px;
+    font-size: @font_size;
+    border-bottom: solid @border_color @border_width;
+    /*no*/
+    display: block;
+    dt {
+        float: right;
+        text-align: right;
+        position: relative;
+        padding-right: 18px;
+        height: 35px;
+        i.icon_r {
+            position: absolute;
+            right: 0;
+            top: 9px;
+        }
+    }
+    dd {
+        float: left;
+        width: 35px;
+        height: 35px;
+        border-radius: 100%;
+        overflow: hidden;
+        margin-right: 8px;
+        img {
+            width: 35px;
+            height: 35px;
+        }
+    }
+    &.hide {
+        display: none;
+    }
+}
+
+section.section_action {
+    width: 100%;
+    padding: @padding;
+    box-sizing: border-box;
+    padding-bottom: 50px;
+    .action {
+        width: 100%;
+        border-radius: 3px;
+        box-shadow: 0 2px 3px #A7A9AE;
+        overflow: hidden;
+        position: relative;
+        font-size: @font_size;
+        background: white;
+        margin-bottom: 15px;
+        &:before {
+            content: '';
+            height: 35px;
+            width: 100%;
+            padding: 0 @padding;
+            box-sizing: border-box;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: #FFF2DF;
+            z-index: 0;
+        }
+        dl.action_top{
+            width: 100%;
+            padding: 0 @padding;
+            box-sizing: border-box;
+            height: 35px;
+            line-height: 35px;
+            position: relative;
+            z-index: 0;
+            dt{
+                color: #ff7049;
+                width: 60%;
+                float: left;
+                i.icon_calendar {
+                    position: relative;
+                    right: 0;
+                    top: 4px;
+                    display: inline-block;
+                    width: 30px;
+                    height: 18px;
+                    background: url('@{images}/calendar.png') top left no-repeat;
+                    background-size: auto 18px;
+                }
+            }
+            dd{
+                float: right;
+                text-align: center;
+                color: white;
+                width: auto;
+                padding: 0 10px;
+                height: 21px;
+                line-height: 21px;
+                background: #ff7049;
+                border-radius: 10px;
+                margin-top: 7px;
+                font-size: 13px;
+            }
+        }
+        ul.action_body{
+            width: 100%;
+            padding: 0 0 0 @padding;
+            box-sizing: border-box;
+            line-height: 42px;
+            li{
+                width: 100%;
+                padding: 0 @padding 0 0;
+                box-sizing: border-box;
+                border-top: solid @border_color @border_width;/*no*/
+                &:nth-child(1){
+                    border-top:0;
+                }
+                i{
+                    font-style: normal;
+                    &.icon_r{
+                        background-position: center right;
+                        position: relative;
+                        top:2px;
+                    }
+                }
+                &:after{
+                    content: '';
+                    display: none;
+                    height: 0;
+                    line-height: 0;
+                }
+            }
+        }
+        ul.action_foot{
+            width: 100%;
+            padding: 0 @padding;
+            box-sizing: border-box;
+            height: 44px;
+            line-height: 44px;
+            border-top:solid @border_color @border_width;/*no*/
+            font-size: 16px;
+            li{
+                width: 49%;
+                float: left;
+                text-align: center;
+                &:nth-child(2){
+                    border-left:solid @border_color @border_width;/*no*/
+                }
+            }
+        }
+        &.action_over{
+            &:before{
+                background: #E5E5E5;
+            }
+            dl.action_top{
+                dd{
+                    background: @grey;
+                }
+                dt{
+                    color: @black;
+                    i.icon_calendar {
+                        background: url('@{images}/calendar_b.png') top left no-repeat;
+                        background-size: auto 18px;
+                    }
+                }
+            }
+            ul.action_foot{
+                li{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+i.ifooter {
+    font-size: 22px;
+    font-weight: lighter;
+    padding-right: 5px;
+    z-index: 100;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+.abs_black{
+    color: #000000;
+    font-family: "Medium";
+}

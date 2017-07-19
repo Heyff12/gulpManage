@@ -1,0 +1,214 @@
+@import "./common/common";
+@import "./lib/iosselect/iosSelect"; //ios select样式
+
+/* ==================填写信息页============================================================ */
+
+section.section_reg {
+    width: 100%;
+    padding: 0 0 0 @padding;
+    box-sizing: border-box;
+    border-top: solid @border_color @border_width;/*no*/
+    border-bottom: solid @border_color @border_width;/*no*/
+    background: white;
+    margin: .2rem 0;
+    &:nth-child(1) {
+        margin-top: 15px;
+    }
+    dl.hang {
+        width: 100%;
+        padding: 0.1rem @padding 0.1rem 0;
+        box-sizing: border-box;
+        border:0;
+        border-top: solid @border_color @border_width;/*no*/
+        line-height: 1rem;
+        font-size: @font_size;
+        &:nth-child(1) {
+            border: 0;
+        }
+        &:after {
+            content: " ";
+            display: block;
+            font-size: 0;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+            overflow: hidden;
+        }
+        dt {
+            float: left;
+            width: 30%;
+            position: relative;
+            span.right_arrow {
+                display: inline-block;
+                position: absolute;
+                width: 0.45rem;
+                height: 0.45rem;
+                border-radius: 100%;
+                text-align: center;
+                line-height: 0.45rem;
+                background: @red;
+                top: 0.25rem;
+                margin-left: 5px;
+                display: none;
+                i {
+                    color: white;
+                    font-size: @font_size;
+                }
+            }
+        }
+        dd {
+            float: right;
+            width: 70%;
+            text-align: right;
+            line-height: 1rem;
+            input.text {
+                width: 100%;
+                background: none;
+                border: 0;
+                height: 1rem;
+                line-height: 1rem;
+                font-size: @font_size;
+                text-align: right;
+                &.text_shot {
+                    width: 56%;
+                    border: solid @border_color @border_width;/*no*/
+                    height: .8rem;
+                    text-align: center;
+                }
+                &.text_shot2 {
+                    width: 66%;
+                }
+                &.text_orange{
+                  color: @orange;
+                }
+            }
+            p.entycode {
+                width: 30%;
+                display: inline-block;
+                border: solid @orange @border_width;/*no*/
+                border-radius: @border_radius;
+                color: @orange;
+                text-align: center;
+                height: .8rem;
+                line-height: .8rem;
+                float: right;
+                margin-top: .08rem;
+                span.get_entycode {
+                    width: 100%;
+                }
+                span.show_entycode {
+                    display: none;
+                    width: 100%;
+                }
+            }
+        }
+        &.dt_no {
+            dt {
+                width: 0%;
+            }
+            dd {
+                width: 100%;
+                text-align: left;
+                input {
+                    text-align: left;
+                }
+            }
+            &.error_data{
+              border-bottom: solid @red @border_width;/*no*/
+            }
+        }
+        &.error_data {
+            dt {
+                span.right_arrow {
+                    display: inline-block;
+                }
+            }
+            dd {
+                color: @red;
+                input {
+                    color: @red;
+                }
+            }
+        }
+        &.success {
+            dd {
+                span.dd_select {
+                    color: @black;
+                }
+                input.dd_select {
+                    color: @black;
+                }
+            }
+        }
+    }
+}
+
+p.remark {
+    width: 100%;
+    padding: 0 @padding;
+    box-sizing: border-box;
+    line-height: .6rem;
+    font-size: 14px;
+    span {
+        font-size: 18px;
+        padding-right: 5px;
+        position: relative;
+        top: .1rem;
+    }
+}
+
+p.reg_title {
+    width: 100%;
+    padding: 0 @padding;
+    box-sizing: border-box;
+    margin-top: .3rem;
+    line-height: .6rem;
+    font-size: 14px;
+}
+
+section.section_succ {
+    width: 100%;
+    padding: 0.2rem @padding;
+    box-sizing: border-box;
+    font-size: @font_size;
+    margin-top: .3rem;
+    border-radius: @border_radius;
+    dl {
+        width: 100%;
+        border: dashed #d8d8d8 @border_width;/*no*/
+        padding: .2rem @padding .3rem;
+        box-sizing: border-box;
+        dt {
+            text-align: center;
+            font-weight: bold;
+            line-height: 1rem;
+            position: relative;
+            &:before {
+                content: '';
+                position: absolute;
+                height: 1px;/*no*/
+                width: 32%;
+                background: #d8d8d8;
+                left: 0;
+                top: .48rem;
+            }
+            &:after {
+                content: '';
+                position: absolute;
+                height: 1px;/*no*/
+                width: 32%;
+                background: #d8d8d8;
+                right: 0;
+                top: .48rem;
+            }
+        }
+        dd {
+            line-height: .6rem;
+            font-size: 14px;
+            padding: .1rem 0;
+        }
+    }
+    span.span_marT {
+        margin-top: 4.5rem;
+    }
+}

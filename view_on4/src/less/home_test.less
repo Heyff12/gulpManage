@@ -1,0 +1,186 @@
+@import "./common/common";
+
+/* ==================会员储值-首页============================================================ */
+
+section.section_index {
+    width: 100%;
+    background: url('@{images}/ic_bg.png') bottom center no-repeat;
+    background-size: cover;
+    .ul_top {
+        width: 100%;
+        text-align: center;
+        color: white;
+        li {
+            width: 50%;
+            float: left;
+            padding: 0.6rem 0 0.75rem 0;
+            font-size: 13px;
+            line-height: 0.9rem;
+            color: rgba(255, 255, 255, 0.76);
+            span.span_num {
+                color: white;
+                font-size: 18px;
+                i {
+                    font-style: normal;
+                    font-size: 36px;
+                    padding-right: 5px;
+                }
+            }
+        }
+    }
+}
+
+section.section_mid {
+    width: 100%;
+    padding: 0.3rem @padding 0.1rem;
+    box-sizing: border-box;
+    background: white;
+    p {
+        width: 100%;
+        margin: 0.16rem 0;
+        text-align: center;
+        line-height: 0.9rem;
+        &.title_mid {}
+        &.title_bg {
+            background: #FCEFDF;
+            border-radius: 30px;
+            &.disa_bg {
+                background: @border_color;
+            }
+            &.title_none {
+                display: none;
+            }
+        }
+    }
+    ul.ul_activity {
+        width: 100%;
+        text-align: center;
+        border: @border_width solid @border_color;
+        box-shadow: @border_width 4px 10px @border_color;
+        padding: 0.4rem 0;
+        border-radius: @border_radius;
+        margin: 0.5rem 0;
+        li {
+            width: 49%;
+            float: left;
+            padding: 0.1rem 0;
+            line-height: 0.8rem;
+            color: rgba(255, 255, 255, 0.76);
+            border-right: @border_width solid @border_color;
+            &:nth-child(2) {
+                float: right;
+                border: 0;
+            }
+            span.span_num {
+                color: @black;
+                font-size: @font_size;
+                i {
+                    color: @orange;
+                    font-size: 30px;
+                    font-style: normal;
+                    padding-right: 5px;
+                }
+            }
+        }
+    }
+}
+
+section.section_detail {
+    width: 100%;
+    border-top: @border_width solid @border_color;
+    margin: 0;
+    padding-bottom: 1.8rem;
+    p.title_togle {
+        text-align: center;
+        line-height: 1.2rem;
+        background: white;
+        i.arrow_b{
+            display: inline-block;
+            padding-left: 0;
+            width: 0.8rem;
+            height: 0.8rem;
+            background: url('@{images}/ic_arrowb.png') center center no-repeat;
+            background-size: auto 0.8rem;
+            position: relative;
+            top: 0.28rem;
+            transition:all 1.0s;
+        }
+    }
+    .bg_normal {
+        width: 100%;
+        padding-left: @padding;
+        box-sizing: border-box;
+        height: auto;
+        overflow: hidden;
+        position: relative;
+        transition:all 1s;
+        opacity: 1;
+        transform: scale(1,1);
+        transform-origin:50% 0%;
+        padding-bottom: 1.4rem;
+        ul.ul_detail {
+            line-height: 1rem;
+            li {
+                width: 100%;
+                padding-right: @padding;
+                box-sizing: border-box;
+                border-bottom: @border_width solid @border_color;
+            }
+        }
+        p.title_normal {
+            padding: 0.2rem @padding 0.2rem 0;
+            line-height: .7rem;
+        }
+    }
+    &.arrow_t{
+        i.arrow_b{
+            transform:rotate(-180deg);
+        }
+        .bg_normal{
+            // css方式
+            // transform: scale(1,0);
+            // opacity: 0;
+            // height: 0;
+        }
+    }
+    ul.ul_button {
+        // width: 100%;
+        padding: 0.2rem  0;
+        box-sizing: border-box;
+        position: absolute;
+        right: @padding;
+        left: @padding;
+        bottom: 0;
+        background: @background_color;
+        li {
+            width: 48%;
+            float: left;
+            height: 1rem;
+            line-height: 1rem;
+            text-align: center;
+            border: @border_width solid @orange;
+            border-radius: @border_radius;
+            color: @orange;
+            a {
+                display: block;
+                width: 100%;
+                color: @orange;
+            }
+            &:nth-child(2) {
+                float: right;
+            }
+            &.disa{
+                border: @border_width solid @grey;
+                color: @grey;
+                a{
+                    color: @grey;
+                }
+            }
+        }
+    }
+}
+i.ifooter{
+    font-size: 22px;
+    font-weight: lighter;
+    padding-right: 5px;
+}

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>储值</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <script type="text/javascript" src="../../static_dest/static/new/js/plug/flexible.debug.js"></script>
+    <link rel="stylesheet" href="../../static_dest/static/new/css/recharge.css">
+</head>
+
+<body>
+    <div id="wap" class="js_recharge_index">
+        <div class="li_none js_li_none">
+            <img class="history_img" src="../../static_dest/static/new/img/wu@3x.png" />
+            <p class="title_no grey">亲，储值活动已结束，下次再来~</p>
+        </div>
+        <div class="js_li_show">
+            <section class="section_index">
+                <p class="title_a">请选择储值金额</p>
+                <ul class="rechage_ul js_rechage_ul">
+                    <!-- <li class="li_one">
+                        <p class="font_17">储值<span class="js_rechar_num">100</span>元</p>
+                        <p>送<span class="js_rechar_sendnum">10</span>元</p>
+                        <span class="choose"><i class="choose_i"></i></span>
+                    </li>
+                    <li class="li_two">
+                        <p class="font_17">储值<span class="js_rechar_num">100</span>元</p>
+                        <p>送<span class="js_rechar_sendnum">10</span>元</p>
+                        <span class="choose"><i class="choose_i"></i></span>
+                    </li>
+                    <li class="li_two">
+                        <p class="font_17">储值<span class="js_rechar_num">100</span>元</p>
+                        <p>送<span class="js_rechar_sendnum">10</span>元</p>
+                        <span class="choose"><i class="choose_i"></i></span>
+                    </li> -->
+                    <li class="li_choose">
+                        <p class="font_17">储值<span class="js_rechar_num">50</span>元</p>
+                        <p>送<span class="js_rechar_sendnum">5</span>元</p>
+                        <span class="choose"><i class="choose_i"></i></span>
+                    </li>
+                    <li>
+                        <p class="font_17">储值<span class="js_rechar_num">100</span>元</p>
+                        <p>送<span class="js_rechar_sendnum">10</span>元</p>
+                        <span class="choose"><i class="choose_i"></i></span>
+                    </li>
+                    <li>
+                        <p class="font_17">储值<span class="js_rechar_num">150</span>元</p>
+                        <p>送<span class="js_rechar_sendnum">15</span>元</p>
+                        <span class="choose"><i class="choose_i"></i></span>
+                    </li>
+                    <li>
+                        <p class="font_17">储值<span class="js_rechar_num">200</span>元</p>
+                        <p>送<span class="js_rechar_sendnum">20</span>元</p>
+                        <span class="choose"><i class="choose_i"></i></span>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </section>
+            <section class="dl_note">
+                <p>储值说明</p>
+                <ul class="js_note_ul_detail">
+                    <li><span>活动时间：2016年9月1日－2016年12月31日；</span></li>
+                    <li><span>纯文本商户自行填写纯文本商户自行填写纯文本，商户自行填写，纯文本商户自行填写40字内；</span></li>
+                    <li><span>最终解释权归伏牛堂所有。</span></li>
+                    <li><span>活动时间：2016年9月1日－2016年12月31日；</span></li>
+                    <li><span>纯文本商户自行填写纯文本商户自行填写纯文本，商户自行填写，纯文本商户自行填写40字内；</span></li>
+                    <li><span>最终解释权归伏牛堂所有。</span></li>
+                    <li><span>最终解释权归伏牛堂所有。</span></li>
+                </ul>
+            </section>
+            <footer>
+                <span class="content_sub js_content_sub">购买</span>
+                <span class="content_sub disa js_content_sub_disa">购买</span>
+                <a href="#" class="a_p grey tex_c js_scan_protocol">点击购买，即表示您已同意<span class="black">《储值返现活动协议》</span></a>
+                <!-- <p class="grey title_b js_scan_rule">储值说明</p> -->
+            </footer>
+        </div>
+    </div>
+    <input id="hidden" type="hidden" value="10"></input>
+    <div id="loading"></div>
+    <!-- </*请您填写信息*/>  -->
+    <div class="alert_con" id="alert_message">
+        <div class="alert_con_t font_15">请您填写信息<span class="pass_close js_alert_con_close">×</span></div>
+        <div class="alert_con_b text_l">
+            <div class="alert_con_br" id="js_protocol_detail">
+                <input class="js_hidden_first" type="hidden" value="" />
+                <dl class="dl_message js_dl_message">
+                    <dt>您的姓名</dt>
+                    <dd>
+                        <input class="text js_input js_message_name" type="text" value="" placeholder="最多4个汉字" />
+                    </dd>
+                    <dt>您的手机号</dt>
+                    <dd>
+                        <input class="text js_input js_message_tel" type="text" value="" placeholder="请您务必填写正确的手机号" />
+                    </dd>
+                    <dd class="orange">＊手机号将作为您唯一的身份识别，后续余额变动等通知，也将发送此手机号，无法更改，请您务必正确填写</dd>
+                    <dt>您的生日(选填)</dt>
+                    <dd>
+                        <!-- <input class="text js_message_birth" type="text" placeholder="最多4个汉字" readonly /> -->
+                        <input class="text js_message_birth" type="text" data-role="datebox" name="active_date" id="f_companydate" readonly />
+                    </dd>
+                    <dd class="grey">留下您的生日，可能会有生日惊喜哦～</dd>
+                </dl>
+            </div>
+        </div>
+        <div class="alert_con_foot">
+            <span class="alert_con_close js_alert_message"><i class="i_sure js_i_sure">确定</i><i class="i_load js_i_load"></i></span>
+            <span class="alert_con_load  js_load_message"><i></i></span>
+        </div>
+    </div>
+    <!-- </*提交支付错误弹框*/>  -->
+    <div class="alert_con alert_pass" id="passerror_alert">
+        <div class="alert_con_b">
+            <div class="alert_con_br">前方好近账户密码错误前方好近账户密码错误</div>
+        </div>
+        <ul class="both_button">
+            <li class="both_button_right js_both_button_right orange">重试</li>
+            <li class="both_button_fail js_both_button_fail">取消</li>
+        </ul>
+    </div>
+    <!-- </*弹框*/>  -->
+    <div class="alert_con" id="alert_alert">
+        <div class="alert_con_t orange">提示<span class="pass_close js_alert_con_close">×</span></div>
+        <div class="alert_con_b">
+            <div class="alert_con_br"></div>
+            <div class="clearfix"></div>
+            <span class="alert_con_close js_alert_con_close">确定</span>
+        </div>
+    </div>
+    <div class="zheceng"></div>
+    <div class="zheceng1"></div>
+    <div class="zheceng2"></div>
+    <script src="../../static_dest/static/new/js/require.2.1.11.min.js" type="text/javascript" data-main="../../static_dest/static/new/js/recharge/recharge_r.js" defer async="true"></script>
+</body>
+
+</html>

@@ -1,0 +1,196 @@
+@import "./common/common";
+
+/* ==================储值会员信息--列表============================================================ */
+
+.member_t{
+    width: 100%;
+    padding: 0 @padding;
+    box-sizing: border-box;
+    border-top: @border_width solid @border_color;/*no*/
+    border-bottom: @border_width solid @border_color;/*no*/
+    dl {
+        width: 100%;
+        border-bottom: @border_width dashed @border_color;/*no*/
+        padding: @padding 0;
+        height: 1.2rem;
+        box-sizing: content-box;
+        dt {
+            float: left;
+            width: 1.2rem;
+            max-width: 16%;
+            overflow: hidden;
+            border-radius: @border_radius;
+            img {
+                height: 1.2rem;
+                width: auto;
+                border-radius: @border_radius;
+            }
+        }
+        dd {
+            padding-left: 12px;//*no*//
+            float: left;
+            width: 50%;
+            line-height: 0.6rem;
+            &.grey {
+                font-size: 14px;
+            }
+        }
+        i.icon_tel{            
+            background: url('@{images}/ic_tel.png') center left no-repeat;
+            background-size: 0.26rem auto;
+            position: relative;
+            display: inline-block;
+            width: 0.26rem;
+            height: 0.5rem;
+            left: 0rem;
+            top:0.12rem;
+            padding-right: 0.1rem;
+        }
+        div.manual_but{
+            display: inline-block;
+            float: right;
+            line-height: 1.2rem;
+            i.icon_edit{
+                background: url('@{images}/idcon_edit.png') center left no-repeat;
+                background-size: 0.44rem auto;
+                position: relative;
+                display: inline-block;
+                width: 0.44rem;
+                height: 0.44rem;
+                left: 0rem;
+                top:0.08rem;
+                padding-right: 0.1rem;
+            }
+            i.icon_right{
+                background: url('@{images}/arrow-r.png') center left no-repeat;
+                background-size: 0.26rem auto;
+                position: relative;
+                display: inline-block;
+                width: 0.261rem;
+                height: 0.4rem;
+                left: 0rem;
+                top:0.08rem;
+            }
+        }
+    }
+    ul{
+        width: 100%;
+        padding: @padding 0;
+        line-height: 0.6rem;
+        li{
+            width: 33%;
+            float: left;
+            border-left: @border_width solid @border_color;/*no*/
+            text-align: center;
+            &:nth-child(1){
+                border:0;
+            }
+            span.orange{
+                i{
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}
+section.height_15{
+    width: 100%;
+    height: 12px;
+    background: @background_color;
+}
+
+section.section_history {
+    width: 100%;
+    background: white;
+    padding-left: @padding;
+    box-sizing: border-box;
+    border-top: @border_width solid @border_color;/*no*/
+    ul.ul_history {
+        width: 100%;
+        li {
+            width: 100%;
+            border-bottom: @border_width solid @border_color;/*no*/
+            padding: 0.2rem @padding 0.2rem 0;
+            box-sizing: border-box;
+            height: 1.6rem;
+            span.history_num {
+                display: block;
+                float: right;
+                width: 30%;
+                text-align: right;
+                line-height: 1rem;
+                i {
+                    font-size: 18px;
+                    padding-left: 3px;
+                    position: relative;
+                    top:0.03rem;
+                }
+                &.zeng{
+                    line-height: .55rem;
+                    i.grey{
+                        font-size: 13px;
+                       
+                    }
+                }
+            }
+            dl {
+                float: left;
+                width: 68%;
+                dt {
+                    float: left;
+                    width: 20%;
+                    img {
+                        height: 1.2rem;
+                        width: auto;
+                        border-radius: @border_radius;
+                    }
+                }
+                dd {
+                    float: left;
+                    width: 78%;
+                    line-height: 0.6rem;
+                    &.grey {
+                        font-size: 13px;
+                    }
+                    span.buy_back {
+                        border: @border_width solid @orange;/*no*/
+                        font-size: 13px;
+                        padding: 2px 3px;
+                        border-radius: @border_radius;
+                        margin-left: 5px;
+                    }
+                }
+            }
+        }
+    }
+    p.click_more {
+        width: 100%;
+        height: 1.2rem;
+        line-height: 1.2rem;
+        text-align: center;
+        font-size: 0.4rem;
+    }
+}
+
+/*无数据提示*/
+ul div.js_empty {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+ul div.js_empty img{
+    display: inline-block;
+    width: 48%;
+    margin: 3rem 0 1.2rem 26%;
+    height: auto;
+}
+
+ul div.js_empty p.empty_title{
+    font-size: .4rem;
+    text-align: center;
+    line-height: 0.8rem;
+    width: 68%;
+    margin: 0 auto;
+    color: #A7A9AE;
+}
