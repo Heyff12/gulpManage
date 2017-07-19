@@ -1,6 +1,7 @@
 "use strict";
 
 define(["mock"], function (mock) {
+    //测试时，在主文件引入该js，打包上线时，删除引入代码；mock里面的文件名字最好与主文件名字保持一致，便于查找
     var activities = {
         "respcd": "0000",
         "respmsg": "OK",
@@ -12,9 +13,10 @@ define(["mock"], function (mock) {
             "total_balances": '@natural(7000000, 8000000)' }
     };
     var get_activities = function get_activities() {
-        console.log(mock.mock(activities));
+        console.log(mock.mock(activities)); //打印生成的数据
         mock.mock(/prepaid\/v1\/api\/b\/stat\/activities/, 'get', activities);
     };
+    get_activities();
     var members = {
         "respcd": "0000",
         "respmsg": "OK",
@@ -32,6 +34,7 @@ define(["mock"], function (mock) {
         console.log(mock.mock(members));
         mock.mock(/prepaid\/v1\/api\/b\/members/, 'get', members);
     };
+    get_members();
     var activity_history = {
         "respcd": "0000",
         "respmsg": "OK",
@@ -58,6 +61,7 @@ define(["mock"], function (mock) {
         console.log(mock.mock(activity_history));
         mock.mock(/prepaid\/v1\/api\/b\/activity_history/, 'get', activity_history);
     };
+    get_activity_history(); //直接执行，避免在正式文件中进行调用，便器上线时减少代码屏蔽量
     var service_info = {
         "respcd": "0000",
         "respmsg": "OK",
@@ -70,11 +74,7 @@ define(["mock"], function (mock) {
         console.log(mock.mock(service_info));
         mock.mock(/prepaid\/v1\/api\/service\/info/, 'get', service_info);
     };
+    get_service_info();
 
-    return {
-        get_activities: get_activities,
-        get_members: get_members,
-        get_activity_history: get_activity_history,
-        get_service_info: get_service_info
-    };
+    return {};
 });
